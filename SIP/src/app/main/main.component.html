@@ -1,0 +1,17 @@
+<div class="body bg-zinc-200 min-h-screen flex flex-col" [ngClass]="sizeClass()">
+  <!-- Main content -->
+  <div class="flex-grow">
+    <router-outlet></router-outlet>
+  </div>
+  
+  <!-- Footer -->
+  <footer class="bg-zinc-200 shadow-md py-6   w-full left-0 absolute bottom-0">
+    <hr class="border-t-2 border-gray-300 w-3/4 mx-auto mb-4">
+    <div class="flex flex-col items-center justify-center">
+      <img src="../logo.png" alt="STB Bank Logo" class="w-48 h-auto object-contain">
+      <p class="mt-4 text-sm text-gray-500 text-center">
+        © Société Tunisienne de Banque – Tous les droits sont protégés.        
+      </p>
+    </div>
+</footer>
+</div>

@@ -1,0 +1,45 @@
+<div class="flex flex-col items-center justify-center min-h-screen p-8 bg-gray-200" style="margin-bottom: 10rem;">
+  <div class="w-full max-w-7xl mx-auto">
+    <h2 class="text-4xl font-bold mb-12 text-center text-blue-700">
+      Liste des Sociétés
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div *ngFor="let societe of societes; let i = index">
+        <ul class="group bg-white p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 border-l-8 border-blue-500 hover:border-purple-600 transform hover:-translate-y-2">
+          <li class="text-gray-700 mb-3"><strong class="text-gray-900 font-semibold">ID:</strong> {{ societe.idProjet }}</li>
+          <li class="text-gray-700 mb-3"><strong class="text-gray-900 font-semibold">Identifiant:</strong> {{ societe.identifiant }}</li>
+          <li class="text-gray-700 mb-3"><strong class="text-gray-900 font-semibold">ExIdentifiant:</strong> {{ societe.exIdentifiant ?? 'Non disponible' }}</li>
+          <li class="text-gray-700 mb-3"><strong class="text-gray-900 font-semibold">Raison Sociale:</strong> {{ societe.raisonSociale }}</li>
+          <li class="text-gray-700 mb-3"><strong class="text-gray-900 font-semibold">Raison Sociale (Ar):</strong> {{ societe.raisonSocialeAr ?? 'Non disponible' }}</li>
+          <li class="text-gray-700 mb-3"><strong class="text-gray-900 font-semibold">Libelle Court:</strong> {{ societe.libelleCourt ?? 'Non disponible' }}</li>
+          <li class="text-gray-700 mb-3"><strong class="text-gray-900 font-semibold">Siege Social:</strong> {{ societe.siegeSocial }}</li>
+          <li class="text-gray-700 mb-3"><strong class="text-gray-900 font-semibold">Siege Social (Ar):</strong> {{ societe.siegeSocialAr ?? 'Non disponible' }}</li>
+          <li class="text-gray-700 mb-3"><strong class="text-gray-900 font-semibold">MF:</strong> {{ societe.mf ?? 'Non disponible' }}</li>
+          <li class="text-gray-700 mb-3"><strong class="text-gray-900 font-semibold">Date Creation:</strong> {{ societe.dateCreation }}</li>
+          <li class="text-gray-700 mb-3"><strong class="text-gray-900 font-semibold">Date Dossier:</strong> {{ societe.dateDossier }}</li>
+          <li class="text-gray-700 mb-3"><strong class="text-gray-900 font-semibold">Objet:</strong> {{ societe.objet ?? 'Non disponible' }}</li>
+          <li class="text-gray-700 mb-3"><strong class="text-gray-900 font-semibold">Objet (Ar):</strong> {{ societe.objetAr ?? 'Non disponible' }}</li>
+          <li class="text-gray-700 mb-3"><strong class="text-gray-900 font-semibold">Telephone:</strong> {{ societe.telephone ?? 'Non disponible' }}</li>
+          <li class="text-gray-700 mb-3"><strong class="text-gray-900 font-semibold">Email:</strong> {{ societe.email ?? 'Non disponible' }}</li>
+          <li class="text-gray-700 mb-3"><strong class="text-gray-900 font-semibold">Status:</strong> {{ societe.status ?? 'Non disponible' }}</li>
+          <li class="text-gray-700 mb-3"><strong class="text-gray-900 font-semibold">Dossier Juridique:</strong> {{ societe.dossierJuridique ?? 'Non disponible' }}</li>
+          <li class="text-gray-700 mb-3"><strong class="text-gray-900 font-semibold">Pays:</strong> {{ societe.libellePays }}</li>
+          <li class="text-gray-700 mb-3"><strong class="text-gray-900 font-semibold">Gouvernorat:</strong> {{ societe.libelleGouvernorat }}</li>
+          <li class="text-gray-700 mb-3"><strong class="text-gray-900 font-semibold">FormeJuridique:</strong> {{ societe.libelleFormeJuridique }}</li>
+          <li class="text-gray-700 mb-3"><strong class="text-gray-900 font-semibold">SecteurEconomique:</strong> {{ societe.libelleSecteurEconomique }}</li>
+          <li class="text-gray-700 mb-3"><strong class="text-gray-900 font-semibold">NatureProjet:</strong> {{ societe.libelleNatureProjet }}</li>
+          <li class="text-gray-700 mb-3"><strong class="text-gray-900 font-semibold">TypeManagement:</strong> {{ societe.libelleTypeManagement }}</li>
+          <li class="text-gray-700 mb-3"><strong class="text-gray-900 font-semibold">Devise:</strong> {{ societe.libelleDevise }}</li>
+          <li class="text-gray-700 mb-3"><strong class="text-gray-900 font-semibold">TypeIdentifiant:</strong> {{ societe.libelleTypeIdentifiant }}</li>
+          <li class="text-gray-700 mb-3"><strong class="text-gray-900 font-semibold">TypeEntreprise:</strong> {{ societe.libelleTypeEntreprise }}</li>
+          <li class="text-gray-700 mb-3"><strong class="text-gray-900 font-semibold">TypeProjet:</strong> {{ societe.libelleTypeProjet }}</li>
+          <li class="text-gray-700 mb-3"><strong class="text-gray-900 font-semibold">ParametreRSM620:</strong> {{ societe.libelleParametreRSM620 }}</li>
+          <li class="text-gray-700 mb-3"><strong class="text-gray-900 font-semibold">ParametreRNLPA870:</strong> {{ societe.libelleParametreRNLPA870 }}</li>
+          <li class="text-gray-700 mb-3"><strong class="text-gray-900 font-semibold">CodeRisque:</strong> {{ societe.codeRisque ?? 'Non disponible' }}</li>
+          <li class="text-gray-700 mb-3"><strong class="text-gray-900 font-semibold">DateMaj:</strong> {{ societe.dateMaj ?? 'Non disponible' }}</li>
+          <li class="text-gray-700 mb-3"><strong class="text-gray-900 font-semibold">Utilisateur:</strong> {{ societe.utilisateur ?? 'Non disponible' }}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

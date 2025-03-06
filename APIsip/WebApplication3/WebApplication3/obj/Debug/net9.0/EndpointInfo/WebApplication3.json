@@ -1,0 +1,463 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "WebApplication3",
+    "version": "1.0"
+  },
+  "paths": {
+    "/api/Societe/add_Societe": {
+      "post": {
+        "tags": [
+          "Societe"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Projet"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Projet"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Projet"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Projet"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Societe/get_Societe": {
+      "get": {
+        "tags": [
+          "Societe"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Societe/get_Pays": {
+      "get": {
+        "tags": [
+          "Societe"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Societe/get_Gouvernorats": {
+      "get": {
+        "tags": [
+          "Societe"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Societe/get_FormeJuridique": {
+      "get": {
+        "tags": [
+          "Societe"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Societe/get_SecteurEconomique": {
+      "get": {
+        "tags": [
+          "Societe"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Societe/get_ModeleEtatFinancier": {
+      "get": {
+        "tags": [
+          "Societe"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Societe/get_NatureProjet": {
+      "get": {
+        "tags": [
+          "Societe"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Societe/get_TypeManagement": {
+      "get": {
+        "tags": [
+          "Societe"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Societe/get_Devise": {
+      "get": {
+        "tags": [
+          "Societe"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Societe/get_TypeIdentifiant": {
+      "get": {
+        "tags": [
+          "Societe"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Societe/get_TypeProjet": {
+      "get": {
+        "tags": [
+          "Societe"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Societe/get_TypeEntreprise": {
+      "get": {
+        "tags": [
+          "Societe"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Societe/get_ParametreRSM620": {
+      "get": {
+        "tags": [
+          "Societe"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Societe/get_ParametreRNL870": {
+      "get": {
+        "tags": [
+          "Societe"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/WeatherForecast": {
+      "get": {
+        "tags": [
+          "WeatherForecast"
+        ],
+        "operationId": "GetWeatherForecast",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/WeatherForecast"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/WeatherForecast"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/WeatherForecast"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Projet": {
+        "type": "object",
+        "properties": {
+          "idProjet": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "identifiant": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "exIdentifiant": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "raisonSociale": {
+            "type": "string",
+            "nullable": true
+          },
+          "raisonSocialeAr": {
+            "type": "string",
+            "nullable": true
+          },
+          "libelleCourt": {
+            "type": "string",
+            "nullable": true
+          },
+          "siegeSocial": {
+            "type": "string",
+            "nullable": true
+          },
+          "siegeSocialAr": {
+            "type": "string",
+            "nullable": true
+          },
+          "mf": {
+            "type": "string",
+            "nullable": true
+          },
+          "dateCreation": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "dateDossier": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "objet": {
+            "type": "string",
+            "nullable": true
+          },
+          "objetAr": {
+            "type": "string",
+            "nullable": true
+          },
+          "telephone": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "type": "string",
+            "nullable": true
+          },
+          "dossierJuridique": {
+            "type": "string",
+            "nullable": true
+          },
+          "idPays": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "libellePays": {
+            "type": "string",
+            "nullable": true
+          },
+          "idGouvernorat": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "libelleGouvernorat": {
+            "type": "string",
+            "nullable": true
+          },
+          "idFormeJuridique": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "libelleFormeJuridique": {
+            "type": "string",
+            "nullable": true
+          },
+          "idSecteurEconomique": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "libelleSecteurEconomique": {
+            "type": "string",
+            "nullable": true
+          },
+          "idNatureProjet": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "libelleNatureProjet": {
+            "type": "string",
+            "nullable": true
+          },
+          "idTypeManagement": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "libelleTypeManagement": {
+            "type": "string",
+            "nullable": true
+          },
+          "idDevise": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "libelleDevise": {
+            "type": "string",
+            "nullable": true
+          },
+          "idTypeIdentifiant": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "libelleTypeIdentifiant": {
+            "type": "string",
+            "nullable": true
+          },
+          "idTypeEntreprise": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "libelleTypeEntreprise": {
+            "type": "string",
+            "nullable": true
+          },
+          "idTypeProjet": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "libelleTypeProjet": {
+            "type": "string",
+            "nullable": true
+          },
+          "idParametreRSM620": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "libelleParametreRSM620": {
+            "type": "string",
+            "nullable": true
+          },
+          "idParametreRNLPA870": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "libelleParametreRNLPA870": {
+            "type": "string",
+            "nullable": true
+          },
+          "codeRisque": {
+            "type": "string",
+            "nullable": true
+          },
+          "dateMaj": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "utilisateur": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "WeatherForecast": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "format": "date"
+          },
+          "temperatureC": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "temperatureF": {
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "summary": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}

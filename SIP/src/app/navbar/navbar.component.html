@@ -1,0 +1,63 @@
+<nav class="fixed top-0 w-full z-50 flex justify-between px-5 py-2 items-center bg-white shadow-md">
+  <div class="flex items-center" (click)="navigateToHome()">
+    <img src="./logo.png" alt="Logo" class="w-48 h-auto object-contain cursor-pointer" [routerLink]="">
+  </div>
+  <div class="flex items-center">
+    <div class="flex items-center">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 pt-0.5 text-gray-600" fill="none" viewBox="0 0 24 24"
+        stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+      </svg>
+      <input class="ml-2 outline-none bg-transparent" type="text" name="search" id="search" placeholder="Search..." />
+    </div>
+    <ul class="flex items-center justify-end space-x-6">
+      <!-- Bell Icon -->
+      <li class="relative group">
+        <i class="fa-solid fa-bell text-xl text-gray-700 cursor-pointer hover:text-blue-800"></i>
+        <span
+          class="absolute -top-8 left-1/2 -translate-x-1/2 bg-gray-700 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">Notifications</span>
+      </li>
+
+      <!-- Pencil Icon -->
+      <li class="relative group">
+        <i class="fa-solid fa-pencil text-xl text-gray-700 cursor-pointer hover:text-blue-800"></i>
+        <span
+          class="absolute -top-8 left-1/2 -translate-x-1/2 bg-gray-700 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">Modification</span>
+      </li>
+
+      <!-- dashbaord Icon -->
+      <li class="relative group">
+        <i class="fa-solid fa-gauge text-xl text-gray-700 cursor-pointer hover:text-blue-800"></i>
+        <span
+          class="absolute -top-8 left-1/2 -translate-x-1/2 bg-gray-700 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">Dashboard</span>
+      </li>
+      <!-- consulting Icon -->
+      <li class="relative group">
+        <i class="fa-solid fa-file-alt text-xl text-gray-700 cursor-pointer hover:text-blue-800" (click)="navigateToSocieteList()"></i>
+        <span class="absolute -top-8 left-1/2 -translate-x-1/2 bg-gray-700 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">
+          Liste
+        </span>
+      </li>
+
+
+
+      <!-- Logout Icon -->
+      <li class="relative group">
+        <i class="fa-solid fa-right-from-bracket text-xl text-gray-700 cursor-pointer hover:text-blue-800"></i>
+        <span
+          class="absolute -top-8 left-1/2 -translate-x-1/2 bg-gray-700 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">Déconnexion</span>
+      </li>
+
+      <!-- User Icon -->
+      <li class="relative group" (click)="navigateToLogin()">
+        <i class="fa-solid fa-user text-xl text-gray-700 cursor-pointer hover:text-blue-800"></i>
+        <span
+          class="absolute -top-8 left-1/2 -translate-x-1/2 bg-gray-700 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">
+          Profile
+        </span>
+      </li>
+
+    </ul>
+  </div>
+</nav>
