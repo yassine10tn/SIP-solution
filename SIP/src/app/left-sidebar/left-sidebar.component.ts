@@ -1,66 +1,112 @@
+// left-sidebar.component.ts
+import { Component, input, output, inject } from '@angular/core';
+import { Router, RouterModule } from '@angular/router';
 import { CommonModule, NgClass } from '@angular/common';
-import { Component, input, output } from '@angular/core';
-import { RouterModule } from '@angular/router';
 
+interface MenuItem {
+  routeLink?: string;  // Rendons ce champ optionnel
+  icon: string;
+  label: string;
+  subItems?: SubMenuItem[];
+}
 
+interface SubMenuItem {
+  routeLink: string;
+  icon: string;
+  label: string;
+}
 
 @Component({
   selector: 'app-left-sidebar',
-  imports: [RouterModule,CommonModule,NgClass],
+  standalone: true,
+  imports: [RouterModule, CommonModule, NgClass],
   templateUrl: './left-sidebar.component.html',
-  styleUrl: './left-sidebar.component.css'
+  styleUrls: ['./left-sidebar.component.css']
 })
 export class LeftSidebarComponent {
+  private router = inject(Router);
+  
   isLeftSidebarCollapsed = input.required<boolean>();
   changeIsLeftSidebarCollapsed = output<boolean>();
-  
-  items = [
+  isSocieteMenuOpen = false;
+
+  items: MenuItem[] = [
     {
       routeLink: 'home',
-      icon: 'fas fa-briefcase',
-      label: 'Gestion de la société',
+      icon: 'fas fa-users-cog',
+      label: 'Gestion de la Société',
+      subItems: [
+        {
+          routeLink: 'saisie-commissaire',
+          icon: 'fas fa-user-tie',
+          label: 'Saisie Commissaire aux comptes'
+        },
+        {
+          routeLink: 'affectation-commissaire',
+          icon: 'fas fa-tasks',
+          label: 'Affectation commissaire aux comptes'
+        },
+        {
+          routeLink: 'saisie-contacts',
+          icon: 'fas fa-address-book',
+          label: 'Saisie des contacts'
+        }
+      ]
     },
     {
-      routeLink: 'dashboard',
-      icon: 'fas fa-users-cog',
-      label: ' Gestion des Tiers',
+      routeLink: 'participation',
+      icon: 'fas fa-handshake',
+      label: 'Participation',
     },
     {
       routeLink: 'products',
-      icon: 'fas fa-handshake',
-      label: ' Participation',
-    },
-    {
-      routeLink: 'pages',
       icon: 'fas fa-project-diagram',
-      label: ' workflow',
+      label: 'Workflow',
     },
     {
       routeLink: 'settings',
       icon: 'fas fa-coins',
-      label: ' Fonds Gérés',
+      label: 'Fonds Gérés',
     },
     {
       routeLink: 'jsp',
       icon: 'fas fa-chart-line',
-      label: ' FCPR',
+      label: 'FCPR',
     },
     {
       routeLink: 'idk',
       icon: 'fas fa-building',
-      label: ' Gestion des Filiales',
+      label: 'Gestion des Filiales',
     },
     {
       routeLink: 'aa',
       icon: 'fas fa-cogs',
-      label: ' Paramétrage  ',
+      label: 'Paramétrage',
     },
   ];
 
-  toggleCollapse() : void {
+  toggleCollapse(): void {
     this.changeIsLeftSidebarCollapsed.emit(!this.isLeftSidebarCollapsed());
   }
-  closeSidenav():void{
+
+  closeSidenav(): void {
     this.changeIsLeftSidebarCollapsed.emit(true);
   }
+
+  toggleSocieteMenu(): void {
+    this.isSocieteMenuOpen = !this.isSocieteMenuOpen;
+  }
+
+  isAnySubItemActive(item: MenuItem): boolean {
+    if (!item.subItems) return false;
+    return item.subItems.some(subItem => 
+      this.router.isActive(subItem.routeLink, {
+        paths: 'subset',
+        queryParams: 'subset',
+        fragment: 'ignored',
+        matrixParams: 'ignored'
+      })
+    );
+  }
+  
 }

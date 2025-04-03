@@ -1,0 +1,184 @@
+<div class="bg-white rounded-3xl relative mx-auto p-8 transform transition-all duration-300 ease-in-out shadow-xl"
+  style="width: 98%; margin: 2rem auto 5rem;">
+
+  <!-- En-tête avec icône -->
+  <div class="flex items-center mb-8">
+    <div class="bg-blue-100 p-3 rounded-full mr-4">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-600" fill="none" viewBox="0 0 24 24"
+        stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+      </svg>
+    </div>
+    <div>
+      <h1 class="text-2xl font-bold text-gray-800">Affectation Commissaire aux comptes</h1>
+      <p class="text-sm text-gray-500">Remplissez les informations pour affecter un commissaire aux comptes</p>
+    </div>
+  </div>
+
+  <form (ngSubmit)="onSubmit()" class="space-y-8">
+    <!-- Section Société et Cabinet -->
+    <div class="space-y-4">
+      <h2 class="text-lg font-semibold text-gray-700 border-b pb-2">Informations d'affectation</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Société -->
+        <div>
+          <label for="societe" class="block text-sm font-medium text-gray-700 mb-1">
+            Société <span class="text-red-500">*</span>
+          </label>
+          <select id="societe" name="societe" required
+                  [(ngModel)]="formData.societeId"
+                  #societeInput="ngModel"
+                  [class.border-red-500]="societeInput.invalid && (societeInput.dirty || societeInput.touched || formSubmitted)"
+                  (change)="onSocieteChange(); checkFieldValidity(societeInput)"
+                  class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-3 border bg-white">
+            <option value="" disabled selected>Sélectionnez une société</option>
+            <option *ngFor="let projet of projets" [ngValue]="projet.idProjet">
+              {{ projet.raisonSociale }}
+            </option>
+          </select>
+          <div *ngIf="societeInput.invalid && (societeInput.dirty || societeInput.touched || formSubmitted)"
+            class="text-red-500 text-sm mt-1">
+            <div *ngIf="societeInput.errors?.['required']">
+              La société est obligatoire.
+            </div>
+          </div>
+        </div>
+
+        <!-- Nom et prénom commissaire aux comptes signataire -->
+        <div>
+          <label for="commissaire" class="block text-sm font-medium text-gray-700 mb-1">
+            Nom et prénom commissaire aux comptes signataire <span class="text-red-500">*</span>
+          </label>
+          <select id="commissaire" name="commissaire" required
+                [(ngModel)]="formData.commissaireId"
+                  #commissaireInput="ngModel"
+                  [class.border-red-500]="commissaireInput.invalid && (commissaireInput.dirty || commissaireInput.touched || formSubmitted)"
+                  (change)="onCommissaireChange(); checkFieldValidity(commissaireInput)"
+                  class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-3 border bg-white">
+            <option value="" disabled selected>Sélectionnez un commissaire</option>
+            <option *ngFor="let c of commissaires" [ngValue]="c.caC_ID">{{ c.commissaire_NomPrenom }}</option>
+          </select>
+          <div *ngIf="commissaireInput.invalid && (commissaireInput.dirty || commissaireInput.touched || formSubmitted)"
+            class="text-red-500 text-sm mt-1">
+            <div *ngIf="commissaireInput.errors?.['required']">
+              Le commissaire est obligatoire.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Section Commissaire et Mandat -->
+    <div class="space-y-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Nom et prénom commissaire -->
+        <div>
+          <label for="cabinet" class="block text-sm font-medium text-gray-700 mb-1">
+            Nom du cabinet <span class="text-red-500">*</span>
+          </label>
+          <input type="text" id="cabinet" name="cabinet" readonly
+                 [(ngModel)]="formData.cabinet"
+                 class="mt-1 block w-full rounded-lg border-gray-300 bg-gray-100 shadow-sm p-3 border">
+        </div>
+      
+
+        <!-- Mandat -->
+        <div>
+          <label for="mandat" class="block text-sm font-medium text-gray-700 mb-1">
+            Mandat <span class="text-red-500">*</span>
+          </label>
+          <input type="text" id="mandat" name="mandat" required [(ngModel)]="formData.mandat" #mandatInput="ngModel"
+            [class.border-red-500]="mandatInput.invalid && (mandatInput.dirty || mandatInput.touched || formSubmitted)"
+            (change)="checkFieldValidity(mandatInput)"
+            class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-3 border bg-white appearance-none transition duration-200"
+            placeholder="Entrez le mandat">
+          <div *ngIf="mandatInput.invalid && (mandatInput.dirty || mandatInput.touched || formSubmitted)"
+            class="text-red-500 text-sm mt-1">
+            <div *ngIf="mandatInput.errors?.['required']">
+              Le mandat est obligatoire.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section Date et Numéro -->
+    <div class="space-y-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <!-- Date Affectation -->
+<div>
+  <label for="dateAffectation" class="block text-sm font-medium text-gray-700 mb-1">
+    Date d'affectation <span class="text-red-500">*</span>
+  </label>
+  <div class="relative">
+    <input type="date" id="dateAffectation" name="dateAffectation" required
+      [(ngModel)]="formData.dateAffectation" #dateAffectationInput="ngModel"
+      [min]="'2026-02-26'"
+      [class.border-red-500]="dateAffectationInput.invalid && (dateAffectationInput.dirty || dateAffectationInput.touched || formSubmitted)"
+      (input)="checkFieldValidity(dateAffectationInput)"
+      class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-3 border transition duration-200">
+    <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+      <svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+      </svg>
+    </div>
+  </div>
+  <div
+    *ngIf="dateAffectationInput.invalid && (dateAffectationInput.dirty || dateAffectationInput.touched || formSubmitted)"
+    class="text-red-500 text-sm mt-1">
+    <div *ngIf="dateAffectationInput.errors?.['required']">
+      La date d'affectation est obligatoire.
+    </div>
+    <div *ngIf="formData.dateAffectation && formData.dateAffectation < '2026-02-26'">
+      La date doit être postérieure au 25/02/2026.
+    </div>
+  </div>
+</div>
+
+        <!-- Numéro de mandat -->
+        <div>
+          <label for="numeroMandat" class="block text-sm font-medium text-gray-700 mb-1">
+            Numéro de mandat <span class="text-red-500">*</span>
+          </label>
+          <input type="number" id="numeroMandat" name="numeroMandat" required [(ngModel)]="formData.numeroMandat"
+            #numeroMandatInput="ngModel"
+            [class.border-red-500]="numeroMandatInput.invalid && (numeroMandatInput.dirty || numeroMandatInput.touched || formSubmitted)"
+            (input)="checkFieldValidity(numeroMandatInput)"
+            class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-3 border transition duration-200">
+          <div
+            *ngIf="numeroMandatInput.invalid && (numeroMandatInput.dirty || numeroMandatInput.touched || formSubmitted)"
+            class="text-red-500 text-sm mt-1">
+            <div *ngIf="numeroMandatInput.errors?.['required']">
+              Le numéro de mandat est obligatoire.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Observation -->
+    <div class="bg-blue-50 p-6 rounded-xl border border-blue-100 transition duration-200 hover:border-blue-200">
+      <label for="observation" class="block text-sm font-medium text-gray-700 mb-2">
+        Observation
+      </label>
+      <textarea id="observation" name="observation" rows="3" [(ngModel)]="formData.observation"
+        class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-3 border transition duration-200"></textarea>
+    </div>
+
+    <!-- Boutons de soumission -->
+    <div class="pt-4 flex justify-end space-x-4">
+
+      <button type="submit"
+        class="px-6 py-3 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-200 flex items-center">
+        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"></path>
+        </svg>
+        Enregistrer l'affectation
+      </button>
+    </div>
+  </form>
+</div>

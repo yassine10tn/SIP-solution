@@ -1,0 +1,465 @@
+[
+  {
+    "ContainingType": "WebApplication1.Controllers.SocieteController",
+    "Method": "AddAffectationCAC",
+    "RelativePath": "api/Societe/add_AffectationCAC",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "affectation",
+        "Type": "WebApplication1.Models.AffectationCACModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApplication1.Controllers.SocieteController",
+    "Method": "AddCAC",
+    "RelativePath": "api/Societe/add_CAC",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "cac",
+        "Type": "WebApplication1.Models.CACModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApplication1.Controllers.SocieteController",
+    "Method": "AddContact",
+    "RelativePath": "api/Societe/add_Contact",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "contact",
+        "Type": "WebApplication1.Models.ListeContactModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApplication1.Controllers.SocieteController",
+    "Method": "AddSociete",
+    "RelativePath": "api/Societe/add_Societe",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "projet",
+        "Type": "Projet",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApplication1.Controllers.SocieteController",
+    "Method": "DeleteProjet",
+    "RelativePath": "api/Societe/delete_Projet/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApplication1.Controllers.SocieteController",
+    "Method": "DownloadCopieOrdreAchat",
+    "RelativePath": "api/Societe/download_CopieOrdreAchat/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApplication1.Controllers.SocieteController",
+    "Method": "DownloadBulletin",
+    "RelativePath": "api/Societe/downloadBulletin/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApplication1.Controllers.SocieteController",
+    "Method": "DownloadPdf",
+    "RelativePath": "api/Societe/downloadPdf/{id}/{type}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "type",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApplication1.Controllers.SocieteController",
+    "Method": "GetAchat",
+    "RelativePath": "api/Societe/get_Achat",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApplication1.Controllers.SocieteController",
+    "Method": "GetAffectationCAC",
+    "RelativePath": "api/Societe/get_AffectationCAC",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApplication1.Controllers.SocieteController",
+    "Method": "GetCAC",
+    "RelativePath": "api/Societe/get_CAC",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApplication1.Controllers.SocieteController",
+    "Method": "GetCACNature",
+    "RelativePath": "api/Societe/get_CAC_Nature",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApplication1.Controllers.SocieteController",
+    "Method": "GetContacts",
+    "RelativePath": "api/Societe/get_Contacts",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApplication1.Controllers.SocieteController",
+    "Method": "GetDevise",
+    "RelativePath": "api/Societe/get_Devise",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApplication1.Controllers.SocieteController",
+    "Method": "GetFonctions",
+    "RelativePath": "api/Societe/get_Fonctions",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApplication1.Controllers.SocieteController",
+    "Method": "GetFormeJuridique",
+    "RelativePath": "api/Societe/get_FormeJuridique",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApplication1.Controllers.SocieteController",
+    "Method": "GetGouvernorats",
+    "RelativePath": "api/Societe/get_Gouvernorats",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApplication1.Controllers.SocieteController",
+    "Method": "GetModeleEtatFinancier",
+    "RelativePath": "api/Societe/get_ModeleEtatFinancier",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApplication1.Controllers.SocieteController",
+    "Method": "GetNatureProjet",
+    "RelativePath": "api/Societe/get_NatureProjet",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApplication1.Controllers.SocieteController",
+    "Method": "GetParametreRNL870",
+    "RelativePath": "api/Societe/get_ParametreRNL870",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApplication1.Controllers.SocieteController",
+    "Method": "GetParametreRSM620",
+    "RelativePath": "api/Societe/get_ParametreRSM620",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApplication1.Controllers.SocieteController",
+    "Method": "GetPays",
+    "RelativePath": "api/Societe/get_Pays",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApplication1.Controllers.SocieteController",
+    "Method": "GetSecteurEconomique",
+    "RelativePath": "api/Societe/get_SecteurEconomique",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApplication1.Controllers.SocieteController",
+    "Method": "GetSituations",
+    "RelativePath": "api/Societe/get_Situations",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApplication1.Controllers.SocieteController",
+    "Method": "GetSociete",
+    "RelativePath": "api/Societe/get_Societe",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApplication1.Controllers.SocieteController",
+    "Method": "GetSouscription",
+    "RelativePath": "api/Societe/get_Souscription",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApplication1.Controllers.SocieteController",
+    "Method": "GetTypeEntreprise",
+    "RelativePath": "api/Societe/get_TypeEntreprise",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApplication1.Controllers.SocieteController",
+    "Method": "GetTypeIdentifiant",
+    "RelativePath": "api/Societe/get_TypeIdentifiant",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApplication1.Controllers.SocieteController",
+    "Method": "GetTypeManagement",
+    "RelativePath": "api/Societe/get_TypeManagement",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApplication1.Controllers.SocieteController",
+    "Method": "GetTypeProjet",
+    "RelativePath": "api/Societe/get_TypeProjet",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApplication1.Controllers.SocieteController",
+    "Method": "GetTypesSouscription",
+    "RelativePath": "api/Societe/get_TypesSouscription",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApplication1.Controllers.SocieteController",
+    "Method": "GetVente",
+    "RelativePath": "api/Societe/get_Vente",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApplication1.Controllers.SocieteController",
+    "Method": "PostAchat",
+    "RelativePath": "api/Societe/post_Achat",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "achatDto",
+        "Type": "WebApplication1.Models.AchatDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApplication1.Controllers.SocieteController",
+    "Method": "PostSouscription",
+    "RelativePath": "api/Societe/post_Souscription",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "souscriptionDto",
+        "Type": "WebApplication1.Models.SouscriptionDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApplication1.Controllers.SocieteController",
+    "Method": "PostVente",
+    "RelativePath": "api/Societe/post_Vente",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "venteDto",
+        "Type": "WebApplication1.Models.VenteDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApplication1.Controllers.SocieteController",
+    "Method": "UpdateSociete",
+    "RelativePath": "api/Societe/update_Societe/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "projetUpdate",
+        "Type": "WebApplication1.Models.ProjetUpdateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApplication1.Controllers.WeatherForecastController",
+    "Method": "Get",
+    "RelativePath": "WeatherForecast",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[WebApplication1.WeatherForecast, WebApplication1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ],
+    "EndpointName": "GetWeatherForecast"
+  }
+]

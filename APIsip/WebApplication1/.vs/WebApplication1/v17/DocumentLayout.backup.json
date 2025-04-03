@@ -1,0 +1,621 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Yassine\\Pictures\\SIParticipations-SIP-version-1\\SIParticipations-SIP-version-1\\APIsip\\WebApplication1\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{E15CEAF6-2F66-4204-A430-2D121A388904}|WebApplication1\\WebApplication1.csproj|c:\\users\\yassine\\pictures\\siparticipations-sip-version-1\\siparticipations-sip-version-1\\apisip\\webapplication1\\webapplication1\\models\\cacmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E15CEAF6-2F66-4204-A430-2D121A388904}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\models\\cacmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E15CEAF6-2F66-4204-A430-2D121A388904}|WebApplication1\\WebApplication1.csproj|c:\\users\\yassine\\pictures\\siparticipations-sip-version-1\\siparticipations-sip-version-1\\apisip\\webapplication1\\webapplication1\\models\\affectationcacmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E15CEAF6-2F66-4204-A430-2D121A388904}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\models\\affectationcacmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E15CEAF6-2F66-4204-A430-2D121A388904}|WebApplication1\\WebApplication1.csproj|c:\\users\\yassine\\pictures\\siparticipations-sip-version-1\\siparticipations-sip-version-1\\apisip\\webapplication1\\webapplication1\\controllers\\societecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E15CEAF6-2F66-4204-A430-2D121A388904}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\controllers\\societecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E15CEAF6-2F66-4204-A430-2D121A388904}|WebApplication1\\WebApplication1.csproj|c:\\users\\yassine\\pictures\\siparticipations-sip-version-1\\siparticipations-sip-version-1\\apisip\\webapplication1\\webapplication1\\models\\listecontactmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E15CEAF6-2F66-4204-A430-2D121A388904}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\models\\listecontactmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E15CEAF6-2F66-4204-A430-2D121A388904}|WebApplication1\\WebApplication1.csproj|c:\\users\\yassine\\pictures\\siparticipations-sip-version-1\\siparticipations-sip-version-1\\apisip\\webapplication1\\webapplication1\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{E15CEAF6-2F66-4204-A430-2D121A388904}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E15CEAF6-2F66-4204-A430-2D121A388904}|WebApplication1\\WebApplication1.csproj|c:\\users\\yassine\\pictures\\siparticipations-sip-version-1\\siparticipations-sip-version-1\\apisip\\webapplication1\\webapplication1\\models\\projectdetails.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E15CEAF6-2F66-4204-A430-2D121A388904}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\models\\projectdetails.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E15CEAF6-2F66-4204-A430-2D121A388904}|WebApplication1\\WebApplication1.csproj|c:\\users\\yassine\\pictures\\siparticipations-sip-version-1\\siparticipations-sip-version-1\\apisip\\webapplication1\\webapplication1\\models\\situationmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E15CEAF6-2F66-4204-A430-2D121A388904}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\models\\situationmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E15CEAF6-2F66-4204-A430-2D121A388904}|WebApplication1\\WebApplication1.csproj|c:\\users\\yassine\\pictures\\siparticipations-sip-version-1\\siparticipations-sip-version-1\\apisip\\webapplication1\\webapplication1\\models\\secteureconomique.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E15CEAF6-2F66-4204-A430-2D121A388904}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\models\\secteureconomique.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E15CEAF6-2F66-4204-A430-2D121A388904}|WebApplication1\\WebApplication1.csproj|c:\\users\\yassine\\pictures\\siparticipations-sip-version-1\\siparticipations-sip-version-1\\apisip\\webapplication1\\webapplication1\\models\\natureprojet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E15CEAF6-2F66-4204-A430-2D121A388904}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\models\\natureprojet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E15CEAF6-2F66-4204-A430-2D121A388904}|WebApplication1\\WebApplication1.csproj|c:\\users\\yassine\\pictures\\siparticipations-sip-version-1\\siparticipations-sip-version-1\\apisip\\webapplication1\\webapplication1\\models\\pays.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E15CEAF6-2F66-4204-A430-2D121A388904}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\models\\pays.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E15CEAF6-2F66-4204-A430-2D121A388904}|WebApplication1\\WebApplication1.csproj|c:\\users\\yassine\\pictures\\siparticipations-sip-version-1\\siparticipations-sip-version-1\\apisip\\webapplication1\\webapplication1\\models\\fonctionmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E15CEAF6-2F66-4204-A430-2D121A388904}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\models\\fonctionmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E15CEAF6-2F66-4204-A430-2D121A388904}|WebApplication1\\WebApplication1.csproj|c:\\users\\yassine\\pictures\\siparticipations-sip-version-1\\siparticipations-sip-version-1\\apisip\\webapplication1\\webapplication1\\models\\cacnaturemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E15CEAF6-2F66-4204-A430-2D121A388904}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\models\\cacnaturemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E15CEAF6-2F66-4204-A430-2D121A388904}|WebApplication1\\WebApplication1.csproj|c:\\users\\yassine\\pictures\\siparticipations-sip-version-1\\siparticipations-sip-version-1\\apisip\\webapplication1\\webapplication1\\models\\tablereference.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E15CEAF6-2F66-4204-A430-2D121A388904}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\models\\tablereference.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E15CEAF6-2F66-4204-A430-2D121A388904}|WebApplication1\\WebApplication1.csproj|c:\\users\\yassine\\pictures\\siparticipations-sip-version-1\\siparticipations-sip-version-1\\apisip\\webapplication1\\webapplication1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E15CEAF6-2F66-4204-A430-2D121A388904}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E15CEAF6-2F66-4204-A430-2D121A388904}|WebApplication1\\WebApplication1.csproj|c:\\users\\yassine\\pictures\\siparticipations-sip-version-1\\siparticipations-sip-version-1\\apisip\\webapplication1\\webapplication1\\models\\typeprojet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E15CEAF6-2F66-4204-A430-2D121A388904}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\models\\typeprojet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E15CEAF6-2F66-4204-A430-2D121A388904}|WebApplication1\\WebApplication1.csproj|c:\\users\\yassine\\pictures\\siparticipations-sip-version-1\\siparticipations-sip-version-1\\apisip\\webapplication1\\webapplication1\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{E15CEAF6-2F66-4204-A430-2D121A388904}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E15CEAF6-2F66-4204-A430-2D121A388904}|WebApplication1\\WebApplication1.csproj|c:\\users\\yassine\\pictures\\siparticipations-sip-version-1\\siparticipations-sip-version-1\\apisip\\webapplication1\\webapplication1\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{E15CEAF6-2F66-4204-A430-2D121A388904}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E15CEAF6-2F66-4204-A430-2D121A388904}|WebApplication1\\WebApplication1.csproj|c:\\users\\yassine\\pictures\\siparticipations-sip-version-1\\siparticipations-sip-version-1\\apisip\\webapplication1\\webapplication1\\models\\souscription.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E15CEAF6-2F66-4204-A430-2D121A388904}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\models\\souscription.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E15CEAF6-2F66-4204-A430-2D121A388904}|WebApplication1\\WebApplication1.csproj|c:\\users\\yassine\\pictures\\siparticipations-sip-version-1\\siparticipations-sip-version-1\\apisip\\webapplication1\\webapplication1\\models\\typeentreprise.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E15CEAF6-2F66-4204-A430-2D121A388904}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\models\\typeentreprise.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E15CEAF6-2F66-4204-A430-2D121A388904}|WebApplication1\\WebApplication1.csproj|c:\\users\\yassine\\pictures\\siparticipations-sip-version-1\\siparticipations-sip-version-1\\apisip\\webapplication1\\webapplication1\\models\\typeidentifiant.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E15CEAF6-2F66-4204-A430-2D121A388904}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\models\\typeidentifiant.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E15CEAF6-2F66-4204-A430-2D121A388904}|WebApplication1\\WebApplication1.csproj|c:\\users\\yassine\\pictures\\siparticipations-sip-version-1\\siparticipations-sip-version-1\\apisip\\webapplication1\\webapplication1\\models\\typemanagement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E15CEAF6-2F66-4204-A430-2D121A388904}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\models\\typemanagement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E15CEAF6-2F66-4204-A430-2D121A388904}|WebApplication1\\WebApplication1.csproj|c:\\users\\yassine\\pictures\\siparticipations-sip-version-1\\siparticipations-sip-version-1\\apisip\\webapplication1\\webapplication1\\models\\typesouscription.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E15CEAF6-2F66-4204-A430-2D121A388904}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\models\\typesouscription.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E15CEAF6-2F66-4204-A430-2D121A388904}|WebApplication1\\WebApplication1.csproj|c:\\users\\yassine\\pictures\\siparticipations-sip-version-1\\siparticipations-sip-version-1\\apisip\\webapplication1\\webapplication1\\models\\vente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E15CEAF6-2F66-4204-A430-2D121A388904}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\models\\vente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E15CEAF6-2F66-4204-A430-2D121A388904}|WebApplication1\\WebApplication1.csproj|c:\\users\\yassine\\pictures\\siparticipations-sip-version-1\\siparticipations-sip-version-1\\apisip\\webapplication1\\webapplication1\\models\\ventedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E15CEAF6-2F66-4204-A430-2D121A388904}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\models\\ventedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E15CEAF6-2F66-4204-A430-2D121A388904}|WebApplication1\\WebApplication1.csproj|c:\\users\\yassine\\pictures\\siparticipations-sip-version-1\\siparticipations-sip-version-1\\apisip\\webapplication1\\webapplication1\\models\\souscriptiondto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E15CEAF6-2F66-4204-A430-2D121A388904}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\models\\souscriptiondto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E15CEAF6-2F66-4204-A430-2D121A388904}|WebApplication1\\WebApplication1.csproj|c:\\users\\yassine\\pictures\\siparticipations-sip-version-1\\siparticipations-sip-version-1\\apisip\\webapplication1\\webapplication1\\models\\projetupdatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E15CEAF6-2F66-4204-A430-2D121A388904}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\models\\projetupdatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E15CEAF6-2F66-4204-A430-2D121A388904}|WebApplication1\\WebApplication1.csproj|c:\\users\\yassine\\pictures\\siparticipations-sip-version-1\\siparticipations-sip-version-1\\apisip\\webapplication1\\webapplication1\\models\\projet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E15CEAF6-2F66-4204-A430-2D121A388904}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\models\\projet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E15CEAF6-2F66-4204-A430-2D121A388904}|WebApplication1\\WebApplication1.csproj|c:\\users\\yassine\\pictures\\siparticipations-sip-version-1\\siparticipations-sip-version-1\\apisip\\webapplication1\\webapplication1\\models\\parametrersm620.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E15CEAF6-2F66-4204-A430-2D121A388904}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\models\\parametrersm620.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E15CEAF6-2F66-4204-A430-2D121A388904}|WebApplication1\\WebApplication1.csproj|c:\\users\\yassine\\pictures\\siparticipations-sip-version-1\\siparticipations-sip-version-1\\apisip\\webapplication1\\webapplication1\\models\\parametrernl870.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E15CEAF6-2F66-4204-A430-2D121A388904}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\models\\parametrernl870.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E15CEAF6-2F66-4204-A430-2D121A388904}|WebApplication1\\WebApplication1.csproj|c:\\users\\yassine\\pictures\\siparticipations-sip-version-1\\siparticipations-sip-version-1\\apisip\\webapplication1\\webapplication1\\models\\modeleetatfinancier.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E15CEAF6-2F66-4204-A430-2D121A388904}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\models\\modeleetatfinancier.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E15CEAF6-2F66-4204-A430-2D121A388904}|WebApplication1\\WebApplication1.csproj|c:\\users\\yassine\\pictures\\siparticipations-sip-version-1\\siparticipations-sip-version-1\\apisip\\webapplication1\\webapplication1\\models\\gouvernorats.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E15CEAF6-2F66-4204-A430-2D121A388904}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\models\\gouvernorats.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E15CEAF6-2F66-4204-A430-2D121A388904}|WebApplication1\\WebApplication1.csproj|c:\\users\\yassine\\pictures\\siparticipations-sip-version-1\\siparticipations-sip-version-1\\apisip\\webapplication1\\webapplication1\\models\\formejuridique.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E15CEAF6-2F66-4204-A430-2D121A388904}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\models\\formejuridique.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E15CEAF6-2F66-4204-A430-2D121A388904}|WebApplication1\\WebApplication1.csproj|c:\\users\\yassine\\pictures\\siparticipations-sip-version-1\\siparticipations-sip-version-1\\apisip\\webapplication1\\webapplication1\\models\\devise.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E15CEAF6-2F66-4204-A430-2D121A388904}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\models\\devise.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E15CEAF6-2F66-4204-A430-2D121A388904}|WebApplication1\\WebApplication1.csproj|c:\\users\\yassine\\pictures\\siparticipations-sip-version-1\\siparticipations-sip-version-1\\apisip\\webapplication1\\webapplication1\\models\\achatdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E15CEAF6-2F66-4204-A430-2D121A388904}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\models\\achatdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E15CEAF6-2F66-4204-A430-2D121A388904}|WebApplication1\\WebApplication1.csproj|c:\\users\\yassine\\pictures\\siparticipations-sip-version-1\\siparticipations-sip-version-1\\apisip\\webapplication1\\webapplication1\\models\\achat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E15CEAF6-2F66-4204-A430-2D121A388904}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\models\\achat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E15CEAF6-2F66-4204-A430-2D121A388904}|WebApplication1\\WebApplication1.csproj|c:\\users\\yassine\\pictures\\siparticipations-sip-version-1\\siparticipations-sip-version-1\\apisip\\webapplication1\\webapplication1\\webapplication1.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{E15CEAF6-2F66-4204-A430-2D121A388904}|WebApplication1\\WebApplication1.csproj|solutionrelative:webapplication1\\webapplication1.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 1,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedHeight": 338,
+          "SelectedChildIndex": 9,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "SecteurEconomique.cs",
+              "DocumentMoniker": "C:\\Users\\Yassine\\Pictures\\SIParticipations-SIP-version-1\\SIParticipations-SIP-version-1\\APIsip\\WebApplication1\\WebApplication1\\Models\\SecteurEconomique.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\Models\\SecteurEconomique.cs",
+              "ToolTip": "C:\\Users\\Yassine\\Pictures\\SIParticipations-SIP-version-1\\SIParticipations-SIP-version-1\\APIsip\\WebApplication1\\WebApplication1\\Models\\SecteurEconomique.cs",
+              "RelativeToolTip": "WebApplication1\\Models\\SecteurEconomique.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-27T14:31:01.823Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Pays.cs",
+              "DocumentMoniker": "C:\\Users\\Yassine\\Pictures\\SIParticipations-SIP-version-1\\SIParticipations-SIP-version-1\\APIsip\\WebApplication1\\WebApplication1\\Models\\Pays.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\Models\\Pays.cs",
+              "ToolTip": "C:\\Users\\Yassine\\Pictures\\SIParticipations-SIP-version-1\\SIParticipations-SIP-version-1\\APIsip\\WebApplication1\\WebApplication1\\Models\\Pays.cs",
+              "RelativeToolTip": "WebApplication1\\Models\\Pays.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-27T14:29:47.046Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "C:\\Users\\Yassine\\Pictures\\SIParticipations-SIP-version-1\\SIParticipations-SIP-version-1\\APIsip\\WebApplication1\\WebApplication1\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "WebApplication1\\Properties\\launchSettings.json",
+              "ToolTip": "C:\\Users\\Yassine\\Pictures\\SIParticipations-SIP-version-1\\SIParticipations-SIP-version-1\\APIsip\\WebApplication1\\WebApplication1\\Properties\\launchSettings.json",
+              "RelativeToolTip": "WebApplication1\\Properties\\launchSettings.json",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAcwB4AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-03-27T14:55:16.614Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "SocieteController.cs",
+              "DocumentMoniker": "C:\\Users\\Yassine\\Pictures\\SIParticipations-SIP-version-1\\SIParticipations-SIP-version-1\\APIsip\\WebApplication1\\WebApplication1\\Controllers\\SocieteController.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\Controllers\\SocieteController.cs",
+              "ToolTip": "C:\\Users\\Yassine\\Pictures\\SIParticipations-SIP-version-1\\SIParticipations-SIP-version-1\\APIsip\\WebApplication1\\WebApplication1\\Controllers\\SocieteController.cs",
+              "RelativeToolTip": "WebApplication1\\Controllers\\SocieteController.cs",
+              "ViewState": "AgIAAOgHAAAAAAAAAAAswP8HAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-27T14:42:21.707Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "NatureProjet.cs",
+              "DocumentMoniker": "C:\\Users\\Yassine\\Pictures\\SIParticipations-SIP-version-1\\SIParticipations-SIP-version-1\\APIsip\\WebApplication1\\WebApplication1\\Models\\NatureProjet.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\Models\\NatureProjet.cs",
+              "ToolTip": "C:\\Users\\Yassine\\Pictures\\SIParticipations-SIP-version-1\\SIParticipations-SIP-version-1\\APIsip\\WebApplication1\\WebApplication1\\Models\\NatureProjet.cs",
+              "RelativeToolTip": "WebApplication1\\Models\\NatureProjet.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-27T14:28:51.085Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ProjectDetails.cs",
+              "DocumentMoniker": "C:\\Users\\Yassine\\Pictures\\SIParticipations-SIP-version-1\\SIParticipations-SIP-version-1\\APIsip\\WebApplication1\\WebApplication1\\Models\\ProjectDetails.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\Models\\ProjectDetails.cs",
+              "ToolTip": "C:\\Users\\Yassine\\Pictures\\SIParticipations-SIP-version-1\\SIParticipations-SIP-version-1\\APIsip\\WebApplication1\\WebApplication1\\Models\\ProjectDetails.cs",
+              "RelativeToolTip": "WebApplication1\\Models\\ProjectDetails.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAAswCIAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-27T14:30:01.79Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AffectationCACModel.cs",
+              "DocumentMoniker": "C:\\Users\\Yassine\\Pictures\\SIParticipations-SIP-version-1\\SIParticipations-SIP-version-1\\APIsip\\WebApplication1\\WebApplication1\\Models\\AffectationCACModel.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\Models\\AffectationCACModel.cs",
+              "ToolTip": "C:\\Users\\Yassine\\Pictures\\SIParticipations-SIP-version-1\\SIParticipations-SIP-version-1\\APIsip\\WebApplication1\\WebApplication1\\Models\\AffectationCACModel.cs",
+              "RelativeToolTip": "WebApplication1\\Models\\AffectationCACModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAABYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-02T15:53:09.969Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "CACNatureModel.cs",
+              "DocumentMoniker": "C:\\Users\\Yassine\\Pictures\\SIParticipations-SIP-version-1\\SIParticipations-SIP-version-1\\APIsip\\WebApplication1\\WebApplication1\\Models\\CACNatureModel.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\Models\\CACNatureModel.cs",
+              "ToolTip": "C:\\Users\\Yassine\\Pictures\\SIParticipations-SIP-version-1\\SIParticipations-SIP-version-1\\APIsip\\WebApplication1\\WebApplication1\\Models\\CACNatureModel.cs",
+              "RelativeToolTip": "WebApplication1\\Models\\CACNatureModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-02T15:52:18.432Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CACModel.cs",
+              "DocumentMoniker": "C:\\Users\\Yassine\\Pictures\\SIParticipations-SIP-version-1\\SIParticipations-SIP-version-1\\APIsip\\WebApplication1\\WebApplication1\\Models\\CACModel.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\Models\\CACModel.cs",
+              "ToolTip": "C:\\Users\\Yassine\\Pictures\\SIParticipations-SIP-version-1\\SIParticipations-SIP-version-1\\APIsip\\WebApplication1\\WebApplication1\\Models\\CACModel.cs",
+              "RelativeToolTip": "WebApplication1\\Models\\CACModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-02T15:51:03.889Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "FonctionModel.cs",
+              "DocumentMoniker": "C:\\Users\\Yassine\\Pictures\\SIParticipations-SIP-version-1\\SIParticipations-SIP-version-1\\APIsip\\WebApplication1\\WebApplication1\\Models\\FonctionModel.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\Models\\FonctionModel.cs",
+              "ToolTip": "C:\\Users\\Yassine\\Pictures\\SIParticipations-SIP-version-1\\SIParticipations-SIP-version-1\\APIsip\\WebApplication1\\WebApplication1\\Models\\FonctionModel.cs",
+              "RelativeToolTip": "WebApplication1\\Models\\FonctionModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-02T15:53:41.036Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "SituationModel.cs",
+              "DocumentMoniker": "C:\\Users\\Yassine\\Pictures\\SIParticipations-SIP-version-1\\SIParticipations-SIP-version-1\\APIsip\\WebApplication1\\WebApplication1\\Models\\SituationModel.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\Models\\SituationModel.cs",
+              "ToolTip": "C:\\Users\\Yassine\\Pictures\\SIParticipations-SIP-version-1\\SIParticipations-SIP-version-1\\APIsip\\WebApplication1\\WebApplication1\\Models\\SituationModel.cs",
+              "RelativeToolTip": "WebApplication1\\Models\\SituationModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-02T15:54:23.667Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ListeContactModel.cs",
+              "DocumentMoniker": "C:\\Users\\Yassine\\Pictures\\SIParticipations-SIP-version-1\\SIParticipations-SIP-version-1\\APIsip\\WebApplication1\\WebApplication1\\Models\\ListeContactModel.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\Models\\ListeContactModel.cs",
+              "ToolTip": "C:\\Users\\Yassine\\Pictures\\SIParticipations-SIP-version-1\\SIParticipations-SIP-version-1\\APIsip\\WebApplication1\\WebApplication1\\Models\\ListeContactModel.cs",
+              "RelativeToolTip": "WebApplication1\\Models\\ListeContactModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-02T15:54:50.405Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\Yassine\\Pictures\\SIParticipations-SIP-version-1\\SIParticipations-SIP-version-1\\APIsip\\WebApplication1\\WebApplication1\\appsettings.json",
+              "RelativeDocumentMoniker": "WebApplication1\\appsettings.json",
+              "ToolTip": "C:\\Users\\Yassine\\Pictures\\SIParticipations-SIP-version-1\\SIParticipations-SIP-version-1\\APIsip\\WebApplication1\\WebApplication1\\appsettings.json",
+              "RelativeToolTip": "WebApplication1\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-03-27T14:23:21.999Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "appsettings.Development.json",
+              "DocumentMoniker": "C:\\Users\\Yassine\\Pictures\\SIParticipations-SIP-version-1\\SIParticipations-SIP-version-1\\APIsip\\WebApplication1\\WebApplication1\\appsettings.Development.json",
+              "RelativeDocumentMoniker": "WebApplication1\\appsettings.Development.json",
+              "ToolTip": "C:\\Users\\Yassine\\Pictures\\SIParticipations-SIP-version-1\\SIParticipations-SIP-version-1\\APIsip\\WebApplication1\\WebApplication1\\appsettings.Development.json",
+              "RelativeToolTip": "WebApplication1\\appsettings.Development.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-03-27T14:24:03.806Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "Vente.cs",
+              "DocumentMoniker": "C:\\Users\\Yassine\\Pictures\\SIParticipations-SIP-version-1\\SIParticipations-SIP-version-1\\APIsip\\WebApplication1\\WebApplication1\\Models\\Vente.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\Models\\Vente.cs",
+              "ToolTip": "C:\\Users\\Yassine\\Pictures\\SIParticipations-SIP-version-1\\SIParticipations-SIP-version-1\\APIsip\\WebApplication1\\WebApplication1\\Models\\Vente.cs",
+              "RelativeToolTip": "WebApplication1\\Models\\Vente.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-27T14:33:36.028Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "TypeSouscription.cs",
+              "DocumentMoniker": "C:\\Users\\Yassine\\Pictures\\SIParticipations-SIP-version-1\\SIParticipations-SIP-version-1\\APIsip\\WebApplication1\\WebApplication1\\Models\\TypeSouscription.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\Models\\TypeSouscription.cs",
+              "ToolTip": "C:\\Users\\Yassine\\Pictures\\SIParticipations-SIP-version-1\\SIParticipations-SIP-version-1\\APIsip\\WebApplication1\\WebApplication1\\Models\\TypeSouscription.cs",
+              "RelativeToolTip": "WebApplication1\\Models\\TypeSouscription.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-27T14:33:10.424Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "TypeProjet.cs",
+              "DocumentMoniker": "C:\\Users\\Yassine\\Pictures\\SIParticipations-SIP-version-1\\SIParticipations-SIP-version-1\\APIsip\\WebApplication1\\WebApplication1\\Models\\TypeProjet.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\Models\\TypeProjet.cs",
+              "ToolTip": "C:\\Users\\Yassine\\Pictures\\SIParticipations-SIP-version-1\\SIParticipations-SIP-version-1\\APIsip\\WebApplication1\\WebApplication1\\Models\\TypeProjet.cs",
+              "RelativeToolTip": "WebApplication1\\Models\\TypeProjet.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-27T14:32:54.18Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "TypeEntreprise.cs",
+              "DocumentMoniker": "C:\\Users\\Yassine\\Pictures\\SIParticipations-SIP-version-1\\SIParticipations-SIP-version-1\\APIsip\\WebApplication1\\WebApplication1\\Models\\TypeEntreprise.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\Models\\TypeEntreprise.cs",
+              "ToolTip": "C:\\Users\\Yassine\\Pictures\\SIParticipations-SIP-version-1\\SIParticipations-SIP-version-1\\APIsip\\WebApplication1\\WebApplication1\\Models\\TypeEntreprise.cs",
+              "RelativeToolTip": "WebApplication1\\Models\\TypeEntreprise.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-27T14:31:54.183Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Yassine\\Pictures\\SIParticipations-SIP-version-1\\SIParticipations-SIP-version-1\\APIsip\\WebApplication1\\WebApplication1\\Program.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\Program.cs",
+              "ToolTip": "C:\\Users\\Yassine\\Pictures\\SIParticipations-SIP-version-1\\SIParticipations-SIP-version-1\\APIsip\\WebApplication1\\WebApplication1\\Program.cs",
+              "RelativeToolTip": "WebApplication1\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACYAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-27T14:21:30.811Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "TableReference.cs",
+              "DocumentMoniker": "C:\\Users\\Yassine\\Pictures\\SIParticipations-SIP-version-1\\SIParticipations-SIP-version-1\\APIsip\\WebApplication1\\WebApplication1\\Models\\TableReference.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\Models\\TableReference.cs",
+              "ToolTip": "C:\\Users\\Yassine\\Pictures\\SIParticipations-SIP-version-1\\SIParticipations-SIP-version-1\\APIsip\\WebApplication1\\WebApplication1\\Models\\TableReference.cs",
+              "RelativeToolTip": "WebApplication1\\Models\\TableReference.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-02T14:18:08.649Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "TypeManagement.cs",
+              "DocumentMoniker": "C:\\Users\\Yassine\\Pictures\\SIParticipations-SIP-version-1\\SIParticipations-SIP-version-1\\APIsip\\WebApplication1\\WebApplication1\\Models\\TypeManagement.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\Models\\TypeManagement.cs",
+              "ToolTip": "C:\\Users\\Yassine\\Pictures\\SIParticipations-SIP-version-1\\SIParticipations-SIP-version-1\\APIsip\\WebApplication1\\WebApplication1\\Models\\TypeManagement.cs",
+              "RelativeToolTip": "WebApplication1\\Models\\TypeManagement.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-27T14:32:42.404Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "TypeIdentifiant.cs",
+              "DocumentMoniker": "C:\\Users\\Yassine\\Pictures\\SIParticipations-SIP-version-1\\SIParticipations-SIP-version-1\\APIsip\\WebApplication1\\WebApplication1\\Models\\TypeIdentifiant.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\Models\\TypeIdentifiant.cs",
+              "ToolTip": "C:\\Users\\Yassine\\Pictures\\SIParticipations-SIP-version-1\\SIParticipations-SIP-version-1\\APIsip\\WebApplication1\\WebApplication1\\Models\\TypeIdentifiant.cs",
+              "RelativeToolTip": "WebApplication1\\Models\\TypeIdentifiant.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-27T14:32:10.272Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "SouscriptionDto.cs",
+              "DocumentMoniker": "C:\\Users\\Yassine\\Pictures\\SIParticipations-SIP-version-1\\SIParticipations-SIP-version-1\\APIsip\\WebApplication1\\WebApplication1\\Models\\SouscriptionDto.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\Models\\SouscriptionDto.cs",
+              "ToolTip": "C:\\Users\\Yassine\\Pictures\\SIParticipations-SIP-version-1\\SIParticipations-SIP-version-1\\APIsip\\WebApplication1\\WebApplication1\\Models\\SouscriptionDto.cs",
+              "RelativeToolTip": "WebApplication1\\Models\\SouscriptionDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-27T14:31:32.262Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "Souscription.cs",
+              "DocumentMoniker": "C:\\Users\\Yassine\\Pictures\\SIParticipations-SIP-version-1\\SIParticipations-SIP-version-1\\APIsip\\WebApplication1\\WebApplication1\\Models\\Souscription.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\Models\\Souscription.cs",
+              "ToolTip": "C:\\Users\\Yassine\\Pictures\\SIParticipations-SIP-version-1\\SIParticipations-SIP-version-1\\APIsip\\WebApplication1\\WebApplication1\\Models\\Souscription.cs",
+              "RelativeToolTip": "WebApplication1\\Models\\Souscription.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAA4wBMAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-27T14:31:13.93Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "VenteDto.cs",
+              "DocumentMoniker": "C:\\Users\\Yassine\\Pictures\\SIParticipations-SIP-version-1\\SIParticipations-SIP-version-1\\APIsip\\WebApplication1\\WebApplication1\\Models\\VenteDto.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\Models\\VenteDto.cs",
+              "ToolTip": "C:\\Users\\Yassine\\Pictures\\SIParticipations-SIP-version-1\\SIParticipations-SIP-version-1\\APIsip\\WebApplication1\\WebApplication1\\Models\\VenteDto.cs",
+              "RelativeToolTip": "WebApplication1\\Models\\VenteDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-27T14:33:48.425Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "ProjetUpdateDto.cs",
+              "DocumentMoniker": "C:\\Users\\Yassine\\Pictures\\SIParticipations-SIP-version-1\\SIParticipations-SIP-version-1\\APIsip\\WebApplication1\\WebApplication1\\Models\\ProjetUpdateDto.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\Models\\ProjetUpdateDto.cs",
+              "ToolTip": "C:\\Users\\Yassine\\Pictures\\SIParticipations-SIP-version-1\\SIParticipations-SIP-version-1\\APIsip\\WebApplication1\\WebApplication1\\Models\\ProjetUpdateDto.cs",
+              "RelativeToolTip": "WebApplication1\\Models\\ProjetUpdateDto.cs",
+              "ViewState": "AgIAACEAAAAAAAAAAAA0wCUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-27T14:30:38.799Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "Projet.cs",
+              "DocumentMoniker": "C:\\Users\\Yassine\\Pictures\\SIParticipations-SIP-version-1\\SIParticipations-SIP-version-1\\APIsip\\WebApplication1\\WebApplication1\\Models\\Projet.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\Models\\Projet.cs",
+              "ToolTip": "C:\\Users\\Yassine\\Pictures\\SIParticipations-SIP-version-1\\SIParticipations-SIP-version-1\\APIsip\\WebApplication1\\WebApplication1\\Models\\Projet.cs",
+              "RelativeToolTip": "WebApplication1\\Models\\Projet.cs",
+              "ViewState": "AgIAACcAAAAAAAAAAAAgwC4AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-27T14:30:18.379Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "ParametreRSM620.cs",
+              "DocumentMoniker": "C:\\Users\\Yassine\\Pictures\\SIParticipations-SIP-version-1\\SIParticipations-SIP-version-1\\APIsip\\WebApplication1\\WebApplication1\\Models\\ParametreRSM620.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\Models\\ParametreRSM620.cs",
+              "ToolTip": "C:\\Users\\Yassine\\Pictures\\SIParticipations-SIP-version-1\\SIParticipations-SIP-version-1\\APIsip\\WebApplication1\\WebApplication1\\Models\\ParametreRSM620.cs",
+              "RelativeToolTip": "WebApplication1\\Models\\ParametreRSM620.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-27T14:29:35.333Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "ParametreRNL870.cs",
+              "DocumentMoniker": "C:\\Users\\Yassine\\Pictures\\SIParticipations-SIP-version-1\\SIParticipations-SIP-version-1\\APIsip\\WebApplication1\\WebApplication1\\Models\\ParametreRNL870.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\Models\\ParametreRNL870.cs",
+              "ToolTip": "C:\\Users\\Yassine\\Pictures\\SIParticipations-SIP-version-1\\SIParticipations-SIP-version-1\\APIsip\\WebApplication1\\WebApplication1\\Models\\ParametreRNL870.cs",
+              "RelativeToolTip": "WebApplication1\\Models\\ParametreRNL870.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-27T14:29:15.249Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "ModeleEtatFinancier.cs",
+              "DocumentMoniker": "C:\\Users\\Yassine\\Pictures\\SIParticipations-SIP-version-1\\SIParticipations-SIP-version-1\\APIsip\\WebApplication1\\WebApplication1\\Models\\ModeleEtatFinancier.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\Models\\ModeleEtatFinancier.cs",
+              "ToolTip": "C:\\Users\\Yassine\\Pictures\\SIParticipations-SIP-version-1\\SIParticipations-SIP-version-1\\APIsip\\WebApplication1\\WebApplication1\\Models\\ModeleEtatFinancier.cs",
+              "RelativeToolTip": "WebApplication1\\Models\\ModeleEtatFinancier.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-27T14:28:36.543Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "Gouvernorats.cs",
+              "DocumentMoniker": "C:\\Users\\Yassine\\Pictures\\SIParticipations-SIP-version-1\\SIParticipations-SIP-version-1\\APIsip\\WebApplication1\\WebApplication1\\Models\\Gouvernorats.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\Models\\Gouvernorats.cs",
+              "ToolTip": "C:\\Users\\Yassine\\Pictures\\SIParticipations-SIP-version-1\\SIParticipations-SIP-version-1\\APIsip\\WebApplication1\\WebApplication1\\Models\\Gouvernorats.cs",
+              "RelativeToolTip": "WebApplication1\\Models\\Gouvernorats.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-27T14:28:05.948Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "FormeJuridique.cs",
+              "DocumentMoniker": "C:\\Users\\Yassine\\Pictures\\SIParticipations-SIP-version-1\\SIParticipations-SIP-version-1\\APIsip\\WebApplication1\\WebApplication1\\Models\\FormeJuridique.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\Models\\FormeJuridique.cs",
+              "ToolTip": "C:\\Users\\Yassine\\Pictures\\SIParticipations-SIP-version-1\\SIParticipations-SIP-version-1\\APIsip\\WebApplication1\\WebApplication1\\Models\\FormeJuridique.cs",
+              "RelativeToolTip": "WebApplication1\\Models\\FormeJuridique.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-27T14:27:32.48Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "Devise.cs",
+              "DocumentMoniker": "C:\\Users\\Yassine\\Pictures\\SIParticipations-SIP-version-1\\SIParticipations-SIP-version-1\\APIsip\\WebApplication1\\WebApplication1\\Models\\Devise.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\Models\\Devise.cs",
+              "ToolTip": "C:\\Users\\Yassine\\Pictures\\SIParticipations-SIP-version-1\\SIParticipations-SIP-version-1\\APIsip\\WebApplication1\\WebApplication1\\Models\\Devise.cs",
+              "RelativeToolTip": "WebApplication1\\Models\\Devise.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-27T14:27:05.486Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "AchatDto.cs",
+              "DocumentMoniker": "C:\\Users\\Yassine\\Pictures\\SIParticipations-SIP-version-1\\SIParticipations-SIP-version-1\\APIsip\\WebApplication1\\WebApplication1\\Models\\AchatDto.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\Models\\AchatDto.cs",
+              "ToolTip": "C:\\Users\\Yassine\\Pictures\\SIParticipations-SIP-version-1\\SIParticipations-SIP-version-1\\APIsip\\WebApplication1\\WebApplication1\\Models\\AchatDto.cs",
+              "RelativeToolTip": "WebApplication1\\Models\\AchatDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-27T14:26:53.806Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "Achat.cs",
+              "DocumentMoniker": "C:\\Users\\Yassine\\Pictures\\SIParticipations-SIP-version-1\\SIParticipations-SIP-version-1\\APIsip\\WebApplication1\\WebApplication1\\Models\\Achat.cs",
+              "RelativeDocumentMoniker": "WebApplication1\\Models\\Achat.cs",
+              "ToolTip": "C:\\Users\\Yassine\\Pictures\\SIParticipations-SIP-version-1\\SIParticipations-SIP-version-1\\APIsip\\WebApplication1\\WebApplication1\\Models\\Achat.cs",
+              "RelativeToolTip": "WebApplication1\\Models\\Achat.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-27T14:26:36.395Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "WebApplication1.csproj",
+              "DocumentMoniker": "C:\\Users\\Yassine\\Pictures\\SIParticipations-SIP-version-1\\SIParticipations-SIP-version-1\\APIsip\\WebApplication1\\WebApplication1\\WebApplication1.csproj",
+              "RelativeDocumentMoniker": "WebApplication1\\WebApplication1.csproj",
+              "ToolTip": "C:\\Users\\Yassine\\Pictures\\SIParticipations-SIP-version-1\\SIParticipations-SIP-version-1\\APIsip\\WebApplication1\\WebApplication1\\WebApplication1.csproj",
+              "RelativeToolTip": "WebApplication1\\WebApplication1.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-03-27T14:25:12.732Z"
+            }
+          ]
+        },
+        {
+          "DockedHeight": 62,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{605322a2-17ae-43f4-b60f-766556e46c87}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

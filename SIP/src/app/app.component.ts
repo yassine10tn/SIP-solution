@@ -4,6 +4,7 @@ import { LeftSidebarComponent } from "./left-sidebar/left-sidebar.component";
 import { MainComponent } from './main/main.component';
 import {MatStepperModule} from '@angular/material/stepper';
 import { NavbarComponent } from "./navbar/navbar.component";
+import { RouterModule } from '@angular/router'; // Import RouterModule
 
 @Component({
   selector: 'app-root',

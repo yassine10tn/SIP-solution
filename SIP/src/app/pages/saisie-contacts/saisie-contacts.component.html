@@ -1,0 +1,265 @@
+<div class="bg-white rounded-3xl relative mx-auto p-8 mb-2 transform transition-all duration-300 ease-in-out shadow-xl"
+  style="width: 98%;margin: 2rem auto 5rem;">
+  
+  <!-- En-tête avec icône -->
+  <div class="flex items-center mb-8">
+    <div class="bg-blue-100 p-3 rounded-full mr-4">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+      </svg>
+    </div>
+    <div>
+      <h1 class="text-2xl font-bold text-gray-800">Saisie des contacts</h1>
+      <p class="text-sm text-gray-500">Remplissez les informations du contact</p>
+    </div>
+  </div>
+  
+  <form (ngSubmit)="onSubmit()" class="space-y-6">
+    <!-- Section Informations de base -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- Nom et prénom -->
+      <div>
+        <label for="nomPrenom" class="block text-sm font-medium text-gray-700 mb-1">
+          Nom et prénom <span class="text-red-500">*</span>
+        </label>
+        <input type="text" id="nomPrenom" name="nomPrenom" required
+               [(ngModel)]="contact.nomPrenom"
+               #nomPrenomInput="ngModel"
+               [class.border-red-500]="nomPrenomInput.invalid && (nomPrenomInput.dirty || nomPrenomInput.touched || formSubmitted)"
+               (input)="checkFieldValidity(nomPrenomInput)"
+               class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-3 border transition duration-200">
+        <div *ngIf="nomPrenomInput.invalid && (nomPrenomInput.dirty || nomPrenomInput.touched || formSubmitted)" class="text-red-500 text-sm mt-1">
+          <div *ngIf="nomPrenomInput.errors?.['required']">
+            Le nom et prénom sont obligatoires.
+          </div>
+        </div>
+      </div>
+
+      <!-- Fonction -->
+      <div>
+        <label for="fonction" class="block text-sm font-medium text-gray-700 mb-1">
+          Fonction <span class="text-red-500">*</span>
+        </label>
+        <select id="fonction" name="fonction" required
+                [(ngModel)]="contact.fonction_ID"
+                #fonctionInput="ngModel"
+                [class.border-red-500]="fonctionInput.invalid && (fonctionInput.dirty || fonctionInput.touched || formSubmitted)"
+                (change)="checkFieldValidity(fonctionInput)"
+                class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-3 border bg-white appearance-none transition duration-200">
+                <option value="" disabled selected>Sélectionnez une fonction</option>
+                <option *ngFor="let fonction of fonctions" [value]="fonction.fonction_ID">
+                  {{ fonction.libelle }}
+                </option>
+          
+        </select>
+        <div *ngIf="fonctionInput.invalid && (fonctionInput.dirty || fonctionInput.touched || formSubmitted)" class="text-red-500 text-sm mt-1">
+          <div *ngIf="fonctionInput.errors?.['required']">
+            La fonction est obligatoire.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section Coordonnées principales -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- Adresse mail 1 -->
+      <div>
+        <label for="email1" class="block text-sm font-medium text-gray-700 mb-1">
+          Adresse mail principale <span class="text-red-500">*</span>
+        </label>
+        <div class="relative">
+          <input type="email" id="email1" name="email1" required
+                placeholder="exemple@contact.com"
+                 [(ngModel)]="contact.email1"
+                 #email1Input="ngModel"
+                 pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                 [class.border-red-500]="email1Input.invalid && (email1Input.dirty || email1Input.touched || formSubmitted)"
+                 (input)="checkFieldValidity(email1Input)"
+                 class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-3 border transition duration-200">
+          <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+            <svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+            </svg>
+          </div>
+        </div>
+        <div *ngIf="email1Input.invalid && (email1Input.dirty || email1Input.touched || formSubmitted)" class="text-red-500 text-sm mt-1">
+          <div *ngIf="email1Input.errors?.['required']">
+            L'adresse mail est obligatoire.
+          </div>
+          <div *ngIf="email1Input.errors?.['pattern']">
+            Veuillez entrer une adresse mail valide sous forme exemple&#64;contact.com
+          </div>
+        </div>
+      </div>
+
+      <!-- Numéro de tel 1 -->
+      <div>
+        <label for="telephone1" class="block text-sm font-medium text-gray-700 mb-1">
+          Numéro de téléphone principal <span class="text-red-500">*</span>
+        </label>
+        <div class="relative">
+          <input type="text" id="telephone1" name="telephone1" required
+                 [(ngModel)]="contact.telephone1"
+                 #telephone1Input="ngModel"
+                 pattern="[0-9]{8}"
+                 maxlength="8"
+                 minlength="8"
+                 [class.border-red-500]="telephone1Input.invalid && (telephone1Input.dirty || telephone1Input.touched || formSubmitted)"
+                 (input)="checkFieldValidity(telephone1Input)"
+                 class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-3 border transition duration-200">
+          <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+            <svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+            </svg>
+          </div>
+        </div>
+        <div *ngIf="telephone1Input.invalid && (telephone1Input.dirty || telephone1Input.touched || formSubmitted)" class="text-red-500 text-sm mt-1">
+          <div *ngIf="telephone1Input.errors?.['required']">
+            Le numéro de téléphone est obligatoire.
+          </div>
+          <div *ngIf="telephone1Input.errors?.['pattern'] || telephone1Input.errors?.['minlength'] || telephone1Input.errors?.['maxlength']">
+            Le numéro doit contenir exactement 8 chiffres.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section Coordonnées secondaires -->
+    <div class="bg-blue-50 p-6 rounded-xl border border-blue-100">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Adresse mail 2 -->
+        <div>
+          <label for="email2" class="block text-sm font-medium text-gray-700 mb-1">
+            Adresse mail secondaire
+          </label>
+          <div class="relative">
+            <input type="email" id="email2" name="email2"
+                   [(ngModel)]="contact.email2"
+                   #email2Input="ngModel"
+                   pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                   [class.border-red-500]="email2Input.invalid && email2Input.value && (email2Input.dirty || email2Input.touched || formSubmitted)"
+                   (input)="checkFieldValidity(email2Input)"
+                   class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-3 border transition duration-200">
+            <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+              <svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+              </svg>
+            </div>
+          </div>
+          <div *ngIf="email2Input.invalid && email2Input.value && (email2Input.dirty || email2Input.touched || formSubmitted)" class="text-red-500 text-sm mt-1">
+            <div *ngIf="email2Input.errors?.['pattern']">
+              Veuillez entrer une adresse mail valide.
+            </div>
+          </div>
+        </div>
+
+        <!-- Numéro de tel 2 -->
+        <div>
+          <label for="telephone2" class="block text-sm font-medium text-gray-700 mb-1">
+            Numéro de téléphone secondaire
+          </label>
+          <div class="relative">
+            <input type="text" id="telephone2" name="telephone2"
+                   [(ngModel)]="contact.telephone2"
+                   #telephone2Input="ngModel"
+                   pattern="[0-9]{8}"
+                   maxlength="8"
+                   minlength="8"
+                   [class.border-red-500]="telephone2Input.invalid && telephone2Input.value && (telephone2Input.dirty || telephone2Input.touched || formSubmitted)"
+                   (input)="checkFieldValidity(telephone2Input)"
+                   class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-3 border transition duration-200">
+            <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+              <svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+              </svg>
+            </div>
+          </div>
+          <div *ngIf="telephone2Input.invalid && telephone2Input.value && (telephone2Input.dirty || telephone2Input.touched || formSubmitted)" class="text-red-500 text-sm mt-1">
+            <div *ngIf="telephone2Input.errors?.['pattern'] || telephone2Input.errors?.['minlength'] || telephone2Input.errors?.['maxlength']">
+              Le numéro doit contenir exactement 8 chiffres.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section Société et Situation -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- Société -->
+      <div>
+        <label for="societe" class="block text-sm font-medium text-gray-700 mb-1">
+          Société <span class="text-red-500">*</span>
+        </label>
+        <div class="relative">
+          <select id="societe" name="societe" required
+                  [(ngModel)]="contact.idProjet"
+                  #societeInput="ngModel"
+                  [class.border-red-500]="societeInput.invalid && (societeInput.dirty || societeInput.touched || formSubmitted)"
+                  (change)="checkFieldValidity(societeInput)"
+                  class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-3 border bg-white appearance-none transition duration-200">
+                  <option value="" disabled selected>Sélectionnez une société</option>
+                  <option *ngFor="let societe of societes" [value]="societe.idProjet">
+                    {{ societe.raisonSociale }}
+                  </option>
+            <!-- Ajoutez d'autres options au besoin -->
+          </select>
+          <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+            <svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </div>
+        </div>
+        <div *ngIf="societeInput.invalid && (societeInput.dirty || societeInput.touched || formSubmitted)" class="text-red-500 text-sm mt-1">
+          <div *ngIf="societeInput.errors?.['required']">
+            La société est obligatoire.
+          </div>
+        </div>
+      </div>
+
+      <!-- Situation -->
+      <div>
+        <label for="situation" class="block text-sm font-medium text-gray-700 mb-1">
+          Situation <span class="text-red-500">*</span>
+        </label>
+        <select id="situation" name="situation" required
+                [(ngModel)]="contact.situation_ID"
+                #situationInput="ngModel"
+                [class.border-red-500]="situationInput.invalid && (situationInput.dirty || situationInput.touched || formSubmitted)"
+                (change)="checkFieldValidity(situationInput)"
+                class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-3 border bg-white appearance-none transition duration-200">
+                <option value="" disabled selected>Sélectionnez une situation</option>
+                <option *ngFor="let situation of situations" [value]="situation.situation_ID">
+                  {{ situation.libelle }}
+                </option>
+          
+        </select>
+        <div *ngIf="situationInput.invalid && (situationInput.dirty || situationInput.touched || formSubmitted)" class="text-red-500 text-sm mt-1">
+          <div *ngIf="situationInput.errors?.['required']">
+            La situation est obligatoire.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Observation -->
+    <div>
+      <label for="observation" class="block text-sm font-medium text-gray-700 mb-1">
+        Observation
+      </label>
+      <textarea id="observation" name="observation" rows="3"
+                [(ngModel)]="contact.observation"
+                class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-3 border transition duration-200"></textarea>
+    </div>
+
+    <!-- Boutons de soumission -->
+    <div class="pt-4 flex justify-end space-x-4">
+      <button type="submit"
+              class="px-6 py-3 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-200 flex items-center">
+        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"></path>
+        </svg>
+        Enregistrer le contact
+      </button>
+    </div>
+  </form>
+</div>

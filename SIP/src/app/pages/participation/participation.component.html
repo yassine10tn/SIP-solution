@@ -1,0 +1,535 @@
+<div class="w-full mt-10 space-y-8 mb-52">
+  <!-- création dun nouveau tier -->
+  <div class="p-6 bg-white rounded-lg shadow-lg">
+    <p class="font-bold text-lg text-gray-800 mb-4">
+      Si vous n'avez pas encore créé un nouveau tier :
+    </p>
+    <button
+      class="bg-blue-500 text-white text-xl px-6 py-3 rounded-lg shadow-md border border-blue-700 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300 w-full sm:w-auto"
+      (click)="navigateToHome()" aria-label="Créer un nouveau tier">
+      + Créer
+    </button>
+  </div>
+
+  <!-- form  avec l'accordion -->
+  <div class="p-6 bg-white rounded-lg shadow-xl">
+    <p class="font-bold text-lg text-gray-800">
+      Si vous avez déjà créé un tier :
+    </p>
+    <!-- Bouton souscription -->
+    <button (click)="toggleAccordion('souscription')"
+      class="w-full flex justify-between items-center bg-emerald-900 text-white text-lg mt-4 px-6 py-4 rounded-lg shadow-md border border-blue-500 hover:bg-blue-500 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-blue-400 transform hover:scale-105">
+      <span>Souscription</span>
+      <svg [ngClass]="{ 'rotate-180': isAccordionOpen === 'souscription' }"
+        class="w-6 h-6 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+      </svg>
+    </button>
+    <!-- Bouton achat -->
+    <button (click)="toggleAccordion('achat')"
+      class="w-full flex justify-between items-center bg-sky-800 text-white text-lg mt-4 px-6 py-4 rounded-lg shadow-md border border-blue-400 hover:bg-blue-500 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-blue-300 transform hover:scale-105">
+      <span>Achat</span>
+      <svg [ngClass]="{ 'rotate-180': isAccordionOpen === 'achat' }" class="w-6 h-6 transition-transform duration-300"
+        fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+      </svg>
+    </button>
+    <!-- Bouton vente -->
+    <button (click)="toggleAccordion('vente')"
+      class="w-full flex justify-between items-center bg-amber-600 text-white text-lg mt-4 px-6 py-4 rounded-lg shadow-md border border-blue-300 hover:bg-blue-500 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-blue-200 transform hover:scale-105">
+      <span>Vente</span>
+      <svg [ngClass]="{ 'rotate-180': isAccordionOpen === 'vente' }" class="w-6 h-6 transition-transform duration-300"
+        fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+      </svg>
+    </button>
+
+    <!-- Contenu de l'accordion de souscription -->
+    <div *ngIf="isAccordionOpen === 'souscription'"
+      class="bg-white rounded-xl shadow-md p-6 mt-4 transition-all duration-300">
+      <p class="text-gray-700">
+        Voici les détails de la souscription à compléter ...
+      </p>
+      <form (ngSubmit)="onSubmitSouscription()" [formGroup]="participationForm" class="space-y-6">
+        <div>
+          <label for="societe" class="block text-sm font-medium text-gray-700 mt-4">Société <span
+              class="text-red-500">*</span></label>
+          <select id="societe" formControlName="societe"
+            class="mt-1 block w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500">
+            <option *ngFor="let societe of societes" [value]="societe.idProjet">
+              {{ societe.raisonSociale }}
+            </option>
+          </select>
+          <div *ngIf="
+              participationForm.get('societe')?.invalid &&
+              (participationForm.get('societe')?.dirty ||
+                participationForm.get('societe')?.touched)
+            " class="text-red-500 text-sm mt-1">
+            <div *ngIf="participationForm.get('societe')?.errors?.['required']">
+              La société est obligatoire.
+            </div>
+          </div>
+        </div>
+        <div>
+          <label for="dateSouscription" class="block text-sm font-medium text-gray-700">Date d’achat <span
+              class="text-red-500">*</span></label>
+          <input type="date" id="dateSouscription" formControlName="dateSouscription"
+            class="mt-1 block w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500" />
+          <div *ngIf="
+              participationForm.get('dateSouscription')?.invalid &&
+              (participationForm.get('dateSouscription')?.dirty ||
+                participationForm.get('dateSouscription')?.touched)
+            " class="text-red-500 text-sm mt-1">
+            <div *ngIf="participationForm.get('dateSouscription')?.errors?.['required']">
+              La date de souscription est obligatoire.
+            </div>
+          </div>
+        </div>
+        <div>
+          <label for="typeSouscription" class="block text-sm font-medium text-gray-700">Type de souscription <span
+              class="text-red-500">*</span></label>
+          <select id="typeSouscription" formControlName="typeSouscription"
+            class="mt-1 block w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500">
+            <option *ngFor="let type of typesSouscription" [value]="type.idtypesouscription">
+              {{ type.libelletype }}
+            </option>
+          </select>
+          <div *ngIf="
+              participationForm.get('typeSouscription')?.invalid &&
+              (participationForm.get('typeSouscription')?.dirty ||
+                participationForm.get('typeSouscription')?.touched)
+            " class="text-red-500 text-sm mt-1">
+            <div *ngIf="participationForm.get('typeSouscription')?.errors?.['required']">
+              Le type de souscription est obligatoire.
+            </div>
+          </div>
+        </div>
+        <div>
+          <label for="quantite" class="block text-sm font-medium text-gray-700">Quantité <span
+              class="text-red-500">*</span></label>
+          <input type="number" id="quantite" formControlName="quantite" (ngModelChange)="calculerMontantTotal()"
+            class="mt-1 block w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500" />
+          <div *ngIf="
+              participationForm.get('quantite')?.invalid &&
+              (participationForm.get('quantite')?.dirty ||
+                participationForm.get('quantite')?.touched)
+            " class="text-red-500 text-sm mt-1">
+            <div *ngIf="participationForm.get('quantite')?.errors?.['required']">
+              La quantité est obligatoire.
+            </div>
+            <div *ngIf="participationForm.get('quantite')?.errors?.['min']">
+              La quantité doit être supérieure à 0.
+            </div>
+          </div>
+        </div>
+        <div>
+          <label for="prixUnitaire" class="block text-sm font-medium text-gray-700">
+            Prix unitaire de l’action
+            <span class="text-red-500">*</span>
+          </label>
+        
+          <input type="number" step="0.001" id="prixUnitaire" formControlName="prixUnitaire"
+            (ngModelChange)="calculerMontantTotal()"
+            class="mt-1 block w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500" />
+          <div *ngIf="
+              participationForm.get('prixUnitaire')?.invalid &&
+              (participationForm.get('prixUnitaire')?.dirty ||
+                participationForm.get('prixUnitaire')?.touched)
+            " class="text-red-500 text-sm mt-1">
+            <div *ngIf="participationForm.get('prixUnitaire')?.errors?.['required']">
+              Le prix unitaire est obligatoire.
+            </div>
+            <div *ngIf="participationForm.get('prixUnitaire')?.errors?.['min']">
+              Le prix unitaire doit être supérieur à 0.
+            </div>
+            <div *ngIf="participationForm.get('prixUnitaire')?.errors?.['prixUnitaireFormat']">
+              Le prix unitaire doit être au format 123.456.
+            </div>
+          </div>
+        </div>
+        <div>
+          <label for="montantTotal" class="block text-sm font-medium text-gray-700">Montant Total de souscription
+            <span class="text-red-500">*</span></label>
+          <input type="number" id="montantTotal" formControlName="montantTotal"
+            class="mt-1 block w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500" readonly />
+          <div *ngIf="
+              participationForm.get('montantTotal')?.invalid &&
+              (participationForm.get('montantTotal')?.dirty ||
+                participationForm.get('montantTotal')?.touched)
+            " class="text-red-500 text-sm mt-1">
+            <div *ngIf="participationForm.get('montantTotal')?.errors?.['required']">
+              Le montant total est obligatoire.
+            </div>
+          </div>
+        </div>
+        <div>
+          <label for="primeEmission" class="block text-sm font-medium text-gray-700">Prime d’émission Total <span
+              class="text-red-500">*</span></label>
+          <input type="number" id="primeEmission" formControlName="primeEmission"
+            class="mt-1 block w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500" />
+          <div *ngIf="
+              participationForm.get('primeEmission')?.invalid &&
+              (participationForm.get('primeEmission')?.dirty ||
+                participationForm.get('primeEmission')?.touched)
+            " class="text-red-500 text-sm mt-1">
+            <div *ngIf="participationForm.get('primeEmission')?.errors?.['required']">
+              La prime d'émission est obligatoire.
+            </div>
+          </div>
+        </div>
+        <div>
+          <label for="signataire" class="block text-sm font-medium text-gray-700">Signataire <span
+              class="text-red-500">*</span></label>
+          <input type="text" id="signataire" formControlName="signataire"
+            class="mt-1 block w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500" />
+          <div *ngIf="
+              participationForm.get('signataire')?.invalid &&
+              (participationForm.get('signataire')?.dirty ||
+                participationForm.get('signataire')?.touched)
+            " class="text-red-500 text-sm mt-1">
+            <div *ngIf="participationForm.get('signataire')?.errors?.['required']">
+              Le signataire est obligatoire.
+            </div>
+          </div>
+        </div>
+        <div>
+          <label for="fonction" class="block text-sm font-medium text-gray-700">Fonction <span
+              class="text-red-500">*</span></label>
+          <input type="text" id="fonction" formControlName="fonction"
+            class="mt-1 block w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500" />
+          <div *ngIf="
+              participationForm.get('fonction')?.invalid &&
+              (participationForm.get('fonction')?.dirty ||
+                participationForm.get('fonction')?.touched)
+            " class="text-red-500 text-sm mt-1">
+            <div *ngIf="participationForm.get('fonction')?.errors?.['required']">
+              La fonction est obligatoire.
+            </div>
+          </div>
+        </div>
+        <div class="relative">
+          <label for="copieBulletin" class="block text-sm font-medium text-gray-700">
+            Copie Bulletin <span class="text-red-500">*</span>
+          </label>
+          <input type="file" id="copieBulletin" formControlName="copieBulletin"
+            (change)="onFileChange($event, 'copieBulletin')"
+            class="mt-1 block w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 opacity-0 absolute z-10" />
+          <div class="w-full px-4 py-2 border border-gray-300 rounded-lg bg-white">
+            <span class="text-gray-500">
+              {{ selectedFileNameSouscription || "Choisir un fichier" }}
+            </span>
+          </div>
+        </div>
+
+        <div *ngIf="
+            participationForm.get('copieBulletin')?.invalid &&
+            (participationForm.get('copieBulletin')?.dirty ||
+              participationForm.get('copieBulletin')?.touched)
+          " class="text-red-500 text-sm mt-1">
+          <div *ngIf="participationForm.get('copieBulletin')?.errors?.['required']">
+            La copie du bulletin est obligatoire.
+          </div>
+        </div>
+
+        <button type="submit"
+          class="mt-4 bg-blue-500 text-white text-lg px-6 py-3 rounded-lg shadow-md border border-blue-700 hover:bg-blue-600 transition-all duration-300 w-full focus:outline-none focus:ring-2 focus:ring-blue-500">
+          Soumettre
+        </button>
+      </form>
+    </div>
+    <!-- Contenu de l'accordion d'achat -->
+    <div *ngIf="isAccordionOpen === 'achat'" class="bg-white rounded-lg shadow-md p-6 mt-4 transition-all duration-300">
+      <p class="text-gray-700">Voici les détails de l'achat à compléter...</p>
+      <form (ngSubmit)="onSubmitAchat()" [formGroup]="achatForm" class="space-y-6">
+        <div>
+          <label for="societeAchat" class="block text-sm font-medium text-gray-700 mt-4">Société <span
+              class="text-red-500">*</span></label>
+          <select id="societeAchat" formControlName="societe"
+            class="mt-1 block w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500">
+            <option *ngFor="let societe of societes" [value]="societe.idProjet">
+              {{ societe.raisonSociale }}
+            </option>
+          </select>
+          <div *ngIf="
+              achatForm.get('societe')?.invalid &&
+              (achatForm.get('societe')?.dirty ||
+                achatForm.get('societe')?.touched)
+            " class="text-red-500 text-sm mt-1">
+            <div *ngIf="achatForm.get('societe')?.errors?.['required']">
+              La société est obligatoire.
+            </div>
+          </div>
+        </div>
+        <div>
+          <label for="dateAchat" class="block text-sm font-medium text-gray-700">Date d’achat <span
+              class="text-red-500">*</span></label>
+          <input type="date" id="dateAchat" formControlName="dateAchat"
+            class="mt-1 block w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500" />
+          <div *ngIf="
+              achatForm.get('dateAchat')?.invalid &&
+              (achatForm.get('dateAchat')?.dirty ||
+                achatForm.get('dateAchat')?.touched)
+            " class="text-red-500 text-sm mt-1">
+            <div *ngIf="achatForm.get('dateAchat')?.errors?.['required']">
+              La date d'achat est obligatoire.
+            </div>
+          </div>
+        </div>
+        <div>
+          <label for="quantiteAchat" class="block text-sm font-medium text-gray-700">Quantité <span
+              class="text-red-500">*</span></label>
+          <input type="number" id="quantiteAchat" formControlName="quantite"
+            (ngModelChange)="calculerMontantTotalAchat()"
+            class="mt-1 block w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500" />
+          <div *ngIf="
+              achatForm.get('quantite')?.invalid &&
+              (achatForm.get('quantite')?.dirty ||
+                achatForm.get('quantite')?.touched)
+            " class="text-red-500 text-sm mt-1">
+            <div *ngIf="achatForm.get('quantite')?.errors?.['required']">
+              La quantité est obligatoire.
+            </div>
+            <div *ngIf="achatForm.get('quantite')?.errors?.['min']">
+              La quantité doit être supérieure à 0.
+            </div>
+          </div>
+        </div>
+        <div>
+          <label for="prixUnitaireAchat" class="block text-sm font-medium text-gray-700">Prix unitaire d’achat de
+            l’action
+            <span class="text-red-500">*</span></label>
+          <input type="number" step="0.001" id="prixUnitaireAchat" formControlName="prixUnitaire"
+            (ngModelChange)="calculerMontantTotalAchat()"
+            class="mt-1 block w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500" />
+          <div *ngIf="
+              achatForm.get('prixUnitaire')?.invalid &&
+              (achatForm.get('prixUnitaire')?.dirty ||
+                achatForm.get('prixUnitaire')?.touched)
+            " class="text-red-500 text-sm mt-1">
+            <div *ngIf="achatForm.get('prixUnitaire')?.errors?.['required']">
+              Le prix unitaire est obligatoire.
+            </div>
+            <div *ngIf="achatForm.get('prixUnitaire')?.errors?.['min']">
+              Le prix unitaire doit être supérieur à 0.
+            </div>
+            <div *ngIf="achatForm.get('prixUnitaire')?.errors?.['mustBeDecimal']">
+              Le prix unitaire doit être un réel sous la forme 123,123.
+            </div>
+          </div>
+        </div>
+        <div>
+          <label for="montantTotalAchat" class="block text-sm font-medium text-gray-700">Montant Total d’achat <span
+              class="text-red-500">*</span></label>
+          <input type="number" id="montantTotalAchat" formControlName="montantTotal"
+            class="mt-1 block w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500" readonly />
+          <div *ngIf="
+              achatForm.get('montantTotal')?.invalid &&
+              (achatForm.get('montantTotal')?.dirty ||
+                achatForm.get('montantTotal')?.touched)
+            " class="text-red-500 text-sm mt-1">
+            <div *ngIf="achatForm.get('montantTotal')?.errors?.['required']">
+              Le montant total est obligatoire.
+            </div>
+          </div>
+        </div>
+        <div>
+          <label for="signataireAchat" class="block text-sm font-medium text-gray-700">Signataire <span
+              class="text-red-500">*</span></label>
+          <input type="text" id="signataireAchat" formControlName="signataire"
+            class="mt-1 block w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500" />
+          <div *ngIf="
+              achatForm.get('signataire')?.invalid &&
+              (achatForm.get('signataire')?.dirty ||
+                achatForm.get('signataire')?.touched)
+            " class="text-red-500 text-sm mt-1">
+            <div *ngIf="achatForm.get('signataire')?.errors?.['required']">
+              Le signataire est obligatoire.
+            </div>
+          </div>
+        </div>
+        <div>
+          <label for="fonctionAchat" class="block text-sm font-medium text-gray-700">Fonction <span
+              class="text-red-500">*</span></label>
+          <input type="text" id="fonctionAchat" formControlName="fonction"
+            class="mt-1 block w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500" />
+          <div *ngIf="
+              achatForm.get('fonction')?.invalid &&
+              (achatForm.get('fonction')?.dirty ||
+                achatForm.get('fonction')?.touched)
+            " class="text-red-500 text-sm mt-1">
+            <div *ngIf="achatForm.get('fonction')?.errors?.['required']">
+              La fonction est obligatoire.
+            </div>
+          </div>
+        </div>
+        <div class="relative">
+          <label for="copieOrdreAchat" class="block text-sm font-medium text-gray-700">Copie Ordre d’achat <span
+              class="text-red-500">*</span></label>
+          <input type="file" id="copieOrdreAchat" formControlName="copieOrdreAchat"
+            (change)="onFileChangeOrdreAchat($event)"
+            class="mt-1 block w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 opacity-0 absolute z-10" />
+          <div class="w-full px-4 py-2 border border-gray-300 rounded-lg bg-white">
+            <span class="text-gray-500">
+              {{ selectedFileNameOrdreAchat || "Choisir un fichier" }}
+            </span>
+          </div>
+          <div *ngIf="
+              achatForm.get('copieOrdreAchat')?.invalid &&
+              (achatForm.get('copieOrdreAchat')?.dirty ||
+                achatForm.get('copieOrdreAchat')?.touched)
+            " class="text-red-500 text-sm mt-1">
+            <div *ngIf="achatForm.get('copieOrdreAchat')?.errors?.['required']">
+              La copie de l'ordre d'achat est obligatoire.
+            </div>
+          </div>
+        </div>
+
+        <button type="submit"
+          class="mt-4 bg-blue-500 text-white text-lg px-6 py-3 rounded-lg shadow-md border border-blue-700 hover:bg-blue-600 transition-all duration-300 w-full focus:outline-none focus:ring-2 focus:ring-blue-500">
+          Soumettre
+        </button>
+      </form>
+    </div>
+    <!-- Contenu de l'accordion d'Vente -->
+    <div *ngIf="isAccordionOpen === 'vente'" class="bg-white rounded-lg shadow-md p-6 mt-4 transition-all duration-300">
+      <form (ngSubmit)="onSubmitVente()" [formGroup]="venteForm" class="space-y-6">
+        <!-- Société -->
+        <div>
+          <label for="societe" class="block text-sm font-medium text-gray-700 mt-4">Société <span
+              class="text-red-500">*</span></label>
+          <select id="societe" formControlName="societe"
+            class="mt-1 block w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500">
+            <option *ngFor="let societe of societes" [value]="societe.idProjet">
+              {{ societe.raisonSociale }}
+            </option>
+          </select>
+          <div *ngIf="
+              venteForm.get('societe')?.invalid &&
+              (venteForm.get('societe')?.dirty ||
+                venteForm.get('societe')?.touched)
+            " class="text-red-500 text-sm mt-1">
+            <div *ngIf="venteForm.get('societe')?.errors?.['required']">
+              La société est obligatoire.
+            </div>
+          </div>
+        </div>
+
+        <!-- Date de vente -->
+        <div>
+          <label for="dateVente" class="block text-sm font-medium text-gray-700">Date de vente <span
+              class="text-red-500">*</span></label>
+          <input type="date" id="dateVente" formControlName="dateVente"
+            class="mt-1 block w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500" />
+          <div *ngIf="
+              venteForm.get('dateVente')?.invalid &&
+              (venteForm.get('dateVente')?.dirty ||
+                venteForm.get('dateVente')?.touched)
+            " class="text-red-500 text-sm mt-1">
+            <div *ngIf="venteForm.get('dateVente')?.errors?.['required']">
+              La date de vente est obligatoire.
+            </div>
+          </div>
+        </div>
+
+        <!-- Quantité -->
+        <div>
+          <label for="quantite" class="block text-sm font-medium text-gray-700">Quantité <span
+              class="text-red-500">*</span></label>
+          <input type="number" id="quantite" formControlName="quantite"
+            class="mt-1 block w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500" />
+          <div *ngIf="
+              venteForm.get('quantite')?.invalid &&
+              (venteForm.get('quantite')?.dirty ||
+                venteForm.get('quantite')?.touched)
+            " class="text-red-500 text-sm mt-1">
+            <div *ngIf="venteForm.get('quantite')?.errors?.['required']">
+              La quantité est obligatoire.
+            </div>
+            <div *ngIf="venteForm.get('quantite')?.errors?.['min']">
+              Le quantité doit être supérieur à 0.
+            </div>
+          </div>
+        </div>
+
+        <!-- Prix unitaire de vente de l’action -->
+        <div>
+          <label for="prixUnitaire" class="block text-sm font-medium text-gray-700">Prix unitaire de vente de l’action
+            <span class="text-red-500">*</span></label>
+          <input type="number" step="0.001" id="prixUnitaire" formControlName="prixUnitaire"
+            class="mt-1 block w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500" />
+          <div *ngIf="
+              venteForm.get('prixUnitaire')?.invalid &&
+              (venteForm.get('prixUnitaire')?.dirty ||
+                venteForm.get('prixUnitaire')?.touched)
+            " class="text-red-500 text-sm mt-1">
+            <div *ngIf="venteForm.get('prixUnitaire')?.errors?.['required']">
+              Le prix unitaire est obligatoire.
+            </div>
+            <div *ngIf="venteForm.get('prixUnitaire')?.errors?.['min']">
+              Le prix unitaire doit être supérieur à 0.
+            </div>
+            <div *ngIf="venteForm.get('prixUnitaire')?.errors?.['mustBeDecimal']">
+              Le prix unitaire doit être un réel sous la forme 123,123.
+            </div>
+          </div>
+        </div>
+
+        <!-- Montant Total de vente -->
+        <div>
+          <label for="montantTotal" class="block text-sm font-medium text-gray-700">Montant Total de vente <span
+              class="text-red-500">*</span></label>
+          <input type="number" id="montantTotal" formControlName="montantTotal"
+            class="mt-1 block w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500" readonly />
+          <div *ngIf="
+              venteForm.get('montantTotal')?.invalid &&
+              (venteForm.get('montantTotal')?.dirty ||
+                venteForm.get('montantTotal')?.touched)
+            " class="text-red-500 text-sm mt-1">
+            <div *ngIf="participationForm.get('montantTotal')?.errors?.['required']">
+              Le montant total est obligatoire.
+            </div>
+          </div>
+        </div>
+
+        <!-- Signataire -->
+        <div>
+          <label for="signataire" class="block text-sm font-medium text-gray-700">Signataire <span
+              class="text-red-500">*</span></label>
+          <input type="text" id="signataire" formControlName="signataire"
+            class="mt-1 block w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500" />
+          <div *ngIf="
+              venteForm.get('signataire')?.invalid &&
+              (venteForm.get('signataire')?.dirty ||
+                venteForm.get('signataire')?.touched)
+            " class="text-red-500 text-sm mt-1">
+            <div *ngIf="venteForm.get('signataire')?.errors?.['required']">
+              Le signataire est obligatoire.
+            </div>
+          </div>
+        </div>
+
+        <!-- Fonction -->
+        <div>
+          <label for="fonction" class="block text-sm font-medium text-gray-700">Fonction <span
+              class="text-red-500">*</span></label>
+          <input type="text" id="fonction" formControlName="fonction"
+            class="mt-1 block w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500" />
+          <div *ngIf="
+              venteForm.get('fonction')?.invalid &&
+              (venteForm.get('fonction')?.dirty ||
+                venteForm.get('fonction')?.touched)
+            " class="text-red-500 text-sm mt-1">
+            <div *ngIf="venteForm.get('fonction')?.errors?.['required']">
+              La fonction est obligatoire.
+            </div>
+          </div>
+        </div>
+
+        <!-- Submit -->
+        <button type="submit" class="w-full bg-blue-500 text-white p-3 rounded-md mt-4">
+          Soumettre
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

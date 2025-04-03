@@ -133,6 +133,69 @@ export interface ProjetUpdateDto {
   dateMaj?: Date | null;
   utilisateur?: string | null;
 }
+// l'interface pour typesouscription
+export interface TypeSouscription {
+  idtypesouscription: number;
+  libelletype: string;
+}
+//cac nature
+export interface CACNature {
+  nature_ID: number;
+  libelle: string;
+}
+
+export interface CAC {
+  cabinet_Nom: string;
+  nature_ID: number;
+  commissaire_NomPrenom: string;
+  cabinet_Email?: string | null;
+  cabinet_Telephone?: number | null;  
+  email1?: string | null;
+  telephone1?: number | null;         
+  email2?: string | null;
+  telephone2?: number | null;         
+}
+// interface pour les commissaires
+export interface Commissaire {
+  caC_ID: number;
+  commissaire_NomPrenom: string;
+  cabinet_Nom: string;
+}
+// Interface pour les données d'affectation
+export interface AffectationCAC {
+  idProjet: number;
+  cac_ID: number;
+  mandat: string;
+  dateAffectation: string;
+  observation?: string;
+  numeroMandat: number;
+}
+export interface Fonction {
+  fonction_ID: number;
+  libelle: string;
+}
+
+export interface Situation {
+  situation_ID: number;
+  libelle: string;
+}
+
+export interface Contact {
+  contact_ID: number;
+  nomPrenom: string;
+  fonction_ID: number;
+  fonction_Libelle: string;
+  email1: string;
+  telephone1: number;
+  email2: string | null;
+  telephone2: number | null;
+  idProjet: number;
+  raisonSociale: string;
+  situation_ID: number;
+  situation_Libelle: string;
+  observation: string | null;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -220,5 +283,57 @@ export class CompanyService {
     return this.http.delete(`${this.apiUrl}/delete_Projet/${id}`);
   }
 
-    
+  // Récupérer tous les types de souscription
+  public getTypesSouscription(): Observable<TypeSouscription[]> {
+    return this.http.get<TypeSouscription[]>(`${this.apiUrl}/get_TypesSouscription`);
+  }
+
+  // Ajouter une souscription
+  public postSouscription(data: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}/post_Souscription`, data);
+  }
+
+  // Ajouter un achat
+  postAchat(data: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}/post_Achat`, data);
 }
+
+// ajouter vente 
+postVente(data: any): Observable<any> {
+  return this.http.post(`${this.apiUrl}/post_Vente`, data);
+}
+// Récupérer tous les types de nature CAC
+public getCACNature(): Observable<CACNature[]> {
+  return this.http.get<CACNature[]>(`${this.apiUrl}/get_CAC_Nature`);
+}
+public addCAC(data: CAC): Observable<any> {
+  return this.http.post(`${this.apiUrl}/add_CAC`, data);
+}
+// Méthode pour récupérer les commissaires
+public getCommissaires(): Observable<Commissaire[]> {
+  return this.http.get<Commissaire[]>(`${this.apiUrl}/get_CAC`);
+}
+public addAffectationCAC(data: AffectationCAC): Observable<any> {
+  return this.http.post(`${this.apiUrl}/add_AffectationCAC`, data);
+}
+// Récupérer toutes les fonctions
+public getFonctions(): Observable<Fonction[]> {
+  return this.http.get<Fonction[]>(`${this.apiUrl}/get_Fonctions`);
+}
+
+// Récupérer toutes les situations
+public getSituations(): Observable<Situation[]> {
+  return this.http.get<Situation[]>(`${this.apiUrl}/get_Situations`);
+}
+// Ajouter un contact
+public addContact(data: any): Observable<any> {
+  return this.http.post(`${this.apiUrl}/add_Contact`, data);
+}
+
+// Récupérer tous les contacts
+public getContacts(): Observable<Contact[]> {
+  return this.http.get<Contact[]>(`${this.apiUrl}/get_Contacts`);
+}
+
+}
+

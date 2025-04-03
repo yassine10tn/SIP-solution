@@ -1,0 +1,1139 @@
+<div class="flex flex-col items-center justify-center p-8 bg-zinc-200 mb-28 ">
+  <div class="w-full max-w-8xl mx-auto">
+    <div class="text-center mb-8">
+      <h2 class="text-5xl font-extrabold text-blue-800 mb-4">
+        Liste des Sociétés
+      </h2>
+      <p class="text-xl text-gray-600">
+        Explorez et gérez les sociétés enregistrées dans notre système.
+      </p>
+    </div>
+
+    <!-- Barre de recherche -->
+    <div class="mb-6 relative w-full max-w-lg mx-auto">
+      <svg class="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-500" fill="none"
+        stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+      </svg>
+      <input type="text" [(ngModel)]="searchId" (ngModelChange)="searchById()"
+        class="pl-10 pr-4 py-3 w-full text-gray-700 bg-white rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-200 focus:shadow-md transition-all"
+        placeholder="Rechercher une société par ID..." />
+    </div>
+
+  <!-- Table Container -->
+    <div class="bg-white rounded-lg shadow overflow-hidden">
+      <!-- Table Header -->
+      <div class="px-6 py-4 border-b border-gray-200 bg-gray-50">
+        <h3 class="text-lg font-medium text-gray-900">Liste des sociétés</h3>
+      </div>
+
+      <!-- Table -->
+      <div class="overflow-x-auto">
+        <table class="min-w-full divide-y divide-gray-200">
+          <thead class="bg-gray-50">
+            <tr>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID Projet</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Identifiant</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Ex Identifiant</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Raison Sociale</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Raison Sociale (Ar)</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Libellé Court</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Siège Social</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Siège Social (Ar)</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">MF</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date de Création</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date du Dossier</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Objet</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Objet (Ar)</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Téléphone</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Dossier Juridique</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Pays</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Gouvernorat</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Forme Juridique</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Secteur Économique</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nature du Projet</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Type de Management</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Devise</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Type d'Identifiant</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Type d'Entreprise</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Type de Projet</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Paramètre RSM620</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Paramètre RNLPA870</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Code Risque</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date de Mise à Jour</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Utilisateur</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+            </tr>
+          </thead>
+          <tbody class="bg-white divide-y divide-gray-200">
+            <tr *ngFor="let societe of filteredSocietes; let i = index" class="hover:bg-gray-50">
+              <!-- ID Projet -->
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                {{ societe.idProjet }}
+              </td>
+
+              <!-- Identifiant -->
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                <div class="flex items-center">
+                  <span *ngIf="editingSociete !== societe || editingField !== 'identifiant'"
+                    class="flex items-center gap-2">
+                    {{ societe.identifiant }}
+                    <button (click)="enableEdit(societe, 'identifiant')"
+                      class="flex items-center justify-center w-6 h-6 bg-blue-500 text-white rounded-full shadow-sm hover:bg-blue-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-blue-300 transition-all duration-200 flex-shrink-0">
+                      <i class="fas fa-edit text-xs"></i>
+                    </button>
+                  </span>
+
+                  <span *ngIf="editingSociete === societe && editingField === 'identifiant'"
+                    class="flex items-center gap-2">
+                    <form [formGroup]="editForm" (ngSubmit)="saveEdit(societe)" class="flex items-center gap-2">
+                      <input formControlName="newValue" type="number"
+                        class="border p-1 rounded focus:ring-2 focus:ring-blue-300 w-20" />
+
+                      <button type="submit"
+                        class="flex items-center justify-center w-6 h-6 bg-green-500 text-white rounded-full shadow-sm hover:bg-green-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-green-300 transition-all duration-200 flex-shrink-0">
+                        <i class="fas fa-check text-xs"></i>
+                      </button>
+
+                      <button type="button" (click)="cancelEdit()"
+                        class="flex items-center justify-center w-6 h-6 bg-red-500 text-white rounded-full shadow-sm hover:bg-red-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-red-300 transition-all duration-200 flex-shrink-0">
+                        <i class="fas fa-times text-xs"></i>
+                      </button>
+                    </form>
+                  </span>
+                </div>
+              </td>
+
+              <!-- ExIdentifiant -->
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                <div class="flex items-center">
+                  <span *ngIf="editingSociete !== societe || editingField !== 'exIdentifiant'"
+                    class="flex items-center gap-2">
+                    {{ societe.exIdentifiant }}
+                    <button (click)="enableEdit(societe, 'exIdentifiant')"
+                      class="flex items-center justify-center w-6 h-6 bg-blue-500 text-white rounded-full shadow-sm hover:bg-blue-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-blue-300 transition-all duration-200 flex-shrink-0">
+                      <i class="fas fa-edit text-xs"></i>
+                    </button>
+                  </span>
+
+                  <span *ngIf="editingSociete === societe && editingField === 'exIdentifiant'"
+                    class="flex items-center gap-2">
+                    <form [formGroup]="editForm" (ngSubmit)="saveEdit(societe)" class="flex items-center gap-2">
+                      <input formControlName="newValue" type="number"
+                        class="border p-1 rounded focus:ring-2 focus:ring-blue-300 w-20" />
+
+                      <button type="submit"
+                        class="flex items-center justify-center w-6 h-6 bg-green-500 text-white rounded-full shadow-sm hover:bg-green-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-green-300 transition-all duration-200 flex-shrink-0">
+                        <i class="fas fa-check text-xs"></i>
+                      </button>
+
+                      <button type="button" (click)="cancelEdit()"
+                        class="flex items-center justify-center w-6 h-6 bg-red-500 text-white rounded-full shadow-sm hover:bg-red-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-red-300 transition-all duration-200 flex-shrink-0">
+                        <i class="fas fa-times text-xs"></i>
+                      </button>
+                    </form>
+                  </span>
+                </div>
+              </td>
+
+              <!-- Raison Sociale -->
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                <div class="flex items-center">
+                  <span *ngIf="editingSociete !== societe || editingField !== 'raisonSociale'"
+                    class="flex items-center gap-2">
+                    {{ societe.raisonSociale }}
+                    <button (click)="enableEdit(societe, 'raisonSociale')"
+                      class="flex items-center justify-center w-6 h-6 bg-blue-500 text-white rounded-full shadow-sm hover:bg-blue-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-blue-300 transition-all duration-200 flex-shrink-0">
+                      <i class="fas fa-edit text-xs"></i>
+                    </button>
+                  </span>
+
+                  <span *ngIf="editingSociete === societe && editingField === 'raisonSociale'"
+                    class="flex items-center gap-2">
+                    <form [formGroup]="editForm" (ngSubmit)="saveEdit(societe)" class="flex items-center gap-2">
+                      <input formControlName="newValue"
+                        class="border p-1 rounded focus:ring-2 focus:ring-blue-300 w-32" />
+
+                      <button type="submit"
+                        class="flex items-center justify-center w-6 h-6 bg-green-500 text-white rounded-full shadow-sm hover:bg-green-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-green-300 transition-all duration-200 flex-shrink-0">
+                        <i class="fas fa-check text-xs"></i>
+                      </button>
+
+                      <button type="button" (click)="cancelEdit()"
+                        class="flex items-center justify-center w-6 h-6 bg-red-500 text-white rounded-full shadow-sm hover:bg-red-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-red-300 transition-all duration-200 flex-shrink-0">
+                        <i class="fas fa-times text-xs"></i>
+                      </button>
+                    </form>
+                  </span>
+                </div>
+              </td>
+              <!-- Raison Sociale (Ar) -->
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                <div class="flex items-center">
+                  <span *ngIf="editingSociete !== societe || editingField !== 'raisonSocialeAr'"
+                    class="flex items-center gap-2">
+                    {{ societe.raisonSocialeAr }}
+                    <button (click)="enableEdit(societe, 'raisonSocialeAr')"
+                      class="flex items-center justify-center w-6 h-6 bg-blue-500 text-white rounded-full shadow-sm hover:bg-blue-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-blue-300 transition-all duration-200 flex-shrink-0">
+                      <i class="fas fa-edit text-xs"></i>
+                    </button>
+                  </span>
+
+                  <span *ngIf="editingSociete === societe && editingField === 'raisonSocialeAr'"
+                    class="flex items-center gap-2">
+                    <form [formGroup]="editForm" (ngSubmit)="saveEdit(societe)" class="flex items-center gap-2">
+                      <input formControlName="newValue"
+                        class="border p-1 rounded focus:ring-2 focus:ring-blue-300 w-32" />
+
+                      <button type="submit"
+                        class="flex items-center justify-center w-6 h-6 bg-green-500 text-white rounded-full shadow-sm hover:bg-green-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-green-300 transition-all duration-200 flex-shrink-0">
+                        <i class="fas fa-check text-xs"></i>
+                      </button>
+
+                      <button type="button" (click)="cancelEdit()"
+                        class="flex items-center justify-center w-6 h-6 bg-red-500 text-white rounded-full shadow-sm hover:bg-red-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-red-300 transition-all duration-200 flex-shrink-0">
+                        <i class="fas fa-times text-xs"></i>
+                      </button>
+                    </form>
+                  </span>
+                </div>
+              </td>
+
+              <!-- Libellé Court -->
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                <div class="flex items-center">
+                  <span *ngIf="editingSociete !== societe || editingField !== 'libelleCourt'"
+                    class="flex items-center gap-2">
+                    {{ societe.libelleCourt }}
+                    <button (click)="enableEdit(societe, 'libelleCourt')"
+                      class="flex items-center justify-center w-6 h-6 bg-blue-500 text-white rounded-full shadow-sm hover:bg-blue-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-blue-300 transition-all duration-200 flex-shrink-0">
+                      <i class="fas fa-edit text-xs"></i>
+                    </button>
+                  </span>
+
+                  <span *ngIf="editingSociete === societe && editingField === 'libelleCourt'"
+                    class="flex items-center gap-2">
+                    <form [formGroup]="editForm" (ngSubmit)="saveEdit(societe)" class="flex items-center gap-2">
+                      <input formControlName="newValue"
+                        class="border p-1 rounded focus:ring-2 focus:ring-blue-300 w-32" />
+
+                      <button type="submit"
+                        class="flex items-center justify-center w-6 h-6 bg-green-500 text-white rounded-full shadow-sm hover:bg-green-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-green-300 transition-all duration-200 flex-shrink-0">
+                        <i class="fas fa-check text-xs"></i>
+                      </button>
+
+                      <button type="button" (click)="cancelEdit()"
+                        class="flex items-center justify-center w-6 h-6 bg-red-500 text-white rounded-full shadow-sm hover:bg-red-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-red-300 transition-all duration-200 flex-shrink-0">
+                        <i class="fas fa-times text-xs"></i>
+                      </button>
+                    </form>
+                  </span>
+                </div>
+              </td>
+
+              <!-- Siège Social -->
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                <div class="flex items-center">
+                  <span *ngIf="editingSociete !== societe || editingField !== 'siegeSocial'"
+                    class="flex items-center gap-2">
+                    {{ societe.siegeSocial }}
+                    <button (click)="enableEdit(societe, 'siegeSocial')"
+                      class="flex items-center justify-center w-6 h-6 bg-blue-500 text-white rounded-full shadow-sm hover:bg-blue-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-blue-300 transition-all duration-200 flex-shrink-0">
+                      <i class="fas fa-edit text-xs"></i>
+                    </button>
+                  </span>
+
+                  <span *ngIf="editingSociete === societe && editingField === 'siegeSocial'"
+                    class="flex items-center gap-2">
+                    <form [formGroup]="editForm" (ngSubmit)="saveEdit(societe)" class="flex items-center gap-2">
+                      <input formControlName="newValue"
+                        class="border p-1 rounded focus:ring-2 focus:ring-blue-300 w-32" />
+
+                      <button type="submit"
+                        class="flex items-center justify-center w-6 h-6 bg-green-500 text-white rounded-full shadow-sm hover:bg-green-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-green-300 transition-all duration-200 flex-shrink-0">
+                        <i class="fas fa-check text-xs"></i>
+                      </button>
+
+                      <button type="button" (click)="cancelEdit()"
+                        class="flex items-center justify-center w-6 h-6 bg-red-500 text-white rounded-full shadow-sm hover:bg-red-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-red-300 transition-all duration-200 flex-shrink-0">
+                        <i class="fas fa-times text-xs"></i>
+                      </button>
+                    </form>
+                  </span>
+                </div>
+              </td>
+
+              <!-- Siège Social (Ar) -->
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                <div class="flex items-center">
+                  <span *ngIf="editingSociete !== societe || editingField !== 'siegeSocialAr'"
+                    class="flex items-center gap-2">
+                    {{ societe.siegeSocialAr }}
+                    <button (click)="enableEdit(societe, 'siegeSocialAr')"
+                      class="flex items-center justify-center w-6 h-6 bg-blue-500 text-white rounded-full shadow-sm hover:bg-blue-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-blue-300 transition-all duration-200 flex-shrink-0">
+                      <i class="fas fa-edit text-xs"></i>
+                    </button>
+                  </span>
+
+                  <span *ngIf="editingSociete === societe && editingField === 'siegeSocialAr'"
+                    class="flex items-center gap-2">
+                    <form [formGroup]="editForm" (ngSubmit)="saveEdit(societe)" class="flex items-center gap-2">
+                      <input formControlName="newValue"
+                        class="border p-1 rounded focus:ring-2 focus:ring-blue-300 w-32" />
+
+                      <button type="submit"
+                        class="flex items-center justify-center w-6 h-6 bg-green-500 text-white rounded-full shadow-sm hover:bg-green-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-green-300 transition-all duration-200 flex-shrink-0">
+                        <i class="fas fa-check text-xs"></i>
+                      </button>
+
+                      <button type="button" (click)="cancelEdit()"
+                        class="flex items-center justify-center w-6 h-6 bg-red-500 text-white rounded-full shadow-sm hover:bg-red-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-red-300 transition-all duration-200 flex-shrink-0">
+                        <i class="fas fa-times text-xs"></i>
+                      </button>
+                    </form>
+                  </span>
+                </div>
+              </td>
+
+              <!-- MF -->
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                <div class="flex items-center">
+                  <span *ngIf="editingSociete !== societe || editingField !== 'mf'"
+                    class="flex items-center gap-2">
+                    {{ societe.mf }}
+                    <button (click)="enableEdit(societe, 'mf')"
+                      class="flex items-center justify-center w-6 h-6 bg-blue-500 text-white rounded-full shadow-sm hover:bg-blue-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-blue-300 transition-all duration-200 flex-shrink-0">
+                      <i class="fas fa-edit text-xs"></i>
+                    </button>
+                  </span>
+
+                  <span *ngIf="editingSociete === societe && editingField === 'mf'"
+                    class="flex items-center gap-2">
+                    <form [formGroup]="editForm" (ngSubmit)="saveEdit(societe)" class="flex items-center gap-2">
+                      <input formControlName="newValue"
+                        class="border p-1 rounded focus:ring-2 focus:ring-blue-300 w-20" />
+
+                      <button type="submit"
+                        class="flex items-center justify-center w-6 h-6 bg-green-500 text-white rounded-full shadow-sm hover:bg-green-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-green-300 transition-all duration-200 flex-shrink-0">
+                        <i class="fas fa-check text-xs"></i>
+                      </button>
+
+                      <button type="button" (click)="cancelEdit()"
+                        class="flex items-center justify-center w-6 h-6 bg-red-500 text-white rounded-full shadow-sm hover:bg-red-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-red-300 transition-all duration-200 flex-shrink-0">
+                        <i class="fas fa-times text-xs"></i>
+                      </button>
+                    </form>
+                  </span>
+                </div>
+              </td>
+
+              <!-- Date de Création -->
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                <div class="flex items-center">
+                  <span *ngIf="editingSociete !== societe || editingField !== 'dateCreation'"
+                    class="flex items-center gap-2">
+                    {{ societe.dateCreation | date }}
+                    <button (click)="enableEdit(societe, 'dateCreation')"
+                      class="flex items-center justify-center w-6 h-6 bg-blue-500 text-white rounded-full shadow-sm hover:bg-blue-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-blue-300 transition-all duration-200 flex-shrink-0">
+                      <i class="fas fa-edit text-xs"></i>
+                    </button>
+                  </span>
+
+                  <span *ngIf="editingSociete === societe && editingField === 'dateCreation'"
+                    class="flex items-center gap-2">
+                    <form [formGroup]="editForm" (ngSubmit)="saveEdit(societe)" class="flex items-center gap-2">
+                      <input type="date" formControlName="newValue"
+                        class="border p-1 rounded focus:ring-2 focus:ring-blue-300 w-32" />
+
+                      <button type="submit"
+                        class="flex items-center justify-center w-6 h-6 bg-green-500 text-white rounded-full shadow-sm hover:bg-green-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-green-300 transition-all duration-200 flex-shrink-0">
+                        <i class="fas fa-check text-xs"></i>
+                      </button>
+
+                      <button type="button" (click)="cancelEdit()"
+                        class="flex items-center justify-center w-6 h-6 bg-red-500 text-white rounded-full shadow-sm hover:bg-red-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-red-300 transition-all duration-200 flex-shrink-0">
+                        <i class="fas fa-times text-xs"></i>
+                      </button>
+                    </form>
+                  </span>
+                </div>
+              </td>
+
+              <!-- Date du Dossier -->
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                <div class="flex items-center">
+                  <span *ngIf="editingSociete !== societe || editingField !== 'dateDossier'"
+                    class="flex items-center gap-2">
+                    {{ societe.dateDossier | date }}
+                    <button (click)="enableEdit(societe, 'dateDossier')"
+                      class="flex items-center justify-center w-6 h-6 bg-blue-500 text-white rounded-full shadow-sm hover:bg-blue-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-blue-300 transition-all duration-200 flex-shrink-0">
+                      <i class="fas fa-edit text-xs"></i>
+                    </button>
+                  </span>
+
+                  <span *ngIf="editingSociete === societe && editingField === 'dateDossier'"
+                    class="flex items-center gap-2">
+                    <form [formGroup]="editForm" (ngSubmit)="saveEdit(societe)" class="flex items-center gap-2">
+                      <input type="date" formControlName="newValue"
+                        class="border p-1 rounded focus:ring-2 focus:ring-blue-300 w-32" />
+
+                      <button type="submit"
+                        class="flex items-center justify-center w-6 h-6 bg-green-500 text-white rounded-full shadow-sm hover:bg-green-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-green-300 transition-all duration-200 flex-shrink-0">
+                        <i class="fas fa-check text-xs"></i>
+                      </button>
+
+                      <button type="button" (click)="cancelEdit()"
+                        class="flex items-center justify-center w-6 h-6 bg-red-500 text-white rounded-full shadow-sm hover:bg-red-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-red-300 transition-all duration-200 flex-shrink-0">
+                        <i class="fas fa-times text-xs"></i>
+                      </button>
+                    </form>
+                  </span>
+                </div>
+              </td>
+
+              <!-- Objet -->
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                <div class="flex items-center">
+                  <span *ngIf="editingSociete !== societe || editingField !== 'objet'"
+                    class="flex items-center gap-2">
+                    {{ societe.objet }}
+                    <button (click)="enableEdit(societe, 'objet')"
+                      class="flex items-center justify-center w-6 h-6 bg-blue-500 text-white rounded-full shadow-sm hover:bg-blue-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-blue-300 transition-all duration-200 flex-shrink-0">
+                      <i class="fas fa-edit text-xs"></i>
+                    </button>
+                  </span>
+
+                  <span *ngIf="editingSociete === societe && editingField === 'objet'"
+                    class="flex items-center gap-2">
+                    <form [formGroup]="editForm" (ngSubmit)="saveEdit(societe)" class="flex items-center gap-2">
+                      <input formControlName="newValue"
+                        class="border p-1 rounded focus:ring-2 focus:ring-blue-300 w-32" />
+
+                      <button type="submit"
+                        class="flex items-center justify-center w-6 h-6 bg-green-500 text-white rounded-full shadow-sm hover:bg-green-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-green-300 transition-all duration-200 flex-shrink-0">
+                        <i class="fas fa-check text-xs"></i>
+                      </button>
+
+                      <button type="button" (click)="cancelEdit()"
+                        class="flex items-center justify-center w-6 h-6 bg-red-500 text-white rounded-full shadow-sm hover:bg-red-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-red-300 transition-all duration-200 flex-shrink-0">
+                        <i class="fas fa-times text-xs"></i>
+                      </button>
+                    </form>
+                  </span>
+                </div>
+              </td>
+
+              <!-- Objet (Ar) -->
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                <div class="flex items-center">
+                  <span *ngIf="editingSociete !== societe || editingField !== 'objetAr'"
+                    class="flex items-center gap-2">
+                    {{ societe.objetAr }}
+                    <button (click)="enableEdit(societe, 'objetAr')"
+                      class="flex items-center justify-center w-6 h-6 bg-blue-500 text-white rounded-full shadow-sm hover:bg-blue-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-blue-300 transition-all duration-200 flex-shrink-0">
+                      <i class="fas fa-edit text-xs"></i>
+                    </button>
+                  </span>
+
+                  <span *ngIf="editingSociete === societe && editingField === 'objetAr'"
+                    class="flex items-center gap-2">
+                    <form [formGroup]="editForm" (ngSubmit)="saveEdit(societe)" class="flex items-center gap-2">
+                      <input formControlName="newValue"
+                        class="border p-1 rounded focus:ring-2 focus:ring-blue-300 w-32" />
+
+                      <button type="submit"
+                        class="flex items-center justify-center w-6 h-6 bg-green-500 text-white rounded-full shadow-sm hover:bg-green-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-green-300 transition-all duration-200 flex-shrink-0">
+                        <i class="fas fa-check text-xs"></i>
+                      </button>
+
+                      <button type="button" (click)="cancelEdit()"
+                        class="flex items-center justify-center w-6 h-6 bg-red-500 text-white rounded-full shadow-sm hover:bg-red-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-red-300 transition-all duration-200 flex-shrink-0">
+                        <i class="fas fa-times text-xs"></i>
+                      </button>
+                    </form>
+                  </span>
+                </div>
+              </td>
+
+              <!-- Téléphone -->
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                <div class="flex items-center">
+                  <span *ngIf="editingSociete !== societe || editingField !== 'telephone'"
+                    class="flex items-center gap-2">
+                    {{ societe.telephone }}
+                    <button (click)="enableEdit(societe, 'telephone')"
+                      class="flex items-center justify-center w-6 h-6 bg-blue-500 text-white rounded-full shadow-sm hover:bg-blue-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-blue-300 transition-all duration-200 flex-shrink-0">
+                      <i class="fas fa-edit text-xs"></i>
+                    </button>
+                  </span>
+
+                  <span *ngIf="editingSociete === societe && editingField === 'telephone'"
+                    class="flex items-center gap-2">
+                    <form [formGroup]="editForm" (ngSubmit)="saveEdit(societe)" class="flex items-center gap-2">
+                      <input formControlName="newValue" type="number"
+                        class="border p-1 rounded focus:ring-2 focus:ring-blue-300 w-20" />
+
+                      <button type="submit"
+                        class="flex items-center justify-center w-6 h-6 bg-green-500 text-white rounded-full shadow-sm hover:bg-green-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-green-300 transition-all duration-200 flex-shrink-0">
+                        <i class="fas fa-check text-xs"></i>
+                      </button>
+
+                      <button type="button" (click)="cancelEdit()"
+                        class="flex items-center justify-center w-6 h-6 bg-red-500 text-white rounded-full shadow-sm hover:bg-red-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-red-300 transition-all duration-200 flex-shrink-0">
+                        <i class="fas fa-times text-xs"></i>
+                      </button>
+                    </form>
+                  </span>
+                </div>
+              </td>
+
+              <!-- Email -->
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                <div class="flex items-center">
+                  <span *ngIf="editingSociete !== societe || editingField !== 'email'"
+                    class="flex items-center gap-2">
+                    {{ societe.email }}
+                    <button (click)="enableEdit(societe, 'email')"
+                      class="flex items-center justify-center w-6 h-6 bg-blue-500 text-white rounded-full shadow-sm hover:bg-blue-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-blue-300 transition-all duration-200 flex-shrink-0">
+                      <i class="fas fa-edit text-xs"></i>
+                    </button>
+                  </span>
+
+                  <span *ngIf="editingSociete === societe && editingField === 'email'"
+                    class="flex items-center gap-2">
+                    <form [formGroup]="editForm" (ngSubmit)="saveEdit(societe)" class="flex items-center gap-2">
+                      <input formControlName="newValue" type="email"
+                        class="border p-1 rounded focus:ring-2 focus:ring-blue-300 w-32" />
+
+                      <button type="submit"
+                        class="flex items-center justify-center w-6 h-6 bg-green-500 text-white rounded-full shadow-sm hover:bg-green-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-green-300 transition-all duration-200 flex-shrink-0">
+                        <i class="fas fa-check text-xs"></i>
+                      </button>
+
+                      <button type="button" (click)="cancelEdit()"
+                        class="flex items-center justify-center w-6 h-6 bg-red-500 text-white rounded-full shadow-sm hover:bg-red-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-red-300 transition-all duration-200 flex-shrink-0">
+                        <i class="fas fa-times text-xs"></i>
+                      </button>
+                    </form>
+                  </span>
+                </div>
+              </td>
+
+              <!-- Status -->
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                <div class="flex items-center">
+                  <span *ngIf="editingSociete !== societe || editingField !== 'status'"
+                    class="flex items-center gap-2">
+                    <button *ngIf="societe.status"
+                      (click)="downloadPdf(societe.status, 'status_' + societe.idProjet + '.pdf')"
+                      class="flex items-center gap-1 px-2 py-1 bg-blue-500 text-white rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300 transition-all duration-200 text-xs">
+                      <i class="fas fa-download"></i>
+                      <span>Télécharger</span>
+                    </button>
+                    <button (click)="enableEdit(societe, 'status')"
+                      class="flex items-center justify-center w-6 h-6 bg-blue-500 text-white rounded-full shadow-sm hover:bg-blue-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-blue-300 transition-all duration-200 flex-shrink-0">
+                      <i class="fas fa-edit text-xs"></i>
+                    </button>
+                  </span>
+
+                  <span *ngIf="editingSociete === societe && editingField === 'status'"
+                    class="flex items-center">
+                    <form [formGroup]="editForm" (ngSubmit)="saveEdit(societe)" class="flex items-center">
+                      <input type="file" (change)="onFileSelected($event)" class="border p-1 rounded text-xs w-32" />
+                      <button type="submit"
+                        class="ml-1 px-2 py-1 bg-green-500 text-white rounded hover:bg-green-600 transition duration-200 text-xs">
+                        <i class="fas fa-check"></i>
+                      </button>
+                      <button type="button" (click)="cancelEdit()"
+                        class="ml-1 px-2 py-1 bg-red-500 text-white rounded hover:bg-red-600 transition duration-200 text-xs">
+                        <i class="fas fa-times"></i>
+                      </button>
+                    </form>
+                  </span>
+                </div>
+              </td>
+
+              <!-- Dossier Juridique -->
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                <div class="flex items-center">
+                  <span *ngIf="editingSociete !== societe || editingField !== 'dossierJuridique'"
+                    class="flex items-center gap-2">
+                    <button *ngIf="societe.dossierJuridique"
+                      (click)="downloadPdf(societe.dossierJuridique, 'dossierJuridique_' + societe.idProjet + '.pdf')"
+                      class="flex items-center gap-1 px-2 py-1 bg-blue-500 text-white rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300 transition-all duration-200 text-xs">
+                      <i class="fas fa-download"></i>
+                      <span>Télécharger</span>
+                    </button>
+                    <button (click)="enableEdit(societe, 'dossierJuridique')"
+                      class="flex items-center justify-center w-6 h-6 bg-blue-500 text-white rounded-full shadow-sm hover:bg-blue-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-blue-300 transition-all duration-200 flex-shrink-0">
+                      <i class="fas fa-edit text-xs"></i>
+                    </button>
+                  </span>
+
+                  <span *ngIf="editingSociete === societe && editingField === 'dossierJuridique'"
+                    class="flex items-center">
+                    <form [formGroup]="editForm" (ngSubmit)="saveEdit(societe)" class="flex items-center">
+                      <input type="file" (change)="onFileSelected($event)" class="border p-1 rounded text-xs w-32" />
+                      <button type="submit"
+                        class="ml-1 px-2 py-1 bg-green-500 text-white rounded hover:bg-green-600 transition duration-200 text-xs">
+                        <i class="fas fa-check"></i>
+                      </button>
+                      <button type="button" (click)="cancelEdit()"
+                        class="ml-1 px-2 py-1 bg-red-500 text-white rounded hover:bg-red-600 transition duration-200 text-xs">
+                        <i class="fas fa-times"></i>
+                      </button>
+                    </form>
+                  </span>
+                </div>
+              </td>
+
+              <!-- Pays -->
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                <div class="flex items-center">
+                  <span *ngIf="editingSociete !== societe || editingField !== 'idPays'"
+                    class="flex items-center gap-2">
+                    {{ societe.libellePays ?? '' }}
+                    <button (click)="enableEdit(societe, 'idPays')"
+                      class="flex items-center justify-center w-6 h-6 bg-blue-500 text-white rounded-full shadow-sm hover:bg-blue-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-blue-300 transition-all duration-200 flex-shrink-0">
+                      <i class="fas fa-edit text-xs"></i>
+                    </button>
+                  </span>
+
+                  <span *ngIf="editingSociete === societe && editingField === 'idPays'"
+                    class="flex items-center gap-2">
+                    <form [formGroup]="editForm" (ngSubmit)="saveEdit(societe)" class="flex items-center gap-2">
+                      <select formControlName="newValue"
+                        class="border p-1 rounded focus:ring-2 focus:ring-blue-300 text-xs w-32">
+                        <option *ngFor="let pays of paysList" [value]="pays.id">
+                          {{ pays.nom }}
+                        </option>
+                      </select>
+
+                      <button type="submit"
+                        class="flex items-center justify-center w-6 h-6 bg-green-500 text-white rounded-full shadow-sm hover:bg-green-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-green-300 transition-all duration-200 flex-shrink-0">
+                        <i class="fas fa-check text-xs"></i>
+                      </button>
+
+                      <button type="button" (click)="cancelEdit()"
+                        class="flex items-center justify-center w-6 h-6 bg-red-500 text-white rounded-full shadow-sm hover:bg-red-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-red-300 transition-all duration-200 flex-shrink-0">
+                        <i class="fas fa-times text-xs"></i>
+                      </button>
+                    </form>
+                  </span>
+                </div>
+              </td>
+
+              <!-- Gouvernorat -->
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                <div class="flex items-center">
+                  <span *ngIf="editingSociete !== societe || editingField !== 'idGouvernorat'"
+                    class="flex items-center gap-2">
+                    {{ societe.libelleGouvernorat ?? '' }}
+                    <button (click)="enableEdit(societe, 'idGouvernorat')"
+                      class="flex items-center justify-center w-6 h-6 bg-blue-500 text-white rounded-full shadow-sm hover:bg-blue-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-blue-300 transition-all duration-200 flex-shrink-0">
+                      <i class="fas fa-edit text-xs"></i>
+                    </button>
+                  </span>
+
+                  <span *ngIf="editingSociete === societe && editingField === 'idGouvernorat'"
+                    class="flex items-center gap-2">
+                    <form [formGroup]="editForm" (ngSubmit)="saveEdit(societe)" class="flex items-center gap-2">
+                      <select formControlName="newValue"
+                        class="border p-1 rounded focus:ring-2 focus:ring-blue-300 text-xs w-32">
+                        <option *ngFor="let gouvernorat of gouvernoratsList" [value]="gouvernorat.id">
+                          {{ gouvernorat.nom }}
+                        </option>
+                      </select>
+
+                      <button type="submit"
+                        class="flex items-center justify-center w-6 h-6 bg-green-500 text-white rounded-full shadow-sm hover:bg-green-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-green-300 transition-all duration-200 flex-shrink-0">
+                        <i class="fas fa-check text-xs"></i>
+                      </button>
+
+                      <button type="button" (click)="cancelEdit()"
+                        class="flex items-center justify-center w-6 h-6 bg-red-500 text-white rounded-full shadow-sm hover:bg-red-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-red-300 transition-all duration-200 flex-shrink-0">
+                        <i class="fas fa-times text-xs"></i>
+                      </button>
+                    </form>
+                  </span>
+                </div>
+              </td>
+
+              <!-- Forme Juridique -->
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                <div class="flex items-center">
+                  <span *ngIf="editingSociete !== societe || editingField !== 'idFormeJuridique'"
+                    class="flex items-center gap-2">
+                    {{ societe.libelleFormeJuridique ?? '' }}
+                    <button (click)="enableEdit(societe, 'idFormeJuridique')"
+                      class="flex items-center justify-center w-6 h-6 bg-blue-500 text-white rounded-full shadow-sm hover:bg-blue-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-blue-300 transition-all duration-200 flex-shrink-0">
+                      <i class="fas fa-edit text-xs"></i>
+                    </button>
+                  </span>
+
+                  <span *ngIf="editingSociete === societe && editingField === 'idFormeJuridique'"
+                    class="flex items-center gap-2">
+                    <form [formGroup]="editForm" (ngSubmit)="saveEdit(societe)" class="flex items-center gap-2">
+                      <select formControlName="newValue"
+                        class="border p-1 rounded focus:ring-2 focus:ring-blue-300 text-xs w-32">
+                        <option *ngFor="let formeJuridique of formeJuridiqueList" [value]="formeJuridique.id">
+                          {{ formeJuridique.nom }}
+                        </option>
+                      </select>
+
+                      <button type="submit"
+                        class="flex items-center justify-center w-6 h-6 bg-green-500 text-white rounded-full shadow-sm hover:bg-green-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-green-300 transition-all duration-200 flex-shrink-0">
+                        <i class="fas fa-check text-xs"></i>
+                      </button>
+
+                      <button type="button" (click)="cancelEdit()"
+                        class="flex items-center justify-center w-6 h-6 bg-red-500 text-white rounded-full shadow-sm hover:bg-red-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-red-300 transition-all duration-200 flex-shrink-0">
+                        <i class="fas fa-times text-xs"></i>
+                      </button>
+                    </form>
+                  </span>
+                </div>
+              </td>
+
+              <!-- Secteur Économique -->
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                <div class="flex items-center">
+                  <span *ngIf="editingSociete !== societe || editingField !== 'idSecteurEconomique'"
+                    class="flex items-center gap-2">
+                    {{ societe.libelleSecteurEconomique ?? '' }}
+                    <button (click)="enableEdit(societe, 'idSecteurEconomique')"
+                      class="flex items-center justify-center w-6 h-6 bg-blue-500 text-white rounded-full shadow-sm hover:bg-blue-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-blue-300 transition-all duration-200 flex-shrink-0">
+                      <i class="fas fa-edit text-xs"></i>
+                    </button>
+                  </span>
+
+                  <span *ngIf="editingSociete === societe && editingField === 'idSecteurEconomique'"
+                    class="flex items-center gap-2">
+                    <form [formGroup]="editForm" (ngSubmit)="saveEdit(societe)" class="flex items-center gap-2">
+                      <select formControlName="newValue"
+                        class="border p-1 rounded focus:ring-2 focus:ring-blue-300 text-xs w-32">
+                        <option *ngFor="let secteurEconomique of secteurEconomiqueList" [value]="secteurEconomique.id">
+                          {{ secteurEconomique.nom }}
+                        </option>
+                      </select>
+
+                      <button type="submit"
+                        class="flex items-center justify-center w-6 h-6 bg-green-500 text-white rounded-full shadow-sm hover:bg-green-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-green-300 transition-all duration-200 flex-shrink-0">
+                        <i class="fas fa-check text-xs"></i>
+                      </button>
+
+                      <button type="button" (click)="cancelEdit()"
+                        class="flex items-center justify-center w-6 h-6 bg-red-500 text-white rounded-full shadow-sm hover:bg-red-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-red-300 transition-all duration-200 flex-shrink-0">
+                        <i class="fas fa-times text-xs"></i>
+                      </button>
+                    </form>
+                  </span>
+                </div>
+              </td>
+
+              <!-- Nature du Projet -->
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                <div class="flex items-center">
+                  <span *ngIf="editingSociete !== societe || editingField !== 'idNatureProjet'"
+                    class="flex items-center gap-2">
+                    {{ societe.libelleNatureProjet ?? '' }}
+                    <button (click)="enableEdit(societe, 'idNatureProjet')"
+                      class="flex items-center justify-center w-6 h-6 bg-blue-500 text-white rounded-full shadow-sm hover:bg-blue-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-blue-300 transition-all duration-200 flex-shrink-0">
+                      <i class="fas fa-edit text-xs"></i>
+                    </button>
+                  </span>
+
+                  <span *ngIf="editingSociete === societe && editingField === 'idNatureProjet'"
+                    class="flex items-center gap-2">
+                    <form [formGroup]="editForm" (ngSubmit)="saveEdit(societe)" class="flex items-center gap-2">
+                      <select formControlName="newValue"
+                        class="border p-1 rounded focus:ring-2 focus:ring-blue-300 text-xs w-32">
+                        <option *ngFor="let natureProjet of natureProjetList" [value]="natureProjet.id">
+                          {{ natureProjet.nom }}
+                        </option>
+                      </select>
+
+                      <button type="submit"
+                        class="flex items-center justify-center w-6 h-6 bg-green-500 text-white rounded-full shadow-sm hover:bg-green-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-green-300 transition-all duration-200 flex-shrink-0">
+                        <i class="fas fa-check text-xs"></i>
+                      </button>
+
+                      <button type="button" (click)="cancelEdit()"
+                        class="flex items-center justify-center w-6 h-6 bg-red-500 text-white rounded-full shadow-sm hover:bg-red-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-red-300 transition-all duration-200 flex-shrink-0">
+                        <i class="fas fa-times text-xs"></i>
+                      </button>
+                    </form>
+                  </span>
+                </div>
+              </td>
+
+              <!-- Type de Management -->
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                <div class="flex items-center">
+                  <span *ngIf="editingSociete !== societe || editingField !== 'idTypeManagement'"
+                    class="flex items-center gap-2">
+                    {{ societe.libelleTypeManagement ?? '' }}
+                    <button (click)="enableEdit(societe, 'idTypeManagement')"
+                      class="flex items-center justify-center w-6 h-6 bg-blue-500 text-white rounded-full shadow-sm hover:bg-blue-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-blue-300 transition-all duration-200 flex-shrink-0">
+                      <i class="fas fa-edit text-xs"></i>
+                    </button>
+                  </span>
+
+                  <span *ngIf="editingSociete === societe && editingField === 'idTypeManagement'"
+                    class="flex items-center gap-2">
+                    <form [formGroup]="editForm" (ngSubmit)="saveEdit(societe)" class="flex items-center gap-2">
+                      <select formControlName="newValue"
+                        class="border p-1 rounded focus:ring-2 focus:ring-blue-300 text-xs w-32">
+                        <option *ngFor="let typeManagement of typeManagementList" [value]="typeManagement.id">
+                          {{ typeManagement.nom }}
+                        </option>
+                      </select>
+
+                      <button type="submit"
+                        class="flex items-center justify-center w-6 h-6 bg-green-500 text-white rounded-full shadow-sm hover:bg-green-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-green-300 transition-all duration-200 flex-shrink-0">
+                        <i class="fas fa-check text-xs"></i>
+                      </button>
+
+                      <button type="button" (click)="cancelEdit()"
+                        class="flex items-center justify-center w-6 h-6 bg-red-500 text-white rounded-full shadow-sm hover:bg-red-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-red-300 transition-all duration-200 flex-shrink-0">
+                        <i class="fas fa-times text-xs"></i>
+                      </button>
+                    </form>
+                  </span>
+                </div>
+              </td>
+
+              <!-- Devise -->
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                <div class="flex items-center">
+                  <span *ngIf="editingSociete !== societe || editingField !== 'idDevise'"
+                    class="flex items-center gap-2">
+                    {{ societe.libelleDevise ?? '' }}
+                    <button (click)="enableEdit(societe, 'idDevise')"
+                      class="flex items-center justify-center w-6 h-6 bg-blue-500 text-white rounded-full shadow-sm hover:bg-blue-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-blue-300 transition-all duration-200 flex-shrink-0">
+                      <i class="fas fa-edit text-xs"></i>
+                    </button>
+                  </span>
+
+                  <span *ngIf="editingSociete === societe && editingField === 'idDevise'"
+                    class="flex items-center gap-2">
+                    <form [formGroup]="editForm" (ngSubmit)="saveEdit(societe)" class="flex items-center gap-2">
+                      <select formControlName="newValue"
+                        class="border p-1 rounded focus:ring-2 focus:ring-blue-300 text-xs w-32">
+                        <option *ngFor="let devise of deviseList" [value]="devise.id">
+                          {{ devise.nom }}
+                        </option>
+                      </select>
+
+                      <button type="submit"
+                        class="flex items-center justify-center w-6 h-6 bg-green-500 text-white rounded-full shadow-sm hover:bg-green-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-green-300 transition-all duration-200 flex-shrink-0">
+                        <i class="fas fa-check text-xs"></i>
+                      </button>
+
+                      <button type="button" (click)="cancelEdit()"
+                        class="flex items-center justify-center w-6 h-6 bg-red-500 text-white rounded-full shadow-sm hover:bg-red-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-red-300 transition-all duration-200 flex-shrink-0">
+                        <i class="fas fa-times text-xs"></i>
+                      </button>
+                    </form>
+                  </span>
+                </div>
+              </td>
+
+              <!-- Type d'Identifiant -->
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                <div class="flex items-center">
+                  <span *ngIf="editingSociete !== societe || editingField !== 'idTypeIdentifiant'"
+                    class="flex items-center gap-2">
+                    {{ societe.libelleTypeIdentifiant ?? '' }}
+                    <button (click)="enableEdit(societe, 'idTypeIdentifiant')"
+                      class="flex items-center justify-center w-6 h-6 bg-blue-500 text-white rounded-full shadow-sm hover:bg-blue-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-blue-300 transition-all duration-200 flex-shrink-0">
+                      <i class="fas fa-edit text-xs"></i>
+                    </button>
+                  </span>
+
+                  <span *ngIf="editingSociete === societe && editingField === 'idTypeIdentifiant'"
+                    class="flex items-center gap-2">
+                    <form [formGroup]="editForm" (ngSubmit)="saveEdit(societe)" class="flex items-center gap-2">
+                      <select formControlName="newValue"
+                        class="border p-1 rounded focus:ring-2 focus:ring-blue-300 text-xs w-32">
+                        <option *ngFor="let typeIdentifiant of typeIdentifiantList" [value]="typeIdentifiant.id">
+                          {{ typeIdentifiant.nom }}
+                        </option>
+                      </select>
+
+                      <button type="submit"
+                        class="flex items-center justify-center w-6 h-6 bg-green-500 text-white rounded-full shadow-sm hover:bg-green-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-green-300 transition-all duration-200 flex-shrink-0">
+                        <i class="fas fa-check text-xs"></i>
+                      </button>
+
+                      <button type="button" (click)="cancelEdit()"
+                        class="flex items-center justify-center w-6 h-6 bg-red-500 text-white rounded-full shadow-sm hover:bg-red-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-red-300 transition-all duration-200 flex-shrink-0">
+                        <i class="fas fa-times text-xs"></i>
+                      </button>
+                    </form>
+                  </span>
+                </div>
+              </td>
+
+              <!-- Type d'Entreprise -->
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                <div class="flex items-center">
+                  <span *ngIf="editingSociete !== societe || editingField !== 'idTypeEntreprise'"
+                    class="flex items-center gap-2">
+                    {{ societe.libelleTypeEntreprise ?? '' }}
+                    <button (click)="enableEdit(societe, 'idTypeEntreprise')"
+                      class="flex items-center justify-center w-6 h-6 bg-blue-500 text-white rounded-full shadow-sm hover:bg-blue-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-blue-300 transition-all duration-200 flex-shrink-0">
+                      <i class="fas fa-edit text-xs"></i>
+                    </button>
+                  </span>
+
+                  <span *ngIf="editingSociete === societe && editingField === 'idTypeEntreprise'"
+                    class="flex items-center gap-2">
+                    <form [formGroup]="editForm" (ngSubmit)="saveEdit(societe)" class="flex items-center gap-2">
+                      <select formControlName="newValue"
+                        class="border p-1 rounded focus:ring-2 focus:ring-blue-300 text-xs w-32">
+                        <option *ngFor="let typeEntreprise of typeEntrepriseList" [value]="typeEntreprise.id">
+                          {{ typeEntreprise.nom }}
+                        </option>
+                      </select>
+
+                      <button type="submit"
+                        class="flex items-center justify-center w-6 h-6 bg-green-500 text-white rounded-full shadow-sm hover:bg-green-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-green-300 transition-all duration-200 flex-shrink-0">
+                        <i class="fas fa-check text-xs"></i>
+                      </button>
+
+                      <button type="button" (click)="cancelEdit()"
+                        class="flex items-center justify-center w-6 h-6 bg-red-500 text-white rounded-full shadow-sm hover:bg-red-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-red-300 transition-all duration-200 flex-shrink-0">
+                        <i class="fas fa-times text-xs"></i>
+                      </button>
+                    </form>
+                  </span>
+                </div>
+              </td>
+
+              <!-- Type de Projet -->
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                <div class="flex items-center">
+                  <span *ngIf="editingSociete !== societe || editingField !== 'idTypeProjet'"
+                    class="flex items-center gap-2">
+                    {{ societe.libelleTypeProjet ?? '' }}
+                    <button (click)="enableEdit(societe, 'idTypeProjet')"
+                      class="flex items-center justify-center w-6 h-6 bg-blue-500 text-white rounded-full shadow-sm hover:bg-blue-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-blue-300 transition-all duration-200 flex-shrink-0">
+                      <i class="fas fa-edit text-xs"></i>
+                    </button>
+                  </span>
+
+                  <span *ngIf="editingSociete === societe && editingField === 'idTypeProjet'"
+                    class="flex items-center gap-2">
+                    <form [formGroup]="editForm" (ngSubmit)="saveEdit(societe)" class="flex items-center gap-2">
+                      <select formControlName="newValue"
+                        class="border p-1 rounded focus:ring-2 focus:ring-blue-300 text-xs w-32">
+                        <option *ngFor="let typeProjet of typeProjetList" [value]="typeProjet.id">
+                          {{ typeProjet.nom }}
+                        </option>
+                      </select>
+
+                      <button type="submit"
+                        class="flex items-center justify-center w-6 h-6 bg-green-500 text-white rounded-full shadow-sm hover:bg-green-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-green-300 transition-all duration-200 flex-shrink-0">
+                        <i class="fas fa-check text-xs"></i>
+                      </button>
+
+                      <button type="button" (click)="cancelEdit()"
+                        class="flex items-center justify-center w-6 h-6 bg-red-500 text-white rounded-full shadow-sm hover:bg-red-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-red-300 transition-all duration-200 flex-shrink-0">
+                        <i class="fas fa-times text-xs"></i>
+                      </button>
+                    </form>
+                  </span>
+                </div>
+              </td>
+
+              <!-- Paramètre RSM620 -->
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                <div class="flex items-center">
+                  <span *ngIf="editingSociete !== societe || editingField !== 'idParametreRSM620'"
+                    class="flex items-center gap-2">
+                    {{ societe.libelleParametreRSM620 ?? '' }}
+                    <button (click)="enableEdit(societe, 'idParametreRSM620')"
+                      class="flex items-center justify-center w-6 h-6 bg-blue-500 text-white rounded-full shadow-sm hover:bg-blue-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-blue-300 transition-all duration-200 flex-shrink-0">
+                      <i class="fas fa-edit text-xs"></i>
+                    </button>
+                  </span>
+
+                  <span *ngIf="editingSociete === societe && editingField === 'idParametreRSM620'"
+                    class="flex items-center gap-2">
+                    <form [formGroup]="editForm" (ngSubmit)="saveEdit(societe)" class="flex items-center gap-2">
+                      <select formControlName="newValue"
+                        class="border p-1 rounded focus:ring-2 focus:ring-blue-300 text-xs w-32">
+                        <option *ngFor="let parametreRSM620 of parametreRSM620List" [value]="parametreRSM620.id">
+                          {{ parametreRSM620.nom }}
+                        </option>
+                      </select>
+
+                      <button type="submit"
+                        class="flex items-center justify-center w-6 h-6 bg-green-500 text-white rounded-full shadow-sm hover:bg-green-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-green-300 transition-all duration-200 flex-shrink-0">
+                        <i class="fas fa-check text-xs"></i>
+                      </button>
+
+                      <button type="button" (click)="cancelEdit()"
+                        class="flex items-center justify-center w-6 h-6 bg-red-500 text-white rounded-full shadow-sm hover:bg-red-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-red-300 transition-all duration-200 flex-shrink-0">
+                        <i class="fas fa-times text-xs"></i>
+                      </button>
+                    </form>
+                  </span>
+                </div>
+              </td>
+
+              <!-- Paramètre RNLPA870 -->
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                <div class="flex items-center">
+                  <span *ngIf="editingSociete !== societe || editingField !== 'idParametreRNLPA870'"
+                    class="flex items-center gap-2">
+                    {{ societe.libelleParametreRNLPA870 ?? '' }}
+                    <button (click)="enableEdit(societe, 'idParametreRNLPA870')"
+                      class="flex items-center justify-center w-6 h-6 bg-blue-500 text-white rounded-full shadow-sm hover:bg-blue-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-blue-300 transition-all duration-200 flex-shrink-0">
+                      <i class="fas fa-edit text-xs"></i>
+                    </button>
+                  </span>
+
+                  <span *ngIf="editingSociete === societe && editingField === 'idParametreRNLPA870'"
+                    class="flex items-center gap-2">
+                    <form [formGroup]="editForm" (ngSubmit)="saveEdit(societe)" class="flex items-center gap-2">
+                      <select formControlName="newValue"
+                        class="border p-1 rounded focus:ring-2 focus:ring-blue-300 text-xs w-32">
+                        <option *ngFor="let parametreRNL870 of parametreRNL870List" [value]="parametreRNL870.id">
+                          {{ parametreRNL870.nom }}
+                        </option>
+                      </select>
+
+                      <button type="submit"
+                        class="flex items-center justify-center w-6 h-6 bg-green-500 text-white rounded-full shadow-sm hover:bg-green-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-green-300 transition-all duration-200 flex-shrink-0">
+                        <i class="fas fa-check text-xs"></i>
+                      </button>
+
+                      <button type="button" (click)="cancelEdit()"
+                        class="flex items-center justify-center w-6 h-6 bg-red-500 text-white rounded-full shadow-sm hover:bg-red-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-red-300 transition-all duration-200 flex-shrink-0">
+                        <i class="fas fa-times text-xs"></i>
+                      </button>
+                    </form>
+                  </span>
+                </div>
+              </td>
+
+              <!-- Code Risque -->
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                <div class="flex items-center">
+                  <span *ngIf="editingSociete !== societe || editingField !== 'codeRisque'"
+                    class="flex items-center gap-2">
+                    {{ societe.codeRisque ?? '' }}
+                    <button (click)="enableEdit(societe, 'codeRisque')"
+                      class="flex items-center justify-center w-6 h-6 bg-blue-500 text-white rounded-full shadow-sm hover:bg-blue-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-blue-300 transition-all duration-200 flex-shrink-0">
+                      <i class="fas fa-edit text-xs"></i>
+                    </button>
+                  </span>
+
+                  <span *ngIf="editingSociete === societe && editingField === 'codeRisque'"
+                    class="flex items-center gap-2">
+                    <form [formGroup]="editForm" (ngSubmit)="saveEdit(societe)" class="flex items-center gap-2">
+                      <input formControlName="newValue"
+                        class="border p-1 rounded focus:ring-2 focus:ring-blue-300 w-20" />
+
+                      <button type="submit"
+                        class="flex items-center justify-center w-6 h-6 bg-green-500 text-white rounded-full shadow-sm hover:bg-green-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-green-300 transition-all duration-200 flex-shrink-0">
+                        <i class="fas fa-check text-xs"></i>
+                      </button>
+
+                      <button type="button" (click)="cancelEdit()"
+                        class="flex items-center justify-center w-6 h-6 bg-red-500 text-white rounded-full shadow-sm hover:bg-red-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-red-300 transition-all duration-200 flex-shrink-0">
+                        <i class="fas fa-times text-xs"></i>
+                      </button>
+                    </form>
+                  </span>
+                </div>
+              </td>
+
+              <!-- Date de Mise à Jour -->
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                <div class="flex items-center">
+                  <span *ngIf="editingSociete !== societe || editingField !== 'dateMaj'"
+                    class="flex items-center gap-2">
+                    {{ societe.dateMaj | date }}
+                    <button (click)="enableEdit(societe, 'dateMaj')"
+                      class="flex items-center justify-center w-6 h-6 bg-blue-500 text-white rounded-full shadow-sm hover:bg-blue-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-blue-300 transition-all duration-200 flex-shrink-0">
+                      <i class="fas fa-edit text-xs"></i>
+                    </button>
+                  </span>
+
+                  <span *ngIf="editingSociete === societe && editingField === 'dateMaj'"
+                    class="flex items-center gap-2">
+                    <form [formGroup]="editForm" (ngSubmit)="saveEdit(societe)" class="flex items-center gap-2">
+                      <input type="date" formControlName="newValue"
+                        class="border p-1 rounded focus:ring-2 focus:ring-blue-300 w-32" />
+
+                      <button type="submit"
+                        class="flex items-center justify-center w-6 h-6 bg-green-500 text-white rounded-full shadow-sm hover:bg-green-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-green-300 transition-all duration-200 flex-shrink-0">
+                        <i class="fas fa-check text-xs"></i>
+                      </button>
+
+                      <button type="button" (click)="cancelEdit()"
+                        class="flex items-center justify-center w-6 h-6 bg-red-500 text-white rounded-full shadow-sm hover:bg-red-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-red-300 transition-all duration-200 flex-shrink-0">
+                        <i class="fas fa-times text-xs"></i>
+                      </button>
+                    </form>
+                  </span>
+                </div>
+              </td>
+
+              <!-- Utilisateur -->
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                <div class="flex items-center">
+                  <span *ngIf="editingSociete !== societe || editingField !== 'utilisateur'"
+                    class="flex items-center gap-2">
+                    {{ societe.utilisateur ?? '' }}
+                    <button (click)="enableEdit(societe, 'utilisateur')"
+                      class="flex items-center justify-center w-6 h-6 bg-blue-500 text-white rounded-full shadow-sm hover:bg-blue-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-blue-300 transition-all duration-200 flex-shrink-0">
+                      <i class="fas fa-edit text-xs"></i>
+                    </button>
+                  </span>
+
+                  <span *ngIf="editingSociete === societe && editingField === 'utilisateur'"
+                    class="flex items-center gap-2">
+                    <form [formGroup]="editForm" (ngSubmit)="saveEdit(societe)" class="flex items-center gap-2">
+                      <input formControlName="newValue"
+                        class="border p-1 rounded focus:ring-2 focus:ring-blue-300 w-32" />
+
+                      <button type="submit"
+                        class="flex items-center justify-center w-6 h-6 bg-green-500 text-white rounded-full shadow-sm hover:bg-green-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-green-300 transition-all duration-200 flex-shrink-0">
+                        <i class="fas fa-check text-xs"></i>
+                      </button>
+
+                      <button type="button" (click)="cancelEdit()"
+                        class="flex items-center justify-center w-6 h-6 bg-red-500 text-white rounded-full shadow-sm hover:bg-red-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-red-300 transition-all duration-200 flex-shrink-0">
+                        <i class="fas fa-times text-xs"></i>
+                      </button>
+                    </form>
+                  </span>
+                </div>
+              </td>
+
+              <!-- Actions -->
+              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                <button (click)="deleteSociete(societe.idProjet)"
+                  class="text-red-600 hover:text-red-900">Supprimer</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Pagination -->
+      <div class="bg-white px-4 py-3 flex items-center justify-between border-t border-gray-200 sm:px-6">
+        <div class="flex-1 flex justify-between sm:hidden">
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

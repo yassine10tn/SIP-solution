@@ -1,0 +1,1353 @@
+{
+  "openapi": "3.0.4",
+  "info": {
+    "title": "WebApplication1",
+    "version": "1.0"
+  },
+  "paths": {
+    "/api/Societe/add_Societe": {
+      "post": {
+        "tags": [
+          "Societe"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Projet"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Projet"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Projet"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Projet"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Societe/downloadPdf/{id}/{type}": {
+      "get": {
+        "tags": [
+          "Societe"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "type",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Societe/get_Societe": {
+      "get": {
+        "tags": [
+          "Societe"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Societe/get_Pays": {
+      "get": {
+        "tags": [
+          "Societe"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Societe/get_Gouvernorats": {
+      "get": {
+        "tags": [
+          "Societe"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Societe/get_FormeJuridique": {
+      "get": {
+        "tags": [
+          "Societe"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Societe/get_SecteurEconomique": {
+      "get": {
+        "tags": [
+          "Societe"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Societe/get_ModeleEtatFinancier": {
+      "get": {
+        "tags": [
+          "Societe"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Societe/get_NatureProjet": {
+      "get": {
+        "tags": [
+          "Societe"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Societe/get_TypeManagement": {
+      "get": {
+        "tags": [
+          "Societe"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Societe/get_Devise": {
+      "get": {
+        "tags": [
+          "Societe"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Societe/get_TypeIdentifiant": {
+      "get": {
+        "tags": [
+          "Societe"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Societe/get_TypeProjet": {
+      "get": {
+        "tags": [
+          "Societe"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Societe/get_TypeEntreprise": {
+      "get": {
+        "tags": [
+          "Societe"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Societe/get_ParametreRSM620": {
+      "get": {
+        "tags": [
+          "Societe"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Societe/get_ParametreRNL870": {
+      "get": {
+        "tags": [
+          "Societe"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Societe/update_Societe/{id}": {
+      "put": {
+        "tags": [
+          "Societe"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProjetUpdateDto"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProjetUpdateDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProjetUpdateDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProjetUpdateDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Societe/delete_Projet/{id}": {
+      "delete": {
+        "tags": [
+          "Societe"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Societe/post_Souscription": {
+      "post": {
+        "tags": [
+          "Societe"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SouscriptionDto"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SouscriptionDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SouscriptionDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SouscriptionDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Societe/downloadBulletin/{id}": {
+      "get": {
+        "tags": [
+          "Societe"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Societe/get_Souscription": {
+      "get": {
+        "tags": [
+          "Societe"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Societe/post_Achat": {
+      "post": {
+        "tags": [
+          "Societe"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AchatDto"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AchatDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AchatDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AchatDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Societe/get_Achat": {
+      "get": {
+        "tags": [
+          "Societe"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Societe/download_CopieOrdreAchat/{id}": {
+      "get": {
+        "tags": [
+          "Societe"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Societe/post_Vente": {
+      "post": {
+        "tags": [
+          "Societe"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/VenteDto"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VenteDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VenteDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/VenteDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Societe/get_Vente": {
+      "get": {
+        "tags": [
+          "Societe"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Societe/get_TypesSouscription": {
+      "get": {
+        "tags": [
+          "Societe"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Societe/add_CAC": {
+      "post": {
+        "tags": [
+          "Societe"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CACModel"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CACModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CACModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CACModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Societe/get_CAC": {
+      "get": {
+        "tags": [
+          "Societe"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Societe/get_CAC_Nature": {
+      "get": {
+        "tags": [
+          "Societe"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Societe/add_AffectationCAC": {
+      "post": {
+        "tags": [
+          "Societe"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AffectationCACModel"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AffectationCACModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AffectationCACModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AffectationCACModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Societe/get_AffectationCAC": {
+      "get": {
+        "tags": [
+          "Societe"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Societe/get_Fonctions": {
+      "get": {
+        "tags": [
+          "Societe"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Societe/get_Situations": {
+      "get": {
+        "tags": [
+          "Societe"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Societe/add_Contact": {
+      "post": {
+        "tags": [
+          "Societe"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ListeContactModel"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ListeContactModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ListeContactModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ListeContactModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Societe/get_Contacts": {
+      "get": {
+        "tags": [
+          "Societe"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/WeatherForecast": {
+      "get": {
+        "tags": [
+          "WeatherForecast"
+        ],
+        "operationId": "GetWeatherForecast",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/WeatherForecast"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/WeatherForecast"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/WeatherForecast"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AchatDto": {
+        "type": "object",
+        "properties": {
+          "idProjet": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dateAchat": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "quantite": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "prixUnitaire": {
+            "type": "number",
+            "format": "double"
+          },
+          "signataire": {
+            "type": "string",
+            "nullable": true
+          },
+          "fonction": {
+            "type": "string",
+            "nullable": true
+          },
+          "copieOrdreAchat": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AffectationCACModel": {
+        "type": "object",
+        "properties": {
+          "affectation_ID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "idProjet": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "caC_ID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "mandat": {
+            "type": "string",
+            "nullable": true
+          },
+          "dateAffectation": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "observation": {
+            "type": "string",
+            "nullable": true
+          },
+          "numeroMandat": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "raisonSociale": {
+            "type": "string",
+            "nullable": true
+          },
+          "cabinet_Nom": {
+            "type": "string",
+            "nullable": true
+          },
+          "commissaire_NomPrenom": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CACModel": {
+        "type": "object",
+        "properties": {
+          "caC_ID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "cabinet_Nom": {
+            "type": "string",
+            "nullable": true
+          },
+          "nature_ID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "commissaire_NomPrenom": {
+            "type": "string",
+            "nullable": true
+          },
+          "cabinet_Email": {
+            "type": "string",
+            "nullable": true
+          },
+          "cabinet_Telephone": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "email1": {
+            "type": "string",
+            "nullable": true
+          },
+          "telephone1": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "email2": {
+            "type": "string",
+            "nullable": true
+          },
+          "telephone2": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ListeContactModel": {
+        "type": "object",
+        "properties": {
+          "contact_ID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nomPrenom": {
+            "type": "string",
+            "nullable": true
+          },
+          "fonction_ID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "fonction_Libelle": {
+            "type": "string",
+            "nullable": true
+          },
+          "email1": {
+            "type": "string",
+            "nullable": true
+          },
+          "telephone1": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "email2": {
+            "type": "string",
+            "nullable": true
+          },
+          "telephone2": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "idProjet": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "raisonSociale": {
+            "type": "string",
+            "nullable": true
+          },
+          "situation_ID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "situation_Libelle": {
+            "type": "string",
+            "nullable": true
+          },
+          "observation": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Projet": {
+        "type": "object",
+        "properties": {
+          "idProjet": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "identifiant": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "exIdentifiant": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "raisonSociale": {
+            "type": "string",
+            "nullable": true
+          },
+          "raisonSocialeAr": {
+            "type": "string",
+            "nullable": true
+          },
+          "libelleCourt": {
+            "type": "string",
+            "nullable": true
+          },
+          "siegeSocial": {
+            "type": "string",
+            "nullable": true
+          },
+          "siegeSocialAr": {
+            "type": "string",
+            "nullable": true
+          },
+          "mf": {
+            "type": "string",
+            "nullable": true
+          },
+          "dateCreation": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "dateDossier": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "objet": {
+            "type": "string",
+            "nullable": true
+          },
+          "objetAr": {
+            "type": "string",
+            "nullable": true
+          },
+          "telephone": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "type": "string",
+            "nullable": true
+          },
+          "dossierJuridique": {
+            "type": "string",
+            "nullable": true
+          },
+          "idPays": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "libellePays": {
+            "type": "string",
+            "nullable": true
+          },
+          "idGouvernorat": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "libelleGouvernorat": {
+            "type": "string",
+            "nullable": true
+          },
+          "idFormeJuridique": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "libelleFormeJuridique": {
+            "type": "string",
+            "nullable": true
+          },
+          "idSecteurEconomique": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "libelleSecteurEconomique": {
+            "type": "string",
+            "nullable": true
+          },
+          "idNatureProjet": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "libelleNatureProjet": {
+            "type": "string",
+            "nullable": true
+          },
+          "idTypeManagement": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "libelleTypeManagement": {
+            "type": "string",
+            "nullable": true
+          },
+          "idDevise": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "libelleDevise": {
+            "type": "string",
+            "nullable": true
+          },
+          "idTypeIdentifiant": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "libelleTypeIdentifiant": {
+            "type": "string",
+            "nullable": true
+          },
+          "idTypeEntreprise": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "libelleTypeEntreprise": {
+            "type": "string",
+            "nullable": true
+          },
+          "idTypeProjet": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "libelleTypeProjet": {
+            "type": "string",
+            "nullable": true
+          },
+          "idParametreRSM620": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "libelleParametreRSM620": {
+            "type": "string",
+            "nullable": true
+          },
+          "idParametreRNLPA870": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "libelleParametreRNLPA870": {
+            "type": "string",
+            "nullable": true
+          },
+          "codeRisque": {
+            "type": "string",
+            "nullable": true
+          },
+          "dateMaj": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "utilisateur": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ProjetUpdateDto": {
+        "type": "object",
+        "properties": {
+          "identifiant": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "exIdentifiant": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "raisonSociale": {
+            "type": "string",
+            "nullable": true
+          },
+          "raisonSocialeAr": {
+            "type": "string",
+            "nullable": true
+          },
+          "libelleCourt": {
+            "type": "string",
+            "nullable": true
+          },
+          "siegeSocial": {
+            "type": "string",
+            "nullable": true
+          },
+          "siegeSocialAr": {
+            "type": "string",
+            "nullable": true
+          },
+          "mf": {
+            "type": "string",
+            "nullable": true
+          },
+          "dateCreation": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "dateDossier": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "objet": {
+            "type": "string",
+            "nullable": true
+          },
+          "objetAr": {
+            "type": "string",
+            "nullable": true
+          },
+          "telephone": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "type": "string",
+            "nullable": true
+          },
+          "dossierJuridique": {
+            "type": "string",
+            "nullable": true
+          },
+          "idPays": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "idGouvernorat": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "idFormeJuridique": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "idSecteurEconomique": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "idNatureProjet": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "idTypeManagement": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "idDevise": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "idTypeIdentifiant": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "idTypeEntreprise": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "idTypeProjet": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "idParametreRSM620": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "idParametreRNLPA870": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "codeRisque": {
+            "type": "string",
+            "nullable": true
+          },
+          "dateMaj": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "utilisateur": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SouscriptionDto": {
+        "type": "object",
+        "properties": {
+          "idProjet": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dateSouscription": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "idTypeSouscription": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "quantite": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "prixUnitaire": {
+            "type": "number",
+            "format": "double"
+          },
+          "primeEmissionTotal": {
+            "type": "number",
+            "format": "double"
+          },
+          "signataire": {
+            "type": "string",
+            "nullable": true
+          },
+          "fonction": {
+            "type": "string",
+            "nullable": true
+          },
+          "copieBulletin": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "VenteDto": {
+        "type": "object",
+        "properties": {
+          "idProjet": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dateVente": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "quantite": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "prixUnitaire": {
+            "type": "number",
+            "format": "double"
+          },
+          "signataire": {
+            "type": "string",
+            "nullable": true
+          },
+          "fonction": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "WeatherForecast": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "format": "date"
+          },
+          "temperatureC": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "temperatureF": {
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "summary": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}

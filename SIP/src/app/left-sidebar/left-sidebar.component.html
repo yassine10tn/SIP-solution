@@ -1,29 +1,63 @@
-<div class="sidenav h-full " [ngClass]="isLeftSidebarCollapsed() ? 'sidenav-collapsed' : ''">
+<!-- left-sidebar.component.html -->
+<div class="sidenav h-full" [ngClass]="isLeftSidebarCollapsed() ? 'sidenav-collapsed' : ''">
   <div class="logo-container">
     <button class="logo" (click)="toggleCollapse()">
       <i class="fas fa-bars"></i>
     </button>
     @if (!isLeftSidebarCollapsed()) {
-          <div class="logo-text ">SI Participants</div>
-    <button class="btn-close" (click)="closeSidenav()">
-      <i class="fas fa-times close-icon"></i>
-    </button>
-
+      <div class="logo-text">SI Participants</div>
+      <button class="btn-close" (click)="closeSidenav()">
+        <i class="fas fa-times close-icon"></i>
+      </button>
     }
   </div>
 
   <div class="sidenav-nav">
     @for (item of items; track $index) {
-    <li class="sidenav-nav-item ">
-      <a class="sidenav-nav-link" [routerLink]="item.routeLink" routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: true }">
-        <i class="sidenav-link-icon" [class]="item.icon"></i>
-        @if (!isLeftSidebarCollapsed()) {
-        <span class="sidenav-link-text ">{{ item.label }}</span>
+      <li class="sidenav-nav-item" [class.has-submenu]="item.subItems" [class.open]="item.subItems && isSocieteMenuOpen">
+        @if (item.subItems) {
+          <!-- Menu avec sous-items -->
+          <a class="sidenav-nav-link" 
+             [routerLink]="item.routeLink" 
+             routerLinkActive="active"
+             [routerLinkActiveOptions]="{ exact: true }"
+             (click)="!isLeftSidebarCollapsed() && toggleSocieteMenu()">
+            <i class="sidenav-link-icon" [class]="item.icon"></i>
+            @if (!isLeftSidebarCollapsed()) {
+              <span class="sidenav-link-text">{{ item.label }}</span>
+              <i class="fas fa-chevron-down chevron-icon" [class.rotated]="isSocieteMenuOpen"></i>
+            }
+          </a>
+          
+          <!-- Sous-menu -->
+          <ul class="sidenav-submenu" [class.show]="isSocieteMenuOpen && !isLeftSidebarCollapsed()">
+            @for (subItem of item.subItems; track $index) {
+              <li class="sidenav-submenu-item">
+                <a class="sidenav-submenu-link" 
+                   [routerLink]="subItem.routeLink" 
+                   routerLinkActive="active"
+                   [routerLinkActiveOptions]="{ exact: true }">
+                  <i class="sidenav-link-icon" [class]="subItem.icon"></i>
+                  @if (!isLeftSidebarCollapsed()) {
+                    <span class="sidenav-link-text">{{ subItem.label }}</span>
+                  }
+                </a>
+              </li>
+            }
+          </ul>
+        } @else {
+          <!-- Menu simple sans sous-items -->
+          <a class="sidenav-nav-link" 
+             [routerLink]="item.routeLink" 
+             routerLinkActive="active"
+             [routerLinkActiveOptions]="{ exact: true }">
+            <i class="sidenav-link-icon" [class]="item.icon"></i>
+            @if (!isLeftSidebarCollapsed()) {
+              <span class="sidenav-link-text">{{ item.label }}</span>
+            }
+          </a>
         }
-
-      </a>
-    </li>
+      </li>
     }
   </div>
 </div>
