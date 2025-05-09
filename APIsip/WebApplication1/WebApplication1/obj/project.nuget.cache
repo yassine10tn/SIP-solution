@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "fKfjL9Jmwik=",
+  "dgSpecHash": "+mj7YlOQtbs=",
   "success": true,
   "projectFilePath": "C:\\Users\\Yassine\\Pictures\\SIParticipations-SIP-version-1\\SIParticipations-SIP-version-1\\APIsip\\WebApplication1\\WebApplication1\\WebApplication1.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Yassine\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\Yassine\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\9.0.3\\microsoft.aspnetcore.jsonpatch.9.0.3.nupkg.sha512",
     "C:\\Users\\Yassine\\.nuget\\packages\\microsoft.aspnetcore.mvc.newtonsoftjson\\9.0.3\\microsoft.aspnetcore.mvc.newtonsoftjson.9.0.3.nupkg.sha512",
     "C:\\Users\\Yassine\\.nuget\\packages\\microsoft.aspnetcore.openapi\\9.0.3\\microsoft.aspnetcore.openapi.9.0.3.nupkg.sha512",

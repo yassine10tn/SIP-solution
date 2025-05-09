@@ -1,5 +1,399 @@
 [
   {
+    "ContainingType": "WebApplication1.Controllers.ActionnaireController",
+    "Method": "AddActionnaire",
+    "RelativePath": "api/Actionnaire/add_Actionnaire",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "actionnaireDto",
+        "Type": "WebApplication1.Models.ActionnaireDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApplication1.Controllers.ActionnaireController",
+    "Method": "AddActionnaireSTB",
+    "RelativePath": "api/Actionnaire/add_ActionnaireSTB",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "actionnaireDto",
+        "Type": "WebApplication1.Models.ActionnaireSTBDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApplication1.Controllers.ActionnaireController",
+    "Method": "AddCapital",
+    "RelativePath": "api/Actionnaire/add_Capital",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "capitalDto",
+        "Type": "WebApplication1.Models.CapitalDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApplication1.Controllers.ActionnaireController",
+    "Method": "GetActionnaire",
+    "RelativePath": "api/Actionnaire/get_Actionnaire",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApplication1.Controllers.ActionnaireController",
+    "Method": "GetActionnaireSTB",
+    "RelativePath": "api/Actionnaire/get_ActionnaireSTB",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApplication1.Controllers.ActionnaireController",
+    "Method": "GetActionnaireSTBByProjet",
+    "RelativePath": "api/Actionnaire/get_ActionnaireSTBByProjet/{idProjet}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "idProjet",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApplication1.Controllers.ActionnaireController",
+    "Method": "GetAllActionnairesByProjet",
+    "RelativePath": "api/Actionnaire/get_AllActionnairesByProjet/{idProjet}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "idProjet",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApplication1.Controllers.ActionnaireController",
+    "Method": "GetCapital",
+    "RelativePath": "api/Actionnaire/get_Capital",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApplication1.Controllers.ActionnaireController",
+    "Method": "GetNationalites",
+    "RelativePath": "api/Actionnaire/get_Nationalites",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApplication1.Controllers.ActionnaireController",
+    "Method": "GetNaturesActionnaire",
+    "RelativePath": "api/Actionnaire/get_NaturesActionnaire",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApplication1.Controllers.ActionnaireController",
+    "Method": "GetTypesActionnaire",
+    "RelativePath": "api/Actionnaire/get_TypesActionnaire",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApplication1.Controllers.ActionnaireController",
+    "Method": "GetCountActionnairesByNationalite",
+    "RelativePath": "api/Actionnaire/get-count-actionnaires-nationalite",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApplication1.Controllers.ActionnaireController",
+    "Method": "GetTotalActionnaires",
+    "RelativePath": "api/Actionnaire/get-total-actionnaires",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApplication1.Controllers.ChatbotController",
+    "Method": "AskQuestion",
+    "RelativePath": "api/Chatbot/ask",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "question",
+        "Type": "WebApplication1.Controllers.ChatQuestion",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApplication1.Controllers.ReunionController",
+    "Method": "CheckRepresentative",
+    "RelativePath": "api/Reunion/check-representative/{idProjet}/{idReunion}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "idProjet",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "idReunion",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApplication1.Controllers.ReunionController",
+    "Method": "CreateRepPerma",
+    "RelativePath": "api/Reunion/create-repperma",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "repPermaDto",
+        "Type": "WebApplication1.Controllers.ReunionController\u002BRepPermaCreateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApplication1.Controllers.ReunionController",
+    "Method": "CreateRepPonct",
+    "RelativePath": "api/Reunion/create-repponct",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "repPonctDto",
+        "Type": "WebApplication1.Controllers.ReunionController\u002BRepPonctCreateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApplication1.Controllers.ReunionController",
+    "Method": "CreateReunion",
+    "RelativePath": "api/Reunion/create-reunion",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "reunionDto",
+        "Type": "WebApplication1.Controllers.ReunionController\u002BReunionCreateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApplication1.Controllers.ReunionController",
+    "Method": "CreateSuiviReunion",
+    "RelativePath": "api/Reunion/create-suivireunion",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "suiviReunionDto",
+        "Type": "WebApplication1.Controllers.ReunionController\u002BSuiviReunionCreateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApplication1.Controllers.ReunionController",
+    "Method": "DownloadDocument",
+    "RelativePath": "api/Reunion/download-document/{idSuivi}/{type}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "idSuivi",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "type",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApplication1.Controllers.ReunionController",
+    "Method": "GetAllRepPerma",
+    "RelativePath": "api/Reunion/get-all-repperma",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApplication1.Controllers.ReunionController",
+    "Method": "GetAllRepPonct",
+    "RelativePath": "api/Reunion/get-all-repponct",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApplication1.Controllers.ReunionController",
+    "Method": "GetAllReunion",
+    "RelativePath": "api/Reunion/get-all-reunion",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApplication1.Controllers.ReunionController",
+    "Method": "GetAllSuiviReunion",
+    "RelativePath": "api/Reunion/get-all-suivireunion",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApplication1.Controllers.ReunionController",
+    "Method": "GetAllTypeReunion",
+    "RelativePath": "api/Reunion/get-all-typereunion",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApplication1.Controllers.ReunionController",
+    "Method": "GetAllUtilisateurRep",
+    "RelativePath": "api/Reunion/get-all-utilisateurrep",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApplication1.Controllers.ReunionController",
+    "Method": "GetReunionByProjetAndType",
+    "RelativePath": "api/Reunion/get-reunion-by-projet-and-type/{idProjet}/{typeR}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "idProjet",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "typeR",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApplication1.Controllers.ReunionController",
+    "Method": "GetReunionCount",
+    "RelativePath": "api/Reunion/get-reunion-count",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApplication1.Controllers.ReunionController",
+    "Method": "UpdateSuiviReunion",
+    "RelativePath": "api/Reunion/update-suivireunion/{idSuivi}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "idSuivi",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "suiviDto",
+        "Type": "WebApplication1.Controllers.ReunionController\u002BSuiviReunionUpdateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "WebApplication1.Controllers.SocieteController",
     "Method": "AddAffectationCAC",
     "RelativePath": "api/Societe/add_AffectationCAC",
@@ -61,6 +455,26 @@
         "IsRequired": true
       }
     ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApplication1.Controllers.SocieteController",
+    "Method": "Count_CAC",
+    "RelativePath": "api/Societe/Count_CAC",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApplication1.Controllers.SocieteController",
+    "Method": "Count_societe",
+    "RelativePath": "api/Societe/Count_societe",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": []
   },
   {
@@ -224,6 +638,32 @@
   },
   {
     "ContainingType": "WebApplication1.Controllers.SocieteController",
+    "Method": "GetLiberation",
+    "RelativePath": "api/Societe/get_Liberation",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApplication1.Controllers.SocieteController",
+    "Method": "GetLiberationByProjet",
+    "RelativePath": "api/Societe/get_LiberationByProjet/{idProjet}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "idProjet",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApplication1.Controllers.SocieteController",
     "Method": "GetModeleEtatFinancier",
     "RelativePath": "api/Societe/get_ModeleEtatFinancier",
     "HttpMethod": "GET",
@@ -314,6 +754,22 @@
   },
   {
     "ContainingType": "WebApplication1.Controllers.SocieteController",
+    "Method": "GetSouscriptionByProjet",
+    "RelativePath": "api/Societe/get_SouscriptionByProjet/{idProjet}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "idProjet",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApplication1.Controllers.SocieteController",
     "Method": "GetTypeEntreprise",
     "RelativePath": "api/Societe/get_TypeEntreprise",
     "HttpMethod": "GET",
@@ -374,6 +830,86 @@
   },
   {
     "ContainingType": "WebApplication1.Controllers.SocieteController",
+    "Method": "GetAchatsCount",
+    "RelativePath": "api/Societe/get-achats-count",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApplication1.Controllers.SocieteController",
+    "Method": "GetContactsCount",
+    "RelativePath": "api/Societe/get-contacts-count",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApplication1.Controllers.SocieteController",
+    "Method": "GetLiberationsCount",
+    "RelativePath": "api/Societe/get-liberations-count",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApplication1.Controllers.SocieteController",
+    "Method": "GetMontantAchatsParSecteur",
+    "RelativePath": "api/Societe/get-montant-achats-par-secteur",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApplication1.Controllers.SocieteController",
+    "Method": "GetMontantParGouvernorat",
+    "RelativePath": "api/Societe/get-montant-par-gouvernorat",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApplication1.Controllers.SocieteController",
+    "Method": "GetSouscriptionsCount",
+    "RelativePath": "api/Societe/get-souscriptions-count",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApplication1.Controllers.SocieteController",
+    "Method": "GetTauxSouscriptionParMois2025",
+    "RelativePath": "api/Societe/get-taux-souscription-par-mois-2025",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApplication1.Controllers.SocieteController",
+    "Method": "GetVentesCount",
+    "RelativePath": "api/Societe/get-ventes-count",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApplication1.Controllers.SocieteController",
     "Method": "PostAchat",
     "RelativePath": "api/Societe/post_Achat",
     "HttpMethod": "POST",
@@ -383,6 +919,22 @@
       {
         "Name": "achatDto",
         "Type": "WebApplication1.Models.AchatDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApplication1.Controllers.SocieteController",
+    "Method": "PostLiberation",
+    "RelativePath": "api/Societe/post_Liberation",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "liberationDto",
+        "Type": "WebApplication1.Models.LiberationDto",
         "IsRequired": true
       }
     ],
@@ -436,6 +988,120 @@
       {
         "Name": "projetUpdate",
         "Type": "WebApplication1.Models.ProjetUpdateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApplication1.Controllers.UtilisateurController",
+    "Method": "CreateInitialUsers",
+    "RelativePath": "api/Utilisateur/create-initial-users",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApplication1.Controllers.UtilisateurController",
+    "Method": "CreateRepresentant",
+    "RelativePath": "api/Utilisateur/create-representant",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "createDto",
+        "Type": "WebApplication1.Controllers.UtilisateurController\u002BCreateRepresentantDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApplication1.Controllers.UtilisateurController",
+    "Method": "CreateUser",
+    "RelativePath": "api/Utilisateur/create-user",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "createDto",
+        "Type": "WebApplication1.Controllers.UtilisateurController\u002BCreateUserDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApplication1.Controllers.UtilisateurController",
+    "Method": "DeleteUser",
+    "RelativePath": "api/Utilisateur/delete-user/{matricule}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "matricule",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApplication1.Controllers.UtilisateurController",
+    "Method": "GetAllUserStatus",
+    "RelativePath": "api/Utilisateur/get-all-status",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApplication1.Controllers.UtilisateurController",
+    "Method": "GetAllUsers",
+    "RelativePath": "api/Utilisateur/get-all-users",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApplication1.Controllers.UtilisateurController",
+    "Method": "GetRepresentantsMatriculesSimple",
+    "RelativePath": "api/Utilisateur/get-representants-matricules-simple",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApplication1.Controllers.UtilisateurController",
+    "Method": "GetUsersCount",
+    "RelativePath": "api/Utilisateur/get-users-count",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApplication1.Controllers.UtilisateurController",
+    "Method": "Login",
+    "RelativePath": "api/Utilisateur/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "loginDto",
+        "Type": "WebApplication1.Models.LoginDto",
         "IsRequired": true
       }
     ],

@@ -1,0 +1,461 @@
+<div class="min-h-screen py-8 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-8xl mx-auto">
+    <div class="bg-white shadow-xl rounded-2xl overflow-hidden border border-gray-200 hover:shadow-2xl transition-shadow duration-300">
+      <!-- Header with white background -->
+      <div class="bg-white px-8 py-6 border-b border-gray-200">
+        <div class="flex justify-between items-center">
+          <div class="flex items-center">
+            <!-- Title with circular blue icon -->
+            <div class="bg-blue-100 p-3 rounded-full mr-4">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-600" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+            </div>
+            <div>
+              <h1 class="text-2xl font-bold text-gray-800">Suivi des réunions</h1>
+              <p class="text-sm text-gray-500 mt-1">
+                Détails et documents des réunions par société
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Filter -->
+      <div class="px-8 py-6 border-b border-gray-200">
+        <h2 class="text-xl font-bold text-gray-800 mb-4">Filtrer les réunions</h2>
+        <div class="flex items-center">
+          <label for="resultSociete" class="block text-sm font-medium text-gray-700 mr-4">Filtrer par société :</label>
+          <select id="resultSociete" [(ngModel)]="selectedResultSociete" (change)="filterTables()"
+            class="mt-1 block w-1/4 rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm p-3 border bg-white">
+            <option value="">Toutes les sociétés</option>
+            <option *ngFor="let company of companies" [value]="company.raisonSociale">{{company.raisonSociale}}</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Table 1: Suivi d'une réunion -->
+      <div class="px-8 py-6">
+        <h3 class="text-lg font-semibold text-gray-800 mb-4">Suivi d'une réunion</h3>
+        <div class="overflow-x-auto">
+          <table class="min-w-full divide-y divide-gray-200">
+            <thead class="bg-gray-50">
+              <tr>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Société</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Type Réunion</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date Réunion</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Pouvoir Permanent</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Représentant STB Présent</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tenue Réunion</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Motif Remplacement</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Motif Annulation</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Observation</th>
+              </tr>
+            </thead>
+            <tbody class="bg-white divide-y divide-gray-200">
+              <tr *ngFor="let meeting of filteredTenueMeetings; let i = index">
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{meeting.raisonSociale}}</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{meeting.typeR}}</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{meeting.dateReunion ? (meeting.dateReunion | date:'dd/MM/yyyy') : '-'}}</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{meeting.nomPrenomPerma || '-'}}</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{meeting.nomPrenomPonct || '-'}}</td>
+                
+                <!-- Tenue Réunion -->
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                  <div class="flex items-center">
+                    <span *ngIf="!meeting.isEditing.tenueReunion">{{meeting.tenueReunion || '-'}}</span>
+                    <button *ngIf="!meeting.isEditing.tenueReunion" (click)="toggleEdit(i, 'tenueReunion', 'tenue')"
+                      class="ml-2 text-blue-600 hover:text-blue-900">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                      </svg>
+                    </button>
+                    <div *ngIf="meeting.isEditing.tenueReunion" class="flex items-center">
+                      <select [(ngModel)]="meeting.tenueReunion"
+                        class="w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm p-2 border">
+                        <option value="Oui">Oui</option>
+                        <option value="Non">Non</option>
+                      </select>
+                      <button (click)="confirmFieldUpdate(i, 'tenueReunion', 'tenue')"
+                        class="ml-2 text-green-600 hover:text-green-900">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                      </button>
+                      <button (click)="cancelEdit(i, 'tenueReunion', 'tenue')"
+                        class="ml-2 text-red-600 hover:text-red-900">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                </td>
+                
+                <!-- Motif Remplacement -->
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                  <div class="flex items-center">
+                    <span *ngIf="!meeting.isEditing.motifReplacement">{{meeting.motifReplacement || '-'}}</span>
+                    <button *ngIf="!meeting.isEditing.motifReplacement" (click)="toggleEdit(i, 'motifReplacement', 'tenue')"
+                      class="ml-2 text-blue-600 hover:text-blue-900">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                      </svg>
+                    </button>
+                    <div *ngIf="meeting.isEditing.motifReplacement" class="flex items-center">
+                      <input type="text" [(ngModel)]="meeting.motifReplacement"
+                        class="w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm p-2 border">
+                      <button (click)="confirmFieldUpdate(i, 'motifReplacement', 'tenue')"
+                        class="ml-2 text-green-600 hover:text-green-900">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                      </button>
+                      <button (click)="cancelEdit(i, 'motifReplacement', 'tenue')"
+                        class="ml-2 text-red-600 hover:text-red-900">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                </td>
+                
+                <!-- Motif Annulation -->
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                  <div class="flex items-center">
+                    <span *ngIf="!meeting.isEditing.tenueMotifAnnulation">{{meeting.tenueMotifAnnulation || '-'}}</span>
+                    <button *ngIf="!meeting.isEditing.tenueMotifAnnulation" (click)="toggleEdit(i, 'tenueMotifAnnulation', 'tenue')"
+                      class="ml-2 text-blue-600 hover:text-blue-900">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                      </svg>
+                    </button>
+                    <div *ngIf="meeting.isEditing.tenueMotifAnnulation" class="flex items-center">
+                      <input type="text" [(ngModel)]="meeting.tenueMotifAnnulation"
+                        class="w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm p-2 border">
+                      <button (click)="confirmFieldUpdate(i, 'tenueMotifAnnulation', 'tenue')"
+                        class="ml-2 text-green-600 hover:text-green-900">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                      </button>
+                      <button (click)="cancelEdit(i, 'tenueMotifAnnulation', 'tenue')"
+                        class="ml-2 text-red-600 hover:text-red-900">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                </td>
+                
+                <!-- Observation -->
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                  <div class="flex items-center">
+                    <span *ngIf="!meeting.isEditing.observation">{{meeting.observation || '-'}}</span>
+                    <button *ngIf="!meeting.isEditing.observation" (click)="toggleEdit(i, 'observation', 'tenue')"
+                      class="ml-2 text-blue-600 hover:text-blue-900">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                      </svg>
+                    </button>
+                    <div *ngIf="meeting.isEditing.observation" class="flex items-center">
+                      <textarea [(ngModel)]="meeting.observation" rows="2"
+                        class="w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm p-2 border"></textarea>
+                      <div class="flex flex-col ml-2">
+                        <button (click)="confirmFieldUpdate(i, 'observation', 'tenue')"
+                          class="text-green-600 hover:text-green-900 mb-1">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                          </svg>
+                        </button>
+                        <button (click)="cancelEdit(i, 'observation', 'tenue')"
+                          class="text-red-600 hover:text-red-900">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Table 2: Suivi des documents de la réunion -->
+      <div class="px-8 py-6">
+        <h3 class="text-lg font-semibold text-gray-800 mb-4">Suivi des documents de la réunion</h3>
+        <div class="overflow-x-auto">
+          <table class="min-w-full divide-y divide-gray-200">
+            <thead class="bg-gray-50">
+              <tr>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Société</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Type Réunion</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date Réunion</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date 1er Rappel CR</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date 2e Rappel CR</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Document CR</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date 1er Rappel PV</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date 2e Rappel PV</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Document PV</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Autre Document</th>
+              </tr>
+            </thead>
+            <tbody class="bg-white divide-y divide-gray-200">
+              <tr *ngFor="let meeting of filteredSuiviMeetings; let i = index">
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{meeting.raisonSociale}}</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{meeting.typeR}}</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{meeting.dateReunion ? (meeting.dateReunion | date:'dd/MM/yyyy') : '-'}}</td>
+                
+                <!-- Date 1er Rappel CR -->
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                  <div class="flex items-center">
+                    <span *ngIf="!meeting.isEditing.datePremierRappelCR">{{meeting.datePremierRappelCR ? (meeting.datePremierRappelCR | date:'dd/MM/yyyy') : '-'}}</span>
+                    <button *ngIf="!meeting.isEditing.datePremierRappelCR" (click)="toggleEdit(i, 'datePremierRappelCR', 'suivi')"
+                      class="ml-2 text-blue-600 hover:text-blue-900">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                      </svg>
+                    </button>
+                    <div *ngIf="meeting.isEditing.datePremierRappelCR" class="flex items-center">
+                      <input type="date" [(ngModel)]="meeting.datePremierRappelCR"
+                        class="w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm p-2 border">
+                      <button (click)="confirmFieldUpdate(i, 'datePremierRappelCR', 'suivi')"
+                        class="ml-2 text-green-600 hover:text-green-900">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                      </button>
+                      <button (click)="cancelEdit(i, 'datePremierRappelCR', 'suivi')"
+                        class="ml-2 text-red-600 hover:text-red-900">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                </td>
+                
+                <!-- Date 2e Rappel CR -->
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                  <div class="flex items-center">
+                    <span *ngIf="!meeting.isEditing.dateDeuxiemeRappelCR">{{meeting.dateDeuxiemeRappelCR ? (meeting.dateDeuxiemeRappelCR | date:'dd/MM/yyyy') : '-'}}</span>
+                    <button *ngIf="!meeting.isEditing.dateDeuxiemeRappelCR" (click)="toggleEdit(i, 'dateDeuxiemeRappelCR', 'suivi')"
+                      class="ml-2 text-blue-600 hover:text-blue-900">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                      </svg>
+                    </button>
+                    <div *ngIf="meeting.isEditing.dateDeuxiemeRappelCR" class="flex items-center">
+                      <input type="date" [(ngModel)]="meeting.dateDeuxiemeRappelCR"
+                        class="w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm p-2 border">
+                      <button (click)="confirmFieldUpdate(i, 'dateDeuxiemeRappelCR', 'suivi')"
+                        class="ml-2 text-green-600 hover:text-green-900">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                      </button>
+                      <button (click)="cancelEdit(i, 'dateDeuxiemeRappelCR', 'suivi')"
+                        class="ml-2 text-red-600 hover:text-red-900">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                </td>
+                
+                <!-- Document CR -->
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                  <div class="flex items-center">
+                    <span *ngIf="!meeting.isEditing.documentAJoindreCR">
+                      {{meeting.documentAJoindreCR || '-'}}
+                      <button *ngIf="meeting.docCRBase64" (click)="downloadDocument(meeting.idSuivi, 'DocCR', meeting.documentAJoindreCR)"
+                        class="ml-2 text-blue-600 hover:text-blue-900">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                        </svg>
+                      </button>
+                    </span>
+                    
+                    <div *ngIf="meeting.isEditing.documentAJoindreCR" class="flex items-center space-x-2">
+                      <input type="file" (change)="onDocumentSelected($event, i, 'CR')"
+                        class="w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm p-2 border">
+                      
+                      <button (click)="confirmFieldUpdate(i, 'documentAJoindreCR', 'suivi')"
+                        class="text-green-600 hover:text-green-900" [disabled]="!meeting.docCRBase64">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                      </button>
+                      
+                      <button (click)="cancelEdit(i, 'documentAJoindreCR', 'suivi')"
+                        class="text-red-600 hover:text-red-900">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                      </button>
+                    </div>
+                    
+                    <button *ngIf="!meeting.isEditing.documentAJoindreCR" (click)="toggleEdit(i, 'documentAJoindreCR', 'suivi')"
+                      class="ml-2 text-blue-600 hover:text-blue-900">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                      </svg>
+                    </button>
+                  </div>
+                </td>
+                
+                <!-- Date 1er Rappel PV -->
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                  <div class="flex items-center">
+                    <span *ngIf="!meeting.isEditing.datePremierRappelPV">{{meeting.datePremierRappelPV ? (meeting.datePremierRappelPV | date:'dd/MM/yyyy') : '-'}}</span>
+                    <button *ngIf="!meeting.isEditing.datePremierRappelPV" (click)="toggleEdit(i, 'datePremierRappelPV', 'suivi')"
+                      class="ml-2 text-blue-600 hover:text-blue-900">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                      </svg>
+                    </button>
+                    <div *ngIf="meeting.isEditing.datePremierRappelPV" class="flex items-center">
+                      <input type="date" [(ngModel)]="meeting.datePremierRappelPV"
+                        class="w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm p-2 border">
+                      <button (click)="confirmFieldUpdate(i, 'datePremierRappelPV', 'suivi')"
+                        class="ml-2 text-green-600 hover:text-green-900">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                      </button>
+                      <button (click)="cancelEdit(i, 'datePremierRappelPV', 'suivi')"
+                        class="ml-2 text-red-600 hover:text-red-900">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                </td>
+                
+                <!-- Date 2e Rappel PV -->
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                  <div class="flex items-center">
+                    <span *ngIf="!meeting.isEditing.dateDeuxiemeRappelPV">{{meeting.dateDeuxiemeRappelPV ? (meeting.dateDeuxiemeRappelPV | date:'dd/MM/yyyy') : '-'}}</span>
+                    <button *ngIf="!meeting.isEditing.dateDeuxiemeRappelPV" (click)="toggleEdit(i, 'dateDeuxiemeRappelPV', 'suivi')"
+                      class="ml-2 text-blue-600 hover:text-blue-900">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                      </svg>
+                    </button>
+                    <div *ngIf="meeting.isEditing.dateDeuxiemeRappelPV" class="flex items-center">
+                      <input type="date" [(ngModel)]="meeting.dateDeuxiemeRappelPV"
+                        class="w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm p-2 border">
+                      <button (click)="confirmFieldUpdate(i, 'dateDeuxiemeRappelPV', 'suivi')"
+                        class="ml-2 text-green-600 hover:text-green-900">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                      </button>
+                      <button (click)="cancelEdit(i, 'dateDeuxiemeRappelPV', 'suivi')"
+                        class="ml-2 text-red-600 hover:text-red-900">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                </td>
+                
+                <!-- Document PV -->
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                  <div class="flex items-center">
+                    <span *ngIf="!meeting.isEditing.documentAJoindrePV">
+                      {{meeting.documentAJoindrePV || '-'}}
+                      <button *ngIf="meeting.docPVBase64" (click)="downloadDocument(meeting.idSuivi, 'DocPV', meeting.documentAJoindrePV)"
+                        class="ml-2 text-blue-600 hover:text-blue-900" title="Télécharger">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                        </svg>
+                      </button>
+                    </span>
+                    
+                    <div *ngIf="meeting.isEditing.documentAJoindrePV" class="flex items-center space-x-2">
+                      <input type="file" (change)="onDocumentSelected($event, i, 'PV')" accept=".pdf,.doc,.docx,.jpg,.png"
+                        class="w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm p-2 border">
+                      
+                      <button (click)="confirmFieldUpdate(i, 'documentAJoindrePV', 'suivi')"
+                        class="text-green-600 hover:text-green-900" [disabled]="!meeting.docPVBase64" title="Enregistrer">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                      </button>
+                      
+                      <button (click)="cancelEdit(i, 'documentAJoindrePV', 'suivi')"
+                        class="text-red-600 hover:text-red-900" title="Annuler">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                      </button>
+                    </div>
+                    
+                    <button *ngIf="!meeting.isEditing.documentAJoindrePV" (click)="toggleEdit(i, 'documentAJoindrePV', 'suivi')"
+                      class="ml-2 text-blue-600 hover:text-blue-900" title="Modifier">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                      </svg>
+                    </button>
+                  </div>
+                </td>
+                
+                <!-- Autre Document -->
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                  <div class="flex items-center">
+                    <span *ngIf="!meeting.isEditing.autreDocument">
+                      {{meeting.autreDocument || '-'}}
+                      <button *ngIf="meeting.autreDocBase64" (click)="downloadDocument(meeting.idSuivi, 'AutreDoc', meeting.autreDocument)"
+                        class="ml-2 text-blue-600 hover:text-blue-900" title="Télécharger">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                        </svg>
+                      </button>
+                    </span>
+                    
+                    <div *ngIf="meeting.isEditing.autreDocument" class="flex items-center space-x-2">
+                      <input type="file" (change)="onDocumentSelected($event, i, 'autre')" accept=".pdf,.doc,.docx,.jpg,.png"
+                        class="w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm p-2 border">
+                      
+                      <button (click)="confirmFieldUpdate(i, 'autreDocument', 'suivi')"
+                        class="text-green-600 hover:text-green-900" [disabled]="!meeting.autreDocBase64" title="Enregistrer">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                      </button>
+                      
+                      <button (click)="cancelEdit(i, 'autreDocument', 'suivi')"
+                        class="text-red-600 hover:text-red-900" title="Annuler">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                      </button>
+                    </div>
+                    
+                    <button *ngIf="!meeting.isEditing.autreDocument" (click)="toggleEdit(i, 'autreDocument', 'suivi')"
+                      class="ml-2 text-blue-600 hover:text-blue-900" title="Modifier">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                      </svg>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

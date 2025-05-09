@@ -1,0 +1,390 @@
+<div class="min-h-screen py-8 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-8xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden">
+    <!-- Header with white background -->
+    <!-- Header with white background -->
+    <div class="bg-white px-8 py-6 border-b border-gray-200">
+      <div class="flex justify-between items-center">
+        <div class="flex items-center">
+          <!-- Title with circular blue icon (matching example) -->
+          <div class="bg-blue-100 p-3 rounded-full mr-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-600" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M9 17v-6h6v6m2 4H7a2 2 0 01-2-2V7a2 2 0 012-2h3V4a1 1 0 011-1h2a1 1 0 011 1v1h3a2 2 0 012 2v12a2 2 0 01-2 2z" />
+            </svg>
+          </div>
+          <div>
+            <h1 class="text-2xl font-bold text-gray-800">Gestion des représentants</h1>
+            <p class="text-sm text-gray-500 mt-1">
+              {{ isPermanent ? 'Représentants permanents' : 'Représentants ponctuels' }}
+            </p>
+          </div>
+        </div>
+        <button (click)="onGenerateList()"
+          class="flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all shadow-sm">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+          </svg>
+          Exporter
+        </button>
+      </div>
+    </div>
+
+    <div class="p-8">
+      <!-- Onglets améliorés -->
+      <div class="flex mb-8 border-b border-gray-200">
+        <button [class]="isPermanent ? 'border-b-2 border-blue-500 text-blue-600' : 'text-gray-500 hover:text-gray-700'"
+          class="px-6 py-3 font-medium text-sm focus:outline-none flex items-center" (click)="isPermanent = true">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+          </svg>
+          Permanent
+        </button>
+        <button
+          [class]="!isPermanent ? 'border-b-2 border-blue-500 text-blue-600' : 'text-gray-500 hover:text-gray-700'"
+          class="px-6 py-3 font-medium text-sm focus:outline-none flex items-center" (click)="isPermanent = false">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          Ponctuel
+        </button>
+      </div>
+
+      <!-- Carte d'information contextuelle -->
+      <div *ngIf="isPermanent" class="mb-6 p-4 bg-blue-50 border-l-4 border-blue-400 rounded-r">
+        <div class="flex">
+          <div class="flex-shrink-0">
+            <svg class="h-5 w-5 text-blue-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+              fill="currentColor">
+              <path fill-rule="evenodd"
+                d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2h-1V9z"
+                clip-rule="evenodd" />
+            </svg>
+          </div>
+          <div class="ml-3">
+            <p class="text-sm text-blue-700">
+              Le représentant permanent est affecté à une société pour une durée indéterminée, jusqu'à son remplacement.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="!isPermanent" class="mb-6 p-4 bg-purple-50 border-l-4 border-purple-400 rounded-r">
+        <div class="flex">
+          <div class="flex-shrink-0">
+            <svg class="h-5 w-5 text-purple-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+              fill="currentColor">
+              <path fill-rule="evenodd"
+                d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2h-1V9z"
+                clip-rule="evenodd" />
+            </svg>
+          </div>
+          <div class="ml-3">
+            <p class="text-sm text-purple-700">
+              Le représentant ponctuel est mandaté pour participer à une seule réunion précise. Son pouvoir est valable
+              uniquement pour cette réunion.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Formulaire Permanent -->
+      <form *ngIf="isPermanent" [formGroup]="permanentForm" (ngSubmit)="onSubmit(true)" class="space-y-6">
+        <!-- Société avec icône -->
+        <div>
+          <label for="societe-permanent" class="block text-sm font-medium text-gray-700 flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1 text-gray-500" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+            </svg>
+            Société <span class="text-red-500">*</span>
+          </label>
+          <select id="societe-permanent" formControlName="societe"
+            class="mt-1 block w-full pl-10 pr-10 py-3 text-base border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-lg transition-all">
+            <option value="">Sélectionner une société</option>
+            <option *ngFor="let societe of societes" [value]="societe.id">{{ societe.name }}</option>
+          </select>
+          <div *ngIf="permanentForm.get('societe')?.invalid && permanentForm.get('societe')?.touched"
+            class="mt-1 text-sm text-red-600">
+            La société est obligatoire.
+          </div>
+        </div>
+
+        <!-- Matricule avec icône -->
+        <div>
+          <label for="matricule-permanent" class="block text-sm font-medium text-gray-700 flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1 text-gray-500" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2" />
+            </svg>
+            Matricule <span class="text-red-500">*</span>
+          </label>
+          <select id="matricule-permanent" formControlName="matricule"
+            class="mt-1 block w-full pl-10 pr-10 py-3 text-base border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-lg transition-all">
+            <option value="">Sélectionner une matricule</option>
+            <option *ngFor="let employe of employes" [value]="employe.matricule">
+              {{ employe.matricule }} - {{ employe.nom }} {{ employe.prenom }}
+            </option>
+          </select>
+          <div *ngIf="permanentForm.get('matricule')?.invalid && permanentForm.get('matricule')?.touched"
+            class="mt-1 text-sm text-red-600">
+            Le matricule est obligatoire.
+          </div>
+        </div>
+
+        <!-- Nom et prénom (lecture seule) avec icône -->
+        <div>
+          <label for="nomPrenom-permanent" class="block text-sm font-medium text-gray-700 flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1 text-gray-500" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+            </svg>
+            Nom et prénom <span class="text-red-500">*</span>
+          </label>
+          <div class="mt-1 relative rounded-md shadow-sm">
+            <input type="text" id="nomPrenom-permanent" formControlName="nomPrenom" readonly
+              class="block w-full pl-10 pr-3 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:outline-none sm:text-sm">
+            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+          </div>
+          <div *ngIf="permanentForm.get('nomPrenom')?.invalid && permanentForm.get('nomPrenom')?.touched"
+            class="mt-1 text-sm text-red-600">
+            Le nom et prénom sont obligatoires.
+          </div>
+        </div>
+
+        <!-- Date avec icône -->
+        <div>
+          <label for="date-permanent" class="block text-sm font-medium text-gray-700 flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1 text-gray-500" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+            Date de pouvoir <span class="text-red-500">*</span>
+          </label>
+          <div class="mt-1 relative rounded-md shadow-sm">
+            <input type="date" id="date-permanent" formControlName="dateNomination"
+              class="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+            </div>
+          </div>
+          <div *ngIf="permanentForm.get('dateNomination')?.invalid && permanentForm.get('dateNomination')?.touched"
+            class="mt-1 text-sm text-red-600">
+            La date est obligatoire.
+          </div>
+        </div>
+
+        <!-- Boutons d'action -->
+        <div class="flex justify-end space-x-4 pt-6">
+          <button type="submit"
+            class="px-6 py-3 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4" />
+            </svg>
+            Enregistrer
+          </button>
+        </div>
+      </form>
+
+      <!-- Formulaire Ponctuel -->
+      <form *ngIf="!isPermanent" [formGroup]="ponctuelForm" (ngSubmit)="onSubmit(false)" class="space-y-6">
+        <!-- Société avec icône -->
+        <div>
+          <label for="societe-ponctuel" class="block text-sm font-medium text-gray-700 flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1 text-gray-500" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+            </svg>
+            Société <span class="text-red-500">*</span>
+          </label>
+          <select id="societe-ponctuel" formControlName="societe"
+            class="mt-1 block w-full pl-10 pr-10 py-3 text-base border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-lg transition-all">
+            <option value="">Sélectionner une société</option>
+            <option *ngFor="let societe of filteredSocietes" [value]="societe.id">{{ societe.name }}</option>
+          </select>
+          <div *ngIf="ponctuelForm.get('societe')?.invalid && ponctuelForm.get('societe')?.touched"
+            class="mt-1 text-sm text-red-600">
+            La société est obligatoire.
+          </div>
+          <p *ngIf="filteredSocietes.length === 0" class="mt-2 text-sm text-gray-500 flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+            </svg>
+            Aucune société avec des réunions programmées
+          </p>
+        </div>
+
+        <!-- Date de réunion -->
+        <div>
+          <label for="dateReunion" class="block text-sm font-medium text-gray-700 flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1 text-gray-500" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+            Date de la réunion <span class="text-red-500">*</span>
+          </label>
+          <select id="dateReunion" formControlName="dateReunion"
+            class="mt-1 block w-full pl-10 pr-10 py-3 text-base border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-lg transition-all">
+            <option value="">Sélectionner une réunion</option>
+            <option *ngFor="let reunion of filteredReunions" [value]="reunion.id">
+              {{ reunion.date | date:'dd/MM/yyyy' }} - {{ reunion.type }} (Réunion #{{ reunion.id }})
+            </option>
+          </select>
+          <div *ngIf="ponctuelForm.get('dateReunion')?.invalid && ponctuelForm.get('dateReunion')?.touched"
+            class="mt-1 text-sm text-red-600">
+            La date de réunion est obligatoire.
+          </div>
+          <p *ngIf="filteredReunions.length === 0 && ponctuelForm.get('societe')?.value" class="mt-2 text-sm text-gray-500 flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333plo-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+            </svg>
+            Aucune réunion programmée pour cette société
+          </p>
+        </div>
+
+        <!-- Matricule avec icône -->
+        <div>
+          <label for="matricule-ponctuel" class="block text-sm font-medium text-gray-700 flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1 text-gray-500" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2" />
+            </svg>
+            Matricule <span class="text-red-500">*</span>
+          </label>
+          <select id="matricule-ponctuel" formControlName="matricule"
+            class="mt-1 block w-full pl-10 pr-10 py-3 text-base border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-lg transition-all">
+            <option value="">Sélectionner une matricule</option>
+            <option *ngFor="let employe of employes" [value]="employe.matricule">
+              {{ employe.matricule }} - {{ employe.nom }} {{ employe.prenom }}
+            </option>
+          </select>
+          <div *ngIf="ponctuelForm.get('matricule')?.invalid && ponctuelForm.get('matricule')?.touched"
+            class="mt-1 text-sm text-red-600">
+            Le matricule est obligatoire.
+          </div>
+        </div>
+
+        <!-- Nom et prénom (lecture seule) avec icône -->
+        <div>
+          <label for="nomPrenom-ponctuel" class="block text-sm font-medium text-gray-700 flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1 text-gray-500" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+            </svg>
+            Nom et prénom <span class="text-red-500">*</span>
+          </label>
+          <div class="mt-1 relative rounded-md shadow-sm">
+            <input type="text" id="nomPrenom-ponctuel" formControlName="nomPrenom" readonly
+              class="block w-full pl-10 pr-3 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:outline-none sm:text-sm">
+            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+          </div>
+          <div *ngIf="ponctuelForm.get('nomPrenom')?.invalid && ponctuelForm.get('nomPrenom')?.touched"
+            class="mt-1 text-sm text-red-600">
+            Le nom et prénom sont obligatoires.
+          </div>
+        </div>
+
+        <!-- Date avec icône -->
+        <div>
+          <label for="date-ponctuel" class="block text-sm font-medium text-gray-700 flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1 text-gray-500" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+            Date de pouvoir <span class="text-red-500">*</span>
+          </label>
+          <div class="mt-1 relative rounded-md shadow-sm">
+            <input type="date" id="date-ponctuel" formControlName="dateNomination"
+              class="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+            </div>
+          </div>
+          <div *ngIf="ponctuelForm.get('dateNomination')?.invalid && ponctuelForm.get('dateNomination')?.touched"
+            class="mt-1 text-sm text-red-600">
+            La date est obligatoire.
+          </div>
+        </div>
+
+        <!-- Motif avec icône -->
+        <div>
+          <label for="motif" class="block text-sm font-medium text-gray-700 flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1 text-gray-500" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+            Motif <span class="text-red-500">*</span>
+          </label>
+          <div class="mt-1 relative rounded-md shadow-sm">
+            <textarea id="motif" formControlName="motif" rows="2"
+              class="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm"></textarea>
+            <div class="absolute top-3 left-3">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+              </svg>
+            </div>
+          </div>
+          <div *ngIf="ponctuelForm.get('motif')?.invalid && ponctuelForm.get('motif')?.touched"
+            class="mt-1 text-sm text-red-600">
+            Le motif est obligatoire.
+          </div>
+        </div>
+
+        <!-- Boutons d'action -->
+        <div class="flex justify-end space-x-4 pt-6">
+          <button type="submit"
+            class="px-6 py-3 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4" />
+            </svg>
+            Enregistrer
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

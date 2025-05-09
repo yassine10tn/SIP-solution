@@ -5,6 +5,661 @@
     "version": "1.0"
   },
   "paths": {
+    "/api/Actionnaire/add_Capital": {
+      "post": {
+        "tags": [
+          "Actionnaire"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CapitalDto"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CapitalDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CapitalDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CapitalDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Actionnaire/get_Capital": {
+      "get": {
+        "tags": [
+          "Actionnaire"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Actionnaire/add_ActionnaireSTB": {
+      "post": {
+        "tags": [
+          "Actionnaire"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ActionnaireSTBDto"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ActionnaireSTBDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ActionnaireSTBDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ActionnaireSTBDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Actionnaire/get_ActionnaireSTB": {
+      "get": {
+        "tags": [
+          "Actionnaire"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Actionnaire/add_Actionnaire": {
+      "post": {
+        "tags": [
+          "Actionnaire"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ActionnaireDto"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ActionnaireDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ActionnaireDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ActionnaireDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Actionnaire/get_Actionnaire": {
+      "get": {
+        "tags": [
+          "Actionnaire"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Actionnaire/get_AllActionnairesByProjet/{idProjet}": {
+      "get": {
+        "tags": [
+          "Actionnaire"
+        ],
+        "parameters": [
+          {
+            "name": "idProjet",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Actionnaire/get_ActionnaireSTBByProjet/{idProjet}": {
+      "get": {
+        "tags": [
+          "Actionnaire"
+        ],
+        "parameters": [
+          {
+            "name": "idProjet",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Actionnaire/get_Nationalites": {
+      "get": {
+        "tags": [
+          "Actionnaire"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Actionnaire/get_NaturesActionnaire": {
+      "get": {
+        "tags": [
+          "Actionnaire"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Actionnaire/get_TypesActionnaire": {
+      "get": {
+        "tags": [
+          "Actionnaire"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Actionnaire/get-count-actionnaires-nationalite": {
+      "get": {
+        "tags": [
+          "Actionnaire"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Actionnaire/get-total-actionnaires": {
+      "get": {
+        "tags": [
+          "Actionnaire"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Chatbot/ask": {
+      "post": {
+        "tags": [
+          "Chatbot"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChatQuestion"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChatQuestion"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChatQuestion"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChatQuestion"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Reunion/create-repperma": {
+      "post": {
+        "tags": [
+          "Reunion"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RepPermaCreateDto"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RepPermaCreateDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RepPermaCreateDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RepPermaCreateDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Reunion/create-repponct": {
+      "post": {
+        "tags": [
+          "Reunion"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RepPonctCreateDto"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RepPonctCreateDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RepPonctCreateDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RepPonctCreateDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Reunion/get-all-repperma": {
+      "get": {
+        "tags": [
+          "Reunion"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Reunion/get-all-repponct": {
+      "get": {
+        "tags": [
+          "Reunion"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Reunion/check-representative/{idProjet}/{idReunion}": {
+      "get": {
+        "tags": [
+          "Reunion"
+        ],
+        "parameters": [
+          {
+            "name": "idProjet",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "idReunion",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Reunion/create-reunion": {
+      "post": {
+        "tags": [
+          "Reunion"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReunionCreateDto"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReunionCreateDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReunionCreateDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReunionCreateDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Reunion/get-all-typereunion": {
+      "get": {
+        "tags": [
+          "Reunion"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Reunion/get-all-reunion": {
+      "get": {
+        "tags": [
+          "Reunion"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Reunion/create-suivireunion": {
+      "post": {
+        "tags": [
+          "Reunion"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SuiviReunionCreateDto"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SuiviReunionCreateDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SuiviReunionCreateDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SuiviReunionCreateDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Reunion/get-all-suivireunion": {
+      "get": {
+        "tags": [
+          "Reunion"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Reunion/download-document/{idSuivi}/{type}": {
+      "get": {
+        "tags": [
+          "Reunion"
+        ],
+        "parameters": [
+          {
+            "name": "idSuivi",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "type",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Reunion/get-all-utilisateurrep": {
+      "get": {
+        "tags": [
+          "Reunion"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Reunion/get-reunion-by-projet-and-type/{idProjet}/{typeR}": {
+      "get": {
+        "tags": [
+          "Reunion"
+        ],
+        "parameters": [
+          {
+            "name": "idProjet",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "typeR",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Reunion/update-suivireunion/{idSuivi}": {
+      "put": {
+        "tags": [
+          "Reunion"
+        ],
+        "parameters": [
+          {
+            "name": "idSuivi",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SuiviReunionUpdateDto"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SuiviReunionUpdateDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SuiviReunionUpdateDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SuiviReunionUpdateDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Reunion/get-reunion-count": {
+      "get": {
+        "tags": [
+          "Reunion"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Societe/add_Societe": {
       "post": {
         "tags": [
@@ -73,6 +728,18 @@
       }
     },
     "/api/Societe/get_Societe": {
+      "get": {
+        "tags": [
+          "Societe"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Societe/Count_societe": {
       "get": {
         "tags": [
           "Societe"
@@ -560,6 +1227,18 @@
         }
       }
     },
+    "/api/Societe/Count_CAC": {
+      "get": {
+        "tags": [
+          "Societe"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Societe/get_CAC_Nature": {
       "get": {
         "tags": [
@@ -692,6 +1371,386 @@
         }
       }
     },
+    "/api/Societe/get-contacts-count": {
+      "get": {
+        "tags": [
+          "Societe"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Societe/post_Liberation": {
+      "post": {
+        "tags": [
+          "Societe"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LiberationDto"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LiberationDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LiberationDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LiberationDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Societe/get_Liberation": {
+      "get": {
+        "tags": [
+          "Societe"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Societe/get_SouscriptionByProjet/{idProjet}": {
+      "get": {
+        "tags": [
+          "Societe"
+        ],
+        "parameters": [
+          {
+            "name": "idProjet",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Societe/get_LiberationByProjet/{idProjet}": {
+      "get": {
+        "tags": [
+          "Societe"
+        ],
+        "parameters": [
+          {
+            "name": "idProjet",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Societe/get-achats-count": {
+      "get": {
+        "tags": [
+          "Societe"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Societe/get-ventes-count": {
+      "get": {
+        "tags": [
+          "Societe"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Societe/get-souscriptions-count": {
+      "get": {
+        "tags": [
+          "Societe"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Societe/get-liberations-count": {
+      "get": {
+        "tags": [
+          "Societe"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Societe/get-montant-par-gouvernorat": {
+      "get": {
+        "tags": [
+          "Societe"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Societe/get-montant-achats-par-secteur": {
+      "get": {
+        "tags": [
+          "Societe"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Societe/get-taux-souscription-par-mois-2025": {
+      "get": {
+        "tags": [
+          "Societe"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Utilisateur/login": {
+      "post": {
+        "tags": [
+          "Utilisateur"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginDto"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Utilisateur/create-initial-users": {
+      "post": {
+        "tags": [
+          "Utilisateur"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Utilisateur/create-representant": {
+      "post": {
+        "tags": [
+          "Utilisateur"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateRepresentantDto"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateRepresentantDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateRepresentantDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateRepresentantDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Utilisateur/get-users-count": {
+      "get": {
+        "tags": [
+          "Utilisateur"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Utilisateur/create-user": {
+      "post": {
+        "tags": [
+          "Utilisateur"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUserDto"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUserDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUserDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUserDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Utilisateur/get-all-status": {
+      "get": {
+        "tags": [
+          "Utilisateur"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Utilisateur/get-representants-matricules-simple": {
+      "get": {
+        "tags": [
+          "Utilisateur"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Utilisateur/get-all-users": {
+      "get": {
+        "tags": [
+          "Utilisateur"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Utilisateur/delete-user/{matricule}": {
+      "delete": {
+        "tags": [
+          "Utilisateur"
+        ],
+        "parameters": [
+          {
+            "name": "matricule",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/WeatherForecast": {
       "get": {
         "tags": [
@@ -764,6 +1823,49 @@
           "copieOrdreAchat": {
             "type": "string",
             "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ActionnaireDto": {
+        "type": "object",
+        "properties": {
+          "idProjet": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nature_ID": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "idNationalite": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "idNatureActionnaire": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "nombredactionActionnaire": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "raisonSociale": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ActionnaireSTBDto": {
+        "type": "object",
+        "properties": {
+          "idProjet": {
+            "type": "integer",
+            "format": "int32"
           }
         },
         "additionalProperties": false
@@ -863,6 +1965,88 @@
         },
         "additionalProperties": false
       },
+      "CapitalDto": {
+        "type": "object",
+        "properties": {
+          "idProjet": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nombreActions": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "montantNominalAction": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ChatQuestion": {
+        "type": "object",
+        "properties": {
+          "question": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreateRepresentantDto": {
+        "type": "object",
+        "properties": {
+          "matricule": {
+            "type": "string",
+            "nullable": true
+          },
+          "nomPrenomUtilisateur": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreateUserDto": {
+        "type": "object",
+        "properties": {
+          "matricule": {
+            "type": "string",
+            "nullable": true
+          },
+          "mdp": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "LiberationDto": {
+        "type": "object",
+        "properties": {
+          "dateLiberation": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "pourcentageLiberation": {
+            "type": "number",
+            "format": "float"
+          },
+          "rib": {
+            "type": "string",
+            "nullable": true
+          },
+          "idProjet": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
       "ListeContactModel": {
         "type": "object",
         "properties": {
@@ -916,6 +2100,20 @@
             "nullable": true
           },
           "observation": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "LoginDto": {
+        "type": "object",
+        "properties": {
+          "matricule": {
+            "type": "string",
+            "nullable": true
+          },
+          "mdp": {
             "type": "string",
             "nullable": true
           }
@@ -1253,6 +2451,85 @@
         },
         "additionalProperties": false
       },
+      "RepPermaCreateDto": {
+        "type": "object",
+        "properties": {
+          "idProjet": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "idUtilisateurRep": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "datePouvoir": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "RepPonctCreateDto": {
+        "type": "object",
+        "properties": {
+          "idProjet": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "idUtilisateurRep": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "datePouvoir": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "idReunion": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "motif": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ReunionCreateDto": {
+        "type": "object",
+        "properties": {
+          "idProjet": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "idTypeReunion": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dateReunion": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "heureReunion": {
+            "type": "string",
+            "format": "date-span"
+          },
+          "ordre": {
+            "type": "string",
+            "nullable": true
+          },
+          "convocation": {
+            "type": "string",
+            "nullable": true
+          },
+          "lieuReunion": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "SouscriptionDto": {
         "type": "object",
         "properties": {
@@ -1289,6 +2566,126 @@
             "nullable": true
           },
           "copieBulletin": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SuiviReunionCreateDto": {
+        "type": "object",
+        "properties": {
+          "idProjet": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "idReunion": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "tenueReunion": {
+            "type": "string",
+            "nullable": true
+          },
+          "motifReplacement": {
+            "type": "string",
+            "nullable": true
+          },
+          "tenueMotifAnnulation": {
+            "type": "string",
+            "nullable": true
+          },
+          "observation": {
+            "type": "string",
+            "nullable": true
+          },
+          "dateRapellePremCR": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "dateRapelleDeuxCR": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "docCR": {
+            "type": "string",
+            "nullable": true
+          },
+          "dateRapellePremPV": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "dateRapelleDeuxPV": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "docPV": {
+            "type": "string",
+            "nullable": true
+          },
+          "autreDoc": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SuiviReunionUpdateDto": {
+        "type": "object",
+        "properties": {
+          "idSuivi": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "tenueReunion": {
+            "type": "string",
+            "nullable": true
+          },
+          "motifReplacement": {
+            "type": "string",
+            "nullable": true
+          },
+          "tenueMotifAnnulation": {
+            "type": "string",
+            "nullable": true
+          },
+          "observation": {
+            "type": "string",
+            "nullable": true
+          },
+          "dateRapellePremCR": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "dateRapelleDeuxCR": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "docCR": {
+            "type": "string",
+            "nullable": true
+          },
+          "dateRapellePremPV": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "dateRapelleDeuxPV": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "docPV": {
+            "type": "string",
+            "nullable": true
+          },
+          "autreDoc": {
             "type": "string",
             "nullable": true
           }

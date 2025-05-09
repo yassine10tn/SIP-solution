@@ -13,12 +13,34 @@
 
   <!-- form  avec l'accordion -->
   <div class="p-6 bg-white rounded-lg shadow-xl">
+    <!-- Enhanced title section -->
+    <div class="mb-8">
+      <div class="flex items-center">
+        <div class="flex-shrink-0 bg-blue-600 p-2 rounded-lg">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+          </svg>
+        </div>
+        <h2 class="ml-3 text-2xl font-bold text-gray-800">
+          Opération sur capital
+        </h2>
+      </div>
+      <div class="mt-4 border-t-2 border-blue-100 w-full"></div>
+      <p class="mt-2 text-sm text-gray-500 italic">
+        Gestion des souscriptions, achats, ventes et libérations de capital
+      </p>
+    </div>
+
+    <!-- Rest of your existing content... -->
     <p class="font-bold text-lg text-gray-800">
       Si vous avez déjà créé un tier :
     </p>
+    <!-- Rest of your existing code... -->
     <!-- Bouton souscription -->
     <button (click)="toggleAccordion('souscription')"
-      class="w-full flex justify-between items-center bg-emerald-900 text-white text-lg mt-4 px-6 py-4 rounded-lg shadow-md border border-blue-500 hover:bg-blue-500 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-blue-400 transform hover:scale-105">
+      class="w-full flex justify-between items-center bg-sky-500 text-white text-lg mt-4 px-6 py-4 rounded-lg shadow-md border border-blue-400 hover:bg-blue-500 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-blue-300 transform hover:scale-105">
       <span>Souscription</span>
       <svg [ngClass]="{ 'rotate-180': isAccordionOpen === 'souscription' }"
         class="w-6 h-6 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -27,7 +49,7 @@
     </button>
     <!-- Bouton achat -->
     <button (click)="toggleAccordion('achat')"
-      class="w-full flex justify-between items-center bg-sky-800 text-white text-lg mt-4 px-6 py-4 rounded-lg shadow-md border border-blue-400 hover:bg-blue-500 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-blue-300 transform hover:scale-105">
+      class="w-full flex justify-between items-center bg-sky-600 text-white text-lg mt-4 px-6 py-4 rounded-lg shadow-md border border-blue-400 hover:bg-blue-500 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-blue-300 transform hover:scale-105">
       <span>Achat</span>
       <svg [ngClass]="{ 'rotate-180': isAccordionOpen === 'achat' }" class="w-6 h-6 transition-transform duration-300"
         fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -36,13 +58,23 @@
     </button>
     <!-- Bouton vente -->
     <button (click)="toggleAccordion('vente')"
-      class="w-full flex justify-between items-center bg-amber-600 text-white text-lg mt-4 px-6 py-4 rounded-lg shadow-md border border-blue-300 hover:bg-blue-500 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-blue-200 transform hover:scale-105">
+      class="w-full flex justify-between items-center bg-sky-700 text-white text-lg mt-4 px-6 py-4 rounded-lg shadow-md border border-blue-400 hover:bg-blue-500 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-blue-300 transform hover:scale-105">
       <span>Vente</span>
       <svg [ngClass]="{ 'rotate-180': isAccordionOpen === 'vente' }" class="w-6 h-6 transition-transform duration-300"
         fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
       </svg>
     </button>
+    <!-- Bouton libération -->
+    <button (click)="toggleAccordion('liberation')"
+      class="w-full flex justify-between items-center bg-sky-800 text-white text-lg mt-4 px-6 py-4 rounded-lg shadow-md border border-blue-400 hover:bg-blue-500 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-blue-300 transform hover:scale-105">
+      <span>libération</span>
+      <svg [ngClass]="{ 'rotate-180': isAccordionOpen === 'liberation' }"
+        class="w-6 h-6 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+      </svg>
+    </button>
+
 
     <!-- Contenu de l'accordion de souscription -->
     <div *ngIf="isAccordionOpen === 'souscription'"
@@ -127,7 +159,7 @@
             Prix unitaire de l’action
             <span class="text-red-500">*</span>
           </label>
-        
+
           <input type="number" step="0.001" id="prixUnitaire" formControlName="prixUnitaire"
             (ngModelChange)="calculerMontantTotal()"
             class="mt-1 block w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500" />
@@ -232,7 +264,7 @@
         </div>
 
         <button type="submit"
-          class="mt-4 bg-blue-500 text-white text-lg px-6 py-3 rounded-lg shadow-md border border-blue-700 hover:bg-blue-600 transition-all duration-300 w-full focus:outline-none focus:ring-2 focus:ring-blue-500">
+          class="mt-4 bg-blue-600 text-white text-lg px-6 py-3 rounded-lg shadow-md border border-blue-700 hover:bg-blue-600 transition-all duration-300 w-full focus:outline-none focus:ring-2 focus:ring-blue-500">
           Soumettre
         </button>
       </form>
@@ -385,13 +417,16 @@
         </div>
 
         <button type="submit"
-          class="mt-4 bg-blue-500 text-white text-lg px-6 py-3 rounded-lg shadow-md border border-blue-700 hover:bg-blue-600 transition-all duration-300 w-full focus:outline-none focus:ring-2 focus:ring-blue-500">
+          class="mt-4 bg-blue-600 text-white text-lg px-6 py-3 rounded-lg shadow-md border border-blue-700 hover:bg-blue-600 transition-all duration-300 w-full focus:outline-none focus:ring-2 focus:ring-blue-500">
           Soumettre
         </button>
       </form>
     </div>
     <!-- Contenu de l'accordion d'Vente -->
     <div *ngIf="isAccordionOpen === 'vente'" class="bg-white rounded-lg shadow-md p-6 mt-4 transition-all duration-300">
+      <p class="text-gray-700">
+        Voici les détails de la vente à compléter ...
+      </p>
       <form (ngSubmit)="onSubmitVente()" [formGroup]="venteForm" class="space-y-6">
         <!-- Société -->
         <div>
@@ -399,15 +434,16 @@
               class="text-red-500">*</span></label>
           <select id="societe" formControlName="societe"
             class="mt-1 block w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500">
+            <option value="">-- Sélectionnez une société --</option>
             <option *ngFor="let societe of societes" [value]="societe.idProjet">
               {{ societe.raisonSociale }}
             </option>
           </select>
           <div *ngIf="
-              venteForm.get('societe')?.invalid &&
-              (venteForm.get('societe')?.dirty ||
-                venteForm.get('societe')?.touched)
-            " class="text-red-500 text-sm mt-1">
+            venteForm.get('societe')?.invalid &&
+            (venteForm.get('societe')?.dirty ||
+              venteForm.get('societe')?.touched)
+          " class="text-red-500 text-sm mt-1">
             <div *ngIf="venteForm.get('societe')?.errors?.['required']">
               La société est obligatoire.
             </div>
@@ -421,10 +457,10 @@
           <input type="date" id="dateVente" formControlName="dateVente"
             class="mt-1 block w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500" />
           <div *ngIf="
-              venteForm.get('dateVente')?.invalid &&
-              (venteForm.get('dateVente')?.dirty ||
-                venteForm.get('dateVente')?.touched)
-            " class="text-red-500 text-sm mt-1">
+            venteForm.get('dateVente')?.invalid &&
+            (venteForm.get('dateVente')?.dirty ||
+              venteForm.get('dateVente')?.touched)
+          " class="text-red-500 text-sm mt-1">
             <div *ngIf="venteForm.get('dateVente')?.errors?.['required']">
               La date de vente est obligatoire.
             </div>
@@ -438,15 +474,15 @@
           <input type="number" id="quantite" formControlName="quantite"
             class="mt-1 block w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500" />
           <div *ngIf="
-              venteForm.get('quantite')?.invalid &&
-              (venteForm.get('quantite')?.dirty ||
-                venteForm.get('quantite')?.touched)
-            " class="text-red-500 text-sm mt-1">
+            venteForm.get('quantite')?.invalid &&
+            (venteForm.get('quantite')?.dirty ||
+              venteForm.get('quantite')?.touched)
+          " class="text-red-500 text-sm mt-1">
             <div *ngIf="venteForm.get('quantite')?.errors?.['required']">
               La quantité est obligatoire.
             </div>
             <div *ngIf="venteForm.get('quantite')?.errors?.['min']">
-              Le quantité doit être supérieur à 0.
+              La quantité doit être supérieur à 0.
             </div>
           </div>
         </div>
@@ -458,18 +494,18 @@
           <input type="number" step="0.001" id="prixUnitaire" formControlName="prixUnitaire"
             class="mt-1 block w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500" />
           <div *ngIf="
-              venteForm.get('prixUnitaire')?.invalid &&
-              (venteForm.get('prixUnitaire')?.dirty ||
-                venteForm.get('prixUnitaire')?.touched)
-            " class="text-red-500 text-sm mt-1">
+            venteForm.get('prixUnitaire')?.invalid &&
+            (venteForm.get('prixUnitaire')?.dirty ||
+              venteForm.get('prixUnitaire')?.touched)
+          " class="text-red-500 text-sm mt-1">
             <div *ngIf="venteForm.get('prixUnitaire')?.errors?.['required']">
               Le prix unitaire est obligatoire.
             </div>
             <div *ngIf="venteForm.get('prixUnitaire')?.errors?.['min']">
               Le prix unitaire doit être supérieur à 0.
             </div>
-            <div *ngIf="venteForm.get('prixUnitaire')?.errors?.['mustBeDecimal']">
-              Le prix unitaire doit être un réel sous la forme 123,123.
+            <div *ngIf="venteForm.get('prixUnitaire')?.errors?.['pattern']">
+              Le prix unitaire doit être un réel sous la forme 123.123.
             </div>
           </div>
         </div>
@@ -478,14 +514,14 @@
         <div>
           <label for="montantTotal" class="block text-sm font-medium text-gray-700">Montant Total de vente <span
               class="text-red-500">*</span></label>
-          <input type="number" id="montantTotal" formControlName="montantTotal"
-            class="mt-1 block w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500" readonly />
+          <input type="number" id="montantTotal" formControlName="montantTotal" readonly
+            class="mt-1 block w-full p-3 border border-gray-300 rounded-md bg-gray-100 focus:ring-2 focus:ring-blue-500" />
           <div *ngIf="
-              venteForm.get('montantTotal')?.invalid &&
-              (venteForm.get('montantTotal')?.dirty ||
-                venteForm.get('montantTotal')?.touched)
-            " class="text-red-500 text-sm mt-1">
-            <div *ngIf="participationForm.get('montantTotal')?.errors?.['required']">
+            venteForm.get('montantTotal')?.invalid &&
+            (venteForm.get('montantTotal')?.dirty ||
+              venteForm.get('montantTotal')?.touched)
+          " class="text-red-500 text-sm mt-1">
+            <div *ngIf="venteForm.get('montantTotal')?.errors?.['required']">
               Le montant total est obligatoire.
             </div>
           </div>
@@ -498,10 +534,10 @@
           <input type="text" id="signataire" formControlName="signataire"
             class="mt-1 block w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500" />
           <div *ngIf="
-              venteForm.get('signataire')?.invalid &&
-              (venteForm.get('signataire')?.dirty ||
-                venteForm.get('signataire')?.touched)
-            " class="text-red-500 text-sm mt-1">
+            venteForm.get('signataire')?.invalid &&
+            (venteForm.get('signataire')?.dirty ||
+              venteForm.get('signataire')?.touched)
+          " class="text-red-500 text-sm mt-1">
             <div *ngIf="venteForm.get('signataire')?.errors?.['required']">
               Le signataire est obligatoire.
             </div>
@@ -515,10 +551,10 @@
           <input type="text" id="fonction" formControlName="fonction"
             class="mt-1 block w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500" />
           <div *ngIf="
-              venteForm.get('fonction')?.invalid &&
-              (venteForm.get('fonction')?.dirty ||
-                venteForm.get('fonction')?.touched)
-            " class="text-red-500 text-sm mt-1">
+            venteForm.get('fonction')?.invalid &&
+            (venteForm.get('fonction')?.dirty ||
+              venteForm.get('fonction')?.touched)
+          " class="text-red-500 text-sm mt-1">
             <div *ngIf="venteForm.get('fonction')?.errors?.['required']">
               La fonction est obligatoire.
             </div>
@@ -526,10 +562,419 @@
         </div>
 
         <!-- Submit -->
-        <button type="submit" class="w-full bg-blue-500 text-white p-3 rounded-md mt-4">
+        <button type="submit"
+          class="w-full bg-blue-600 text-white text-lg px-6 py-3 rounded-lg shadow-md border border-blue-700 hover:bg-blue-700 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
           Soumettre
         </button>
       </form>
+    </div>
+    <!-- Accordéon : Libération -->
+    <div *ngIf="isAccordionOpen === 'liberation'"
+      class="bg-white rounded-2xl shadow-lg p-8 mt-6 transition-all duration-300 border border-gray-200">
+      <h2 class="text-xl font-semibold text-blue-700 mb-6">Détails de la Libération</h2>
+      <form (ngSubmit)="onSubmitLiberation()" [formGroup]="liberationForm" class="space-y-6">
+        <!-- Sélection société -->
+        <div class="mb-8">
+          <label for="societeSelection" class="block text-sm font-semibold text-gray-700 mb-2">
+            Sélectionnez une société <span class="text-red-500">*</span>
+          </label>
+          <select id="societeSelection" formControlName="societe" (change)="onSocieteChange($event)"
+            class="block w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition">
+            <option value="">-- Sélectionnez une société --</option>
+            <option value="">option1</option>
+
+            <option *ngFor="let societe of societes" [value]="societe.idProjet">
+              {{ societe.raisonSociale }}
+            </option>
+          </select>
+          <div
+            *ngIf="liberationForm.get('societe')?.invalid && (liberationForm.get('societe')?.dirty || liberationForm.get('societe')?.touched)"
+            class="text-red-500 text-sm mt-1">
+            <div *ngIf="liberationForm.get('societe')?.errors?.['required']">La société est obligatoire.</div>
+          </div>
+        </div>
+
+        <!-- Tableau des détails -->
+        <div class="overflow-x-auto mb-8" *ngIf="souscriptionData">
+          <table class="min-w-full bg-white border border-gray-200 rounded-lg overflow-hidden">
+            <thead class="bg-blue-50">
+              <tr>
+                <th class="px-6 py-4 text-left text-xs font-semibold text-blue-700 uppercase tracking-wider">Date de
+                  souscription</th>
+                <th class="px-6 py-4 text-left text-xs font-semibold text-blue-700 uppercase tracking-wider">Montant
+                  souscrit</th>
+                <th class="px-6 py-4 text-left text-xs font-semibold text-blue-700 uppercase tracking-wider">Montant
+                  libéré</th>
+                <th class="px-6 py-4 text-left text-xs font-semibold text-blue-700 uppercase tracking-wider">Montant
+                  reste à libérer</th>
+              </tr>
+            </thead>
+            <tbody class="bg-white divide-y divide-gray-100 text-gray-600 text-sm">
+              <tr>
+                <td class="px-6 py-4 whitespace-nowrap">{{ souscriptionData?.dateSouscription | date:'dd/MM/yyyy' }}
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">{{ montantSouscrit | number:'1.3-3' }}</td>
+                <td class="px-6 py-4 whitespace-nowrap">{{ (montantLibere + montantEnCours) | number:'1.3-3' }}</td>
+                <td class="px-6 py-4 whitespace-nowrap">{{ montantRestantALiberer | number:'1.3-3' }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Texte introductif -->
+        <p class="text-gray-600 mb-6">Veuillez compléter les informations de libération suivantes :</p>
+
+        <!-- Champs du formulaire -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Date -->
+          <div>
+            <label for="dateLiberation" class="block text-sm font-medium text-gray-700">Date de libération <span
+                class="text-red-500">*</span></label>
+            <input type="date" id="dateLiberation" formControlName="dateLiberation" min="2000-01-01"
+              class="mt-2 block w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500" />
+            <div
+              *ngIf="liberationForm.get('dateLiberation')?.invalid && (liberationForm.get('dateLiberation')?.dirty || liberationForm.get('dateLiberation')?.touched)"
+              class="text-red-500 text-sm mt-1">
+              <div *ngIf="liberationForm.get('dateLiberation')?.errors?.['required']">La date est obligatoire.</div>
+              <div *ngIf="liberationForm.get('dateLiberation')?.errors?.['minDate']">La date doit être après le 1er
+                janvier 2000.</div>
+            </div>
+          </div>
+
+          <!-- Pourcentage -->
+          <div>
+            <label for="pourcentageLiberation" class="block text-sm font-medium text-gray-700">Pourcentage de libération
+              <span class="text-red-500">*</span></label>
+            <input type="number" id="pourcentageLiberation" formControlName="pourcentageLiberation" min="0" max="100"
+              step="0.01"
+              class="mt-2 block w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500" />
+            <div
+              *ngIf="liberationForm.get('pourcentageLiberation')?.invalid && (liberationForm.get('pourcentageLiberation')?.dirty || liberationForm.get('pourcentageLiberation')?.touched)"
+              class="text-red-500 text-sm mt-1">
+              <div *ngIf="liberationForm.get('pourcentageLiberation')?.errors?.['required']">Le pourcentage est requis.
+              </div>
+              <div
+                *ngIf="liberationForm.get('pourcentageLiberation')?.errors?.['min'] || liberationForm.get('pourcentageLiberation')?.errors?.['max']">
+                Doit être entre 0 et 100.
+              </div>
+            </div>
+          </div>
+
+          <!-- Montant -->
+          <div>
+            <label for="montant" class="block text-sm font-medium text-gray-700">Montant</label>
+            <input type="number" id="montant" formControlName="montant" readonly
+              class="mt-2 block w-full p-3 border border-gray-300 rounded-md bg-gray-100 text-gray-700 focus:ring-2 focus:ring-blue-500" />
+            <!-- Pas de message d'erreur car le champ est désactivé et non requis -->
+          </div>
+
+          <!-- RIB -->
+          <div>
+            <label for="rib" class="block text-sm font-medium text-gray-700">RIB <span
+                class="text-red-500">*</span></label>
+            <input type="text" id="rib" formControlName="rib" maxlength="20"
+              class="mt-2 block w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500" />
+            <div
+              *ngIf="liberationForm.get('rib')?.invalid && (liberationForm.get('rib')?.dirty || liberationForm.get('rib')?.touched)"
+              class="text-red-500 text-sm mt-1">
+              <div *ngIf="liberationForm.get('rib')?.errors?.['required']">Le RIB est requis.</div>
+              <div *ngIf="liberationForm.get('rib')?.errors?.['pattern']">Le RIB doit contenir exactement 20 chiffres.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bouton -->
+        <button type="submit"
+          class="w-full bg-blue-600 text-white text-base font-semibold px-6 py-3 rounded-xl shadow hover:bg-blue-700 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-400">
+          Soumettre
+        </button>
+      </form>
+    </div>
+
+  </div>
+
+  <!-- Gestion Administrative Section -->
+  <div class="p-6 bg-white rounded-lg shadow-xl mt-8">
+    <!-- Enhanced title section -->
+    <div class="mb-8">
+      <div class="flex items-center">
+        <div class="flex-shrink-0 bg-blue-600 p-2 rounded-lg">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+          </svg>
+        </div>
+        <h2 class="ml-3 text-2xl font-bold text-gray-800">
+          Gestion Administrative
+        </h2>
+      </div>
+      <div class="mt-4 border-t-2 border-blue-100 w-full"></div>
+      <p class="mt-2 text-sm text-gray-500 italic">
+        Gestion des actionnaires, d’administration, direction, réunions, représentant Permanant et Chargé de suivi.
+      </p>
+    </div>
+
+    <p class="font-bold text-lg text-gray-800">
+      Menu des opérations administratives :
+    </p>
+
+    <!-- Bouton Actionnaires -->
+    <button (click)="toggleAccordion('actionnaires')"
+      class="w-full flex justify-between items-center bg-sky-500 text-white text-lg mt-4 px-6 py-4 rounded-lg shadow-md border border-blue-400 hover:bg-blue-500 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-blue-300 transform hover:scale-105">
+      <span>Actionnaires</span>
+      <svg [ngClass]="{ 'rotate-180': isAccordionOpen === 'actionnaires' }"
+        class="w-6 h-6 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+      </svg>
+    </button>
+
+    <!-- Contenu de l'accordion Actionnaires -->
+    <div *ngIf="isAccordionOpen === 'actionnaires'"
+      class="bg-white rounded-xl shadow-md p-6 mt-4 transition-all duration-300">
+
+      <!-- First Form: Saisie du capital de la société -->
+      <h3 class="text-xl font-semibold text-gray-800 mb-4">Saisie du capital de la société</h3>
+      <form [formGroup]="actionnairesForm" (ngSubmit)="onSubmitActionnaires()" class="space-y-6">
+        <!-- Choix de la société -->
+        <div>
+          <label for="societeActionnaires" class="block text-sm font-medium text-gray-700">Choix de la société <span
+              class="text-red-500">*</span></label>
+          <select id="societeActionnaires" formControlName="societe"
+            class="mt-1 block w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500">
+            <option value="">-- Sélectionnez une société --</option>
+            <option *ngFor="let societe of societes" [value]="societe.idProjet">
+              {{ societe.raisonSociale }}
+            </option>
+          </select>
+          <div *ngIf="actionnairesForm.get('societe')?.invalid && 
+           (actionnairesForm.get('societe')?.dirty || 
+            actionnairesForm.get('societe')?.touched)" class="text-red-500 text-sm mt-1">
+            <div *ngIf="actionnairesForm.get('societe')?.errors?.['required']">
+              La société est obligatoire.
+            </div>
+          </div>
+        </div>
+
+        <!-- Nombre d'actions -->
+        <div>
+          <label for="nombreActions" class="block text-sm font-medium text-gray-700">Nombre d'actions de la société
+            <span class="text-red-500">*</span></label>
+          <input type="number" id="nombreActions" formControlName="nombreActions" (input)="calculerCapital()"
+            class="mt-1 block w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500" />
+          <div *ngIf="actionnairesForm.get('nombreActions')?.invalid && 
+           (actionnairesForm.get('nombreActions')?.dirty || 
+            actionnairesForm.get('nombreActions')?.touched)" class="text-red-500 text-sm mt-1">
+            <div *ngIf="actionnairesForm.get('nombreActions')?.errors?.['required']">
+              Le nombre d'actions est obligatoire.
+            </div>
+            <div *ngIf="actionnairesForm.get('nombreActions')?.errors?.['min']">
+              Le nombre doit être supérieur à 0.
+            </div>
+          </div>
+        </div>
+
+        <!-- Montant nominal -->
+        <div>
+          <label for="montantNominal" class="block text-sm font-medium text-gray-700">Montant nominal de l'action (DT)
+            <span class="text-red-500">*</span></label>
+          <input type="number" step="0.001" id="montantNominal" formControlName="montantNominal"
+            (input)="calculerCapital()"
+            class="mt-1 block w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500" />
+          <div *ngIf="actionnairesForm.get('montantNominal')?.invalid && 
+           (actionnairesForm.get('montantNominal')?.dirty || 
+            actionnairesForm.get('montantNominal')?.touched)" class="text-red-500 text-sm mt-1">
+            <div *ngIf="actionnairesForm.get('montantNominal')?.errors?.['required']">
+              Le montant nominal est obligatoire.
+            </div>
+            <div *ngIf="actionnairesForm.get('montantNominal')?.errors?.['min']">
+              Le montant doit être supérieur à 0.
+            </div>
+          </div>
+        </div>
+
+        <!-- Capital calculé -->
+        <div>
+          <label for="capitalSociete" class="block text-sm font-medium text-gray-700">Capital de la société en DT <span
+              class="text-red-500">*</span></label>
+          <input type="number" id="capitalSociete" formControlName="capitalSociete" readonly
+            class="mt-1 block w-full p-3 border border-gray-300 rounded-md bg-gray-100 focus:ring-2 focus:ring-blue-500" />
+          <div *ngIf="actionnairesForm.get('capitalSociete')?.invalid && 
+           (actionnairesForm.get('capitalSociete')?.dirty || 
+            actionnairesForm.get('capitalSociete')?.touched)" class="text-red-500 text-sm mt-1">
+            <div *ngIf="actionnairesForm.get('capitalSociete')?.errors?.['required']">
+              Le capital est obligatoire.
+            </div>
+          </div>
+        </div>
+
+        <!-- Bouton Soumettre -->
+        <button type="submit"
+          class="w-full bg-blue-600 text-white text-lg px-6 py-3 rounded-lg shadow-md border border-blue-700 hover:bg-blue-700 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+          Soumettre
+        </button>
+      </form>
+
+      <!-- Second Form: Saisie des actionnaires -->
+      <h3 class="text-xl font-semibold text-gray-800 mt-8 mb-4">Saisie des actionnaires</h3>
+      <form [formGroup]="shareholdersForm" (ngSubmit)="onSubmitShareholders()" class="space-y-6">
+        <!-- Choix de la société -->
+        <div>
+          <label for="societeActionnaires" class="block text-sm font-medium text-gray-700">Choix de la société <span
+              class="text-red-500">*</span></label>
+          <select id="societeActionnaires" formControlName="societe"
+            class="mt-1 block w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500">
+            
+            <option *ngFor="let societe of societes" [value]="societe.idProjet">
+              {{ societe.raisonSociale }}
+            </option>
+          </select>
+          <div *ngIf="actionnairesForm.get('societe')?.invalid && 
+           (actionnairesForm.get('societe')?.dirty || 
+            actionnairesForm.get('societe')?.touched)" class="text-red-500 text-sm mt-1">
+            <div *ngIf="actionnairesForm.get('societe')?.errors?.['required']">
+              La société est obligatoire.
+            </div>
+          </div>
+        </div>
+        
+        <!-- Date opération -->
+        <div>
+          <label for="dateOperation" class="block text-sm font-medium text-gray-700">Date opération <span
+              class="text-red-500">*</span></label>
+          <input type="date" id="dateOperation" formControlName="dateOperation"
+            class="mt-1 block w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500" />
+          <div *ngIf="shareholdersForm.get('dateOperation')?.invalid && 
+           (shareholdersForm.get('dateOperation')?.dirty || 
+            shareholdersForm.get('dateOperation')?.touched)" class="text-red-500 text-sm mt-1">
+            <div *ngIf="shareholdersForm.get('dateOperation')?.errors?.['required']">
+              La date d'opération est obligatoire.
+            </div>
+          </div>
+        </div>
+
+        <!-- Raison Sociale de l’Actionnaire -->
+        <div>
+          <label for="raisonSociale" class="block text-sm font-medium text-gray-700">Raison Sociale de l’Actionnaire
+            <span class="text-red-500">*</span></label>
+          <input type="text" id="raisonSociale" formControlName="raisonSociale"
+            class="mt-1 block w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500" />
+          <div *ngIf="shareholdersForm.get('raisonSociale')?.invalid && 
+           (shareholdersForm.get('raisonSociale')?.dirty || 
+            shareholdersForm.get('raisonSociale')?.touched)" class="text-red-500 text-sm mt-1">
+            <div *ngIf="shareholdersForm.get('raisonSociale')?.errors?.['required']">
+              La raison sociale est obligatoire.
+            </div>
+          </div>
+        </div>
+
+        <!-- Type -->
+<div>
+  <label for="typeShareholder" class="block text-sm font-medium text-gray-700">Type <span class="text-red-500">*</span></label>
+  <select id="typeShareholder" formControlName="typeShareholder" class="mt-1 block w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500">
+    <option value="">-- Sélectionnez un type --</option>
+    <option *ngFor="let type of typesActionnaire" [value]="type.id">{{ type.libelle }}</option>
+  </select>
+  <div *ngIf="shareholdersForm.get('typeShareholder')?.invalid && (shareholdersForm.get('typeShareholder')?.dirty || shareholdersForm.get('typeShareholder')?.touched)" class="text-red-500 text-sm mt-1">
+    <div *ngIf="shareholdersForm.get('typeShareholder')?.errors?.['required']">
+      Le type est obligatoire.
+    </div>
+  </div>
+</div>
+
+<!-- Nationalité -->
+<div>
+  <label for="nationalite" class="block text-sm font-medium text-gray-700">Nationalité de l’actionnaire <span class="text-red-500">*</span></label>
+  <select id="nationalite" formControlName="nationalite" class="mt-1 block w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500">
+    <option value="">-- Sélectionnez une nationalité --</option>
+    <option *ngFor="let nat of nationalites" [value]="nat.id">{{ nat.libelle }}</option>
+  </select>
+  <div *ngIf="shareholdersForm.get('nationalite')?.invalid && (shareholdersForm.get('nationalite')?.dirty || shareholdersForm.get('nationalite')?.touched)" class="text-red-500 text-sm mt-1">
+    <div *ngIf="shareholdersForm.get('nationalite')?.errors?.['required']">
+      La nationalité est obligatoire.
+    </div>
+  </div>
+</div>
+
+<!-- Nature -->
+<div>
+  <label for="nature" class="block text-sm font-medium text-gray-700">Nature de l’actionnaire <span class="text-red-500">*</span></label>
+  <select id="nature" formControlName="nature" class="mt-1 block w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500">
+    <option value="">-- Sélectionnez une nature --</option>
+    <option *ngFor="let nature of naturesActionnaire" [value]="nature.id">{{ nature.libelle }}</option>
+  </select>
+  <div *ngIf="shareholdersForm.get('nature')?.invalid && (shareholdersForm.get('nature')?.dirty || shareholdersForm.get('nature')?.touched)" class="text-red-500 text-sm mt-1">
+    <div *ngIf="shareholdersForm.get('nature')?.errors?.['required']">
+      La nature est obligatoire.
+    </div>
+  </div>
+</div>
+
+        <!-- Nombre d'action -->
+        <div>
+          <label for="nombreActionShareholder" class="block text-sm font-medium text-gray-700">Nombre d’action <span
+              class="text-red-500">*</span></label>
+          <input type="number" id="nombreActionShareholder" formControlName="nombreActionShareholder"
+            class="mt-1 block w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500" />
+          <div *ngIf="shareholdersForm.get('nombreActionShareholder')?.invalid && 
+           (shareholdersForm.get('nombreActionShareholder')?.dirty || 
+            shareholdersForm.get('nombreActionShareholder')?.touched)" class="text-red-500 text-sm mt-1">
+            <div *ngIf="shareholdersForm.get('nombreActionShareholder')?.errors?.['required']">
+              Le nombre d’actions est obligatoire.
+            </div>
+            <div *ngIf="shareholdersForm.get('nombreActionShareholder')?.errors?.['min']">
+              Le nombre doit être supérieur à 0.
+            </div>
+          </div>
+        </div>
+
+        <!-- Bouton Soumettre -->
+        <button type="submit"
+          class="w-full bg-blue-600 text-white text-lg px-6 py-3 rounded-lg shadow-md border border-blue-700 hover:bg-blue-700 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+          Soumettre
+        </button>
+      </form>
+
+      <!-- Table: Liste des actionnaires -->
+      <div *ngIf="showSouscriptionTable" class="mt-8">
+        <h3 class="text-xl font-semibold text-gray-800 mb-4">Liste des actionnaires</h3>
+        <div class="overflow-x-auto">
+          <table class="min-w-full bg-white border border-gray-200 rounded-lg overflow-hidden">
+            <thead class="bg-blue-50">
+              <tr >
+                <th class="px-6 py-4 text-left text-xs font-semibold text-blue-700 uppercase tracking-wider">Raison
+                  Sociale de l’actionnaire</th>
+                <th class="px-6 py-4 text-left text-xs font-semibold text-blue-700 uppercase tracking-wider">Type</th>
+                <th class="px-6 py-4 text-left text-xs font-semibold text-blue-700 uppercase tracking-wider">Nationalité
+                </th>
+                <th class="px-6 py-4 text-left text-xs font-semibold text-blue-700 uppercase tracking-wider">Nature de
+                  l’actionnaire</th>
+                <th class="px-6 py-4 text-left text-xs font-semibold text-blue-700 uppercase tracking-wider">Nombre
+                  d’actions</th>
+                <th class="px-6 py-4 text-left text-xs font-semibold text-blue-700 uppercase tracking-wider">Montant en
+                  Nominal</th>
+                <th class="px-6 py-4 text-left text-xs font-semibold text-blue-700 uppercase tracking-wider">Pourcentage
+                  de participation</th>
+              </tr>
+            </thead>
+            <tbody class="bg-white divide-y divide-gray-100 text-gray-600 text-sm">
+              <tr *ngFor="let actionnaire of actionnairesList">
+                <td class="px-6 py-4 whitespace-nowrap">{{ actionnaire.raisonSociale }}</td>
+                <td class="px-6 py-4 whitespace-nowrap">{{ actionnaire.typeActionnaire }}</td>
+                <td class="px-6 py-4 whitespace-nowrap">{{ actionnaire.nationalite }}</td>
+                <td class="px-6 py-4 whitespace-nowrap">{{ actionnaire.natureActionnaire }}</td>
+                <td class="px-6 py-4 whitespace-nowrap">{{ actionnaire.nombresActions }}</td>
+                <td class="px-6 py-4 whitespace-nowrap">{{ actionnaire.montantNominal | number:'1.3-3' }}</td>
+                <td class="px-6 py-4 whitespace-nowrap">{{ actionnaire.pourcentageParticipation | number:'1.2-2' }}%</td>
+              </tr>
+              <tr *ngIf="actionnairesList.length === 0">
+                <td colspan="7" class="px-6 py-4 text-center text-gray-500">Aucun actionnaire trouvé.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   </div>
 </div>

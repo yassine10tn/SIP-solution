@@ -1,1 +1,98 @@
-<h1 class="m-16">we still working on this component</h1>
+<div class="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-50 to-purple-50 px-4 py-12">
+  <div class="flex flex-col md:flex-row bg-white shadow-xl rounded-2xl w-full max-w-7xl overflow-hidden transition-all duration-300 hover:shadow-2xl min-h-[700px]">
+    <!-- Image Section -->
+    <div class="hidden md:block md:w-2/5 min-h-[800px] min-w-[700px] md:min-h-full">
+      <img 
+        src="/login.jpg" 
+        alt="Login Illustration"
+        class="w-full h-full "
+        loading="lazy"
+        
+      />
+    </div>
+    
+    <!-- Form Section -->
+    <div class="w-full md:w-3/5 p-8 md:p-10 flex flex-col justify-center">
+      <!-- Logo & Title -->
+      <div class="text-center mb-16">
+        <div class="flex justify-center mb-4">
+          <div class="w-12 h-12 bg-blue-700 rounded-lg flex items-center justify-center shadow-md">
+            <i class="pi pi-lock text-white text-xl"></i>
+          </div>
+        </div>
+        <h1 class="text-3xl font-bold text-gray-800 mb-1">Connexion</h1>
+        <p class="text-gray-500">Entrez vos identifiants pour continuer</p>
+      </div>
+
+      <!-- Formulaire -->
+      <form (ngSubmit)="login()" class="space-y-5" #loginForm="ngForm" novalidate>
+        
+        <!-- Champ Matricule -->
+        <div>
+          <label for="matricule" class="block text-sm font-medium text-gray-700 mb-2">Matricule <span class="text-red-500">*</span></label>
+          <div class="relative">
+            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+              <i class="pi pi-id-card text-gray-400"></i>
+            </div>
+            <input
+              type="text"
+              id="matricule"
+              name="matricule"
+              [(ngModel)]="matricule"
+              required
+              class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition duration-200"
+              placeholder="Votre matricule"
+              [class.border-red-500]="loginForm.submitted && loginForm.controls['matricule'].errors" />
+          </div>
+          <p *ngIf="loginForm.submitted && loginForm.controls['matricule']?.errors" class="mt-1 text-sm text-red-600">
+            Le matricule est requis
+          </p>
+        </div>
+
+        <!-- Champ Mot de passe -->
+        <div>
+          <label for="password" class="block text-sm font-medium text-gray-700 mb-2">Mot de passe <span class="text-red-500">*</span></label>
+          <div class="relative">
+            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+              <i class="pi pi-lock text-gray-400"></i>
+            </div>
+            <input
+              [type]="showPassword ? 'text' : 'password'"
+              id="password"
+              name="password"
+              [(ngModel)]="password"
+              required
+              class="w-full pl-10 pr-12 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition duration-200"
+              placeholder="Votre mot de passe"
+              [class.border-red-500]="loginForm.submitted && loginForm.controls['password'].errors" />
+            <button 
+              type="button" 
+              class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-indigo-600 transition-colors"
+              (click)="togglePasswordVisibility()"
+              [attr.aria-label]="showPassword ? 'Hide password' : 'Show password'">
+              <i class="pi" [class.pi-eye]="!showPassword" [class.pi-eye-slash]="showPassword"></i>
+            </button>
+          </div>
+          <p *ngIf="loginForm.submitted && loginForm.controls['password']?.errors" class="mt-1 text-sm text-red-600">
+            Le mot de passe est requis
+          </p>
+        </div>
+
+        <!-- Bouton Se connecter -->
+        <button
+          type="submit"
+          [disabled]="isLoading"
+          class="w-full flex justify-center items-center py-3 px-4 mt-20 border border-transparent rounded-lg shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition duration-200 disabled:opacity-70 disabled:cursor-not-allowed group">
+          <span *ngIf="!isLoading" class="flex items-center">
+            <i class="pi pi-sign-in mr-2 group-hover:translate-x-1 transition-transform"></i>
+            Se connecter
+          </span>
+          <span *ngIf="isLoading" class="flex items-center">
+            <i class="pi pi-spinner pi-spin mr-2"></i>
+            Connexion en cours...
+          </span>
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

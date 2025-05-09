@@ -46,3 +46,4 @@ C:\Users\Yassine\Pictures\SIParticipations-SIP-version-1\SIParticipations-SIP-ve
 C:\Users\Yassine\Pictures\SIParticipations-SIP-version-1\SIParticipations-SIP-version-1\APIsip\WebApplication1\WebApplication1\obj\Debug\net9.0\WebApplication1.pdb
 C:\Users\Yassine\Pictures\SIParticipations-SIP-version-1\SIParticipations-SIP-version-1\APIsip\WebApplication1\WebApplication1\obj\Debug\net9.0\WebApplication1.genruntimeconfig.cache
 C:\Users\Yassine\Pictures\SIParticipations-SIP-version-1\SIParticipations-SIP-version-1\APIsip\WebApplication1\WebApplication1\obj\Debug\net9.0\ref\WebApplication1.dll
+C:\Users\Yassine\Pictures\SIParticipations-SIP-version-1\SIParticipations-SIP-version-1\APIsip\WebApplication1\WebApplication1\bin\Debug\net9.0\BCrypt.Net-Next.dll

@@ -160,6 +160,13 @@ export interface Commissaire {
   caC_ID: number;
   commissaire_NomPrenom: string;
   cabinet_Nom: string;
+  cabinet_Email?: string | null;
+  cabinet_Telephone?: number | null;
+  email1?: string | null;
+  telephone1?: number | null;
+  email2?: string | null;
+  telephone2?: number | null;
+  nature_ID?: number; // Ajoutez si nécessaire
 }
 // Interface pour les données d'affectation
 export interface AffectationCAC {
@@ -206,134 +213,148 @@ export class CompanyService {
 
   // Ajouter une société
   public addCompany(data: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/add_Societe`, data);
+    return this.http.post(`${this.apiUrl}/Societe/add_Societe`, data);
   }
 
   // Récupérer toutes les sociétés
   public getCompanies(): Observable<Projet[]> {
-    return this.http.get<Projet[]>(`${this.apiUrl}/get_Societe`);
+    return this.http.get<Projet[]>(`${this.apiUrl}/Societe/get_Societe`);
   }
 
   //  Récupérer tous les pays
   public getPays(): Observable<Pays[]> {
-    return this.http.get<Pays[]>(`${this.apiUrl}/get_Pays`);
+    return this.http.get<Pays[]>(`${this.apiUrl}/Societe/get_Pays`);
   }
 
   //  Récupérer tous les Gouvernorats
   public getGouvernorats(): Observable<Gouvernorats[]> {
-    return this.http.get<Gouvernorats[]>(`${this.apiUrl}/get_Gouvernorats`);
+    return this.http.get<Gouvernorats[]>(`${this.apiUrl}/Societe/get_Gouvernorats`);
   }
 
   // Récupérer tous les FormeJuridique
   public getFormeJuridique(): Observable<FormeJuridique[]> {
-    return this.http.get<FormeJuridique[]>(`${this.apiUrl}/get_FormeJuridique`);
+    return this.http.get<FormeJuridique[]>(`${this.apiUrl}/Societe/get_FormeJuridique`);
   }
   //  Récupérer tous les TypeProjet
   public getTypeProjet(): Observable<TypeProjet[]> {
-    return this.http.get<TypeProjet[]>(`${this.apiUrl}/get_TypeProjet`);
+    return this.http.get<TypeProjet[]>(`${this.apiUrl}/Societe/get_TypeProjet`);
   }
 
   //  Récupérer tous les Secteur economique
   public getSecteurEconomique(): Observable<SecteurEconomique[]> {
-    return this.http.get<SecteurEconomique[]>(`${this.apiUrl}/get_SecteurEconomique`);
+    return this.http.get<SecteurEconomique[]>(`${this.apiUrl}/Societe/get_SecteurEconomique`);
   }
 
   //  Récupérer tous les NatureProjet 
   public getNatureProjet(): Observable<NatureProjet[]> {
-    return this.http.get<NatureProjet[]>(`${this.apiUrl}/get_NatureProjet`);
+    return this.http.get<NatureProjet[]>(`${this.apiUrl}/Societe/get_NatureProjet`);
   }
 
   //  Récupérer tous les TypeManagment 
   public getTypeManagement(): Observable<TypeManagement[]> {
-    return this.http.get<TypeManagement[]>(`${this.apiUrl}/get_TypeManagement`);
+    return this.http.get<TypeManagement[]>(`${this.apiUrl}/Societe/get_TypeManagement`);
   }
   //  Récupérer tous les Devise 
   public getDevise(): Observable<Devise[]> {
-    return this.http.get<Devise[]>(`${this.apiUrl}/get_Devise`);
+    return this.http.get<Devise[]>(`${this.apiUrl}/Societe/get_Devise`);
   }
   //  Récupérer tous les TypeIdentifiant 
   public getTypeIdentifiant(): Observable<TypeIdentifiant[]> {
-    return this.http.get<TypeIdentifiant[]>(`${this.apiUrl}/get_TypeIdentifiant`);
+    return this.http.get<TypeIdentifiant[]>(`${this.apiUrl}/Societe/get_TypeIdentifiant`);
   }
   //  Récupérer tous les TypeEntreprise 
   public getTypeEntreprise(): Observable<TypeEntreprise[]> {
-    return this.http.get<TypeEntreprise[]>(`${this.apiUrl}/get_TypeEntreprise`);
+    return this.http.get<TypeEntreprise[]>(`${this.apiUrl}/Societe/get_TypeEntreprise`);
   }
   // Récupérer tous les ParametreRSM620 
   public getParametreRSM620(): Observable<ParametreRSM620[]> {
-    return this.http.get<ParametreRSM620[]>(`${this.apiUrl}/get_ParametreRSM620`);
+    return this.http.get<ParametreRSM620[]>(`${this.apiUrl}/Societe/get_ParametreRSM620`);
   }
     //  Récupérer tous les ParametreRNL870 
     public getParametreRNL870(): Observable<ParametreRNL870[]> {
-      return this.http.get<ParametreRNL870[]>(`${this.apiUrl}/get_ParametreRNL870`);
+      return this.http.get<ParametreRNL870[]>(`${this.apiUrl}/Societe/get_ParametreRNL870`);
     }
 
     // Method to download PDF
     public downloadPdf(id: number, type: string): Observable<Blob> {
-      return this.http.get(`${this.apiUrl}/downloadPdf/${id}/${type}`, { responseType: 'blob' });
+      return this.http.get(`${this.apiUrl}/Societe/downloadPdf/${id}/${type}`, { responseType: 'blob' });
     }
 
     // Mettre à jour une société avec un modèle partiel
   public updateCompany(id: number, updateData: ProjetUpdateDto): Observable<any> {
-    return this.http.put(`${this.apiUrl}/update_Societe/${id}`, updateData);
+    return this.http.put(`${this.apiUrl}/Societe/update_Societe/${id}`, updateData);
   }
 
   // Supprimer une société par son ID
   public deleteCompany(id: number): Observable<any> {
-    return this.http.delete(`${this.apiUrl}/delete_Projet/${id}`);
+    return this.http.delete(`${this.apiUrl}/Societe/delete_Projet/${id}`);
   }
 
   // Récupérer tous les types de souscription
   public getTypesSouscription(): Observable<TypeSouscription[]> {
-    return this.http.get<TypeSouscription[]>(`${this.apiUrl}/get_TypesSouscription`);
+    return this.http.get<TypeSouscription[]>(`${this.apiUrl}/Societe/get_TypesSouscription`);
   }
 
   // Ajouter une souscription
   public postSouscription(data: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/post_Souscription`, data);
+    return this.http.post(`${this.apiUrl}/Societe/post_Souscription`, data);
   }
 
   // Ajouter un achat
   postAchat(data: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/post_Achat`, data);
+    return this.http.post(`${this.apiUrl}/Societe/post_Achat`, data);
 }
 
 // ajouter vente 
 postVente(data: any): Observable<any> {
-  return this.http.post(`${this.apiUrl}/post_Vente`, data);
+  return this.http.post(`${this.apiUrl}/Societe/post_Vente`, data);
 }
 // Récupérer tous les types de nature CAC
 public getCACNature(): Observable<CACNature[]> {
-  return this.http.get<CACNature[]>(`${this.apiUrl}/get_CAC_Nature`);
+  return this.http.get<CACNature[]>(`${this.apiUrl}/Societe/get_CAC_Nature`);
 }
 public addCAC(data: CAC): Observable<any> {
-  return this.http.post(`${this.apiUrl}/add_CAC`, data);
+  return this.http.post(`${this.apiUrl}/Societe/add_CAC`, data);
 }
 // Méthode pour récupérer les commissaires
 public getCommissaires(): Observable<Commissaire[]> {
-  return this.http.get<Commissaire[]>(`${this.apiUrl}/get_CAC`);
+  return this.http.get<Commissaire[]>(`${this.apiUrl}/Societe/get_CAC`);
 }
 public addAffectationCAC(data: AffectationCAC): Observable<any> {
   return this.http.post(`${this.apiUrl}/add_AffectationCAC`, data);
 }
 // Récupérer toutes les fonctions
 public getFonctions(): Observable<Fonction[]> {
-  return this.http.get<Fonction[]>(`${this.apiUrl}/get_Fonctions`);
+  return this.http.get<Fonction[]>(`${this.apiUrl}/Societe/get_Fonctions`);
 }
 
 // Récupérer toutes les situations
 public getSituations(): Observable<Situation[]> {
-  return this.http.get<Situation[]>(`${this.apiUrl}/get_Situations`);
+  return this.http.get<Situation[]>(`${this.apiUrl}/Societe/get_Situations`);
 }
 // Ajouter un contact
 public addContact(data: any): Observable<any> {
-  return this.http.post(`${this.apiUrl}/add_Contact`, data);
+  return this.http.post(`${this.apiUrl}/Societe/add_Contact`, data);
 }
 
 // Récupérer tous les contacts
 public getContacts(): Observable<Contact[]> {
-  return this.http.get<Contact[]>(`${this.apiUrl}/get_Contacts`);
+  return this.http.get<Contact[]>(`${this.apiUrl}/Societe/get_Contacts`);
+}
+
+// Récupérer les données de souscription pour un projet donné
+public getSouscriptionByProjet(idProjet: number): Observable<any> {
+  return this.http.get<any>(`${this.apiUrl}/Societe/get_SouscriptionByProjet/${idProjet}`);
+}
+
+// Récupérer les libérations pour un projet donné
+public getLiberationsByProjet(idProjet: number): Observable<any[]> {
+  return this.http.get<any[]>(`${this.apiUrl}/Societe/get_LiberationByProjet/${idProjet}`);
+}
+
+// Ajouter une libération
+public postLiberation(data: any): Observable<any> {
+  return this.http.post(`${this.apiUrl}/Societe/post_Liberation`, data);
 }
 
 }
-

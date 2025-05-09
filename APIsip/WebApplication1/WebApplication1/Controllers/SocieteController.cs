@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Globalization;
 using Microsoft.AspNetCore.Mvc;
 using WebApplication1.Models;
 
@@ -262,6 +263,29 @@ LEFT JOIN ParametreRNLPA870 prnl ON p.idParametreRNLPA870 = prnl.idParametreRNLP
                 }
 
                 return Ok(projets);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = "Internal Server Error", error = ex.Message });
+            }
+        }
+        [HttpGet("Count_societe")]
+        public IActionResult Count_societe()
+        {
+            try
+            {
+                string query = "SELECT COUNT(*) FROM Projet";
+
+                using (SqlConnection myCon = new SqlConnection(_configuration.GetConnectionString("mybd")))
+                {
+                    myCon.Open();
+                    using (SqlCommand myCommand = new SqlCommand(query, myCon))
+                    {
+                        int count = (int)myCommand.ExecuteScalar();
+                        // Standardisez la casse (PascalCase recommandée pour les APIs .NET)
+                        return Ok(new { SocieteCount = count });
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -1269,6 +1293,7 @@ LEFT JOIN ParametreRNLPA870 prnl ON p.idParametreRNLPA870 = prnl.idParametreRNLP
 
 
 
+
         [HttpPost("post_Achat")]
         public IActionResult PostAchat([FromBody] AchatDto achatDto)
         {
@@ -1688,6 +1713,31 @@ LEFT JOIN ParametreRNLPA870 prnl ON p.idParametreRNLPA870 = prnl.idParametreRNLP
             }
         }
 
+        [HttpGet("Count_CAC")]
+        public IActionResult Count_CAC()
+        {
+            try
+            {
+                string query = "SELECT COUNT(*) FROM CAC";
+
+                using (SqlConnection myCon = new SqlConnection(_configuration.GetConnectionString("mybd")))
+                {
+                    myCon.Open();
+                    using (SqlCommand myCommand = new SqlCommand(query, myCon))
+                    {
+                        int count = (int)myCommand.ExecuteScalar();
+                        return Ok(new { CACCount = count });
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = "Internal Server Error", error = ex.Message });
+            }
+        }
+
+
+
         // Récupérer les types de nature CAC
         [HttpGet("get_CAC_Nature")]
         public IActionResult GetCACNature()
@@ -2037,14 +2087,642 @@ LEFT JOIN ParametreRNLPA870 prnl ON p.idParametreRNLPA870 = prnl.idParametreRNLP
             }
         }
 
+        // Méthode pour récupérer le nombre total de contacts
+        [HttpGet("get-contacts-count")]
+        public IActionResult GetContactsCount()
+        {
+            try
+            {
+                using (SqlConnection myCon = new SqlConnection(_configuration.GetConnectionString("mybd")))
+                {
+                    myCon.Open();
+
+                    string query = "SELECT COUNT(*) FROM ListeContact";
+
+                    using (SqlCommand myCommand = new SqlCommand(query, myCon))
+                    {
+                        int count = (int)myCommand.ExecuteScalar();
+                        return Ok(new { totalContacts = count });
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = "Erreur interne du serveur", error = ex.Message });
+            }
+        }
+
+
+        private string ExtractSocieteName(string question)
+        {
+            string[] keywords = { "société", "de la société", "societe", "Société", "Societe" };
+            foreach (var keyword in keywords)
+            {
+                int index = question.IndexOf(keyword);
+                if (index != -1)
+                {
+                    // Extraire tout ce qui suit le mot-clé jusqu'à la fin ou jusqu'à un point d'interrogation
+                    string remaining = question.Substring(index + keyword.Length).Trim();
+                    int endIndex = remaining.IndexOf('?');
+                    if (endIndex != -1)
+                    {
+                        return remaining.Substring(0, endIndex).Trim();
+                    }
+                    return remaining.Trim();
+                }
+            }
+            return null;
+        }
+        //
+        private IActionResult GetCommissaireResponse(string societeNom)
+        {
+            try
+            {
+                string query = @"
+            SELECT 
+                c.Commissaire_NomPrenom, c.Cabinet_Nom
+            FROM AffectationCAC a
+            INNER JOIN CAC c ON a.CAC_ID = c.CAC_ID
+            INNER JOIN Projet p ON a.IdProjet = p.IdProjet
+            WHERE p.RaisonSociale = @SocieteNom";
+
+                using (SqlConnection myCon = new SqlConnection(_configuration.GetConnectionString("mybd")))
+                {
+                    myCon.Open();
+                    using (SqlCommand myCommand = new SqlCommand(query, myCon))
+                    {
+                        myCommand.Parameters.AddWithValue("@SocieteNom", societeNom);
+
+                        using (SqlDataReader reader = myCommand.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                string nomPrenom = reader.GetString(reader.GetOrdinal("Commissaire_NomPrenom"));
+                                string cabinet = reader.GetString(reader.GetOrdinal("Cabinet_Nom"));
+                                return Ok(new { Response = $"Le commissaire aux comptes de la société {societeNom} est {nomPrenom} du cabinet {cabinet}." });
+                            }
+                            else
+                            {
+                                return Ok(new { Response = $"Aucun commissaire aux comptes trouvé pour la société {societeNom}." });
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = "Erreur lors de la récupération du commissaire", error = ex.Message });
+            }
+        }
+        //test
+        private IActionResult GetContactsResponse(string societeNom)
+        {
+            try
+            {
+                string query = @"
+            SELECT 
+                lc.NomPrenom, f.Libelle AS Fonction
+            FROM ListeContact lc
+            INNER JOIN Fonction f ON lc.Fonction_ID = f.Fonction_ID
+            INNER JOIN Projet p ON lc.IdProjet = p.IdProjet
+            WHERE p.RaisonSociale = @SocieteNom";
+
+                using (SqlConnection myCon = new SqlConnection(_configuration.GetConnectionString("mybd")))
+                {
+                    myCon.Open();
+                    using (SqlCommand myCommand = new SqlCommand(query, myCon))
+                    {
+                        myCommand.Parameters.AddWithValue("@SocieteNom", societeNom);
+
+                        List<string> contacts = new List<string>();
+                        using (SqlDataReader reader = myCommand.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                string nomPrenom = reader.GetString(reader.GetOrdinal("NomPrenom"));
+                                string fonction = reader.GetString(reader.GetOrdinal("Fonction"));
+                                contacts.Add($"{nomPrenom} ({fonction})");
+                            }
+                        }
+
+                        if (contacts.Count > 0)
+                        {
+                            string response = $"Les contacts de la société {societeNom} sont : {string.Join(", ", contacts)}.";
+                            return Ok(new { Response = response });
+                        }
+                        else
+                        {
+                            return Ok(new { Response = $"Aucun contact trouvé pour la société {societeNom}." });
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = "Erreur lors de la récupération des contacts", error = ex.Message });
+            }
+        }
+
+        [HttpPost("post_Liberation")]
+        public IActionResult PostLiberation([FromBody] LiberationDto liberationDto)
+        {
+            if (liberationDto == null)
+            {
+                return BadRequest("Invalid liberation data.");
+            }
+
+            try
+            {
+                // Valider la clé étrangère IdProjet
+                if (!IsValidForeignKey(liberationDto.IdProjet, "Projet"))
+                {
+                    return BadRequest("Invalid project ID.");
+                }
+
+                // Vérifier que le RIB a exactement 20 chiffres
+                if (liberationDto.RIB.Length != 20 || !liberationDto.RIB.All(char.IsDigit))
+                {
+                    return BadRequest("RIB must be exactly 20 digits.");
+                }
+
+                // Calculer le montant à partir de MontantTotal de la table Achat
+                decimal montant;
+                string montantQuery = "SELECT SUM(MontantTotal) FROM Achat WHERE IdProjet = @IdProjet";
+                using (SqlConnection myCon = new SqlConnection(_configuration.GetConnectionString("mybd")))
+                {
+                    myCon.Open();
+
+                    // Récupérer le MontantTotal depuis Achat
+                    using (SqlCommand montantCommand = new SqlCommand(montantQuery, myCon))
+                    {
+                        montantCommand.Parameters.AddWithValue("@IdProjet", liberationDto.IdProjet);
+                        var result = montantCommand.ExecuteScalar();
+                        if (result == null || result == DBNull.Value)
+                        {
+                            return BadRequest($"No purchase found for project ID {liberationDto.IdProjet}.");
+                        }
+                        // Calcul avec précision à 3 décimales
+                        montant = decimal.Round(Convert.ToDecimal(result) * (decimal)liberationDto.PourcentageLiberation, 3);
+                    }
+
+                    // Requête SQL pour insérer dans Liberation
+                    string query = @"
+                INSERT INTO Liberation 
+                (date_liberation, pourcentage_liberation, montant, RIB, id_projet) 
+                VALUES 
+                (@DateLiberation, @PourcentageLiberation, @Montant, @RIB, @IdProjet)";
+
+                    using (SqlCommand myCommand = new SqlCommand(query, myCon))
+                    {
+                        // Ajouter les paramètres
+                        myCommand.Parameters.AddWithValue("@DateLiberation", liberationDto.DateLiberation);
+                        myCommand.Parameters.AddWithValue("@PourcentageLiberation", liberationDto.PourcentageLiberation);
+                        myCommand.Parameters.AddWithValue("@Montant", montant);
+                        myCommand.Parameters.AddWithValue("@RIB", liberationDto.RIB);
+                        myCommand.Parameters.AddWithValue("@IdProjet", liberationDto.IdProjet);
+
+                        // Exécuter la requête
+                        int rowsAffected = myCommand.ExecuteNonQuery();
+
+                        if (rowsAffected > 0)
+                        {
+                            return Ok(new { message = "Liberation data saved successfully", montant = montant });
+                        }
+                        else
+                        {
+                            return BadRequest(new { message = "Insertion failed." });
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = "Internal Server Error", error = ex.Message });
+            }
+        }
+
+        [HttpGet("get_Liberation")]
+        public IActionResult GetLiberation()
+        {
+            try
+            {
+                List<Liberation> liberations = new List<Liberation>();
+                string query = @"
+            SELECT 
+                l.id, l.date_liberation, l.pourcentage_liberation, l.montant, l.RIB, l.id_projet,
+                p.RaisonSociale
+            FROM Liberation l
+            LEFT JOIN Projet p ON l.id_projet = p.IdProjet";
+
+                using (SqlConnection myCon = new SqlConnection(_configuration.GetConnectionString("mybd")))
+                {
+                    myCon.Open();
+                    using (SqlCommand myCommand = new SqlCommand(query, myCon))
+                    {
+                        using (SqlDataReader reader = myCommand.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                liberations.Add(new Liberation
+                                {
+                                    Id = reader.GetInt32(reader.GetOrdinal("id")),
+                                    DateLiberation = reader.GetDateTime(reader.GetOrdinal("date_liberation")),
+                                    PourcentageLiberation = reader.GetFloat(reader.GetOrdinal("pourcentage_liberation")),
+                                    Montant = reader.GetDecimal(reader.GetOrdinal("montant")), // Récupère avec 3 décimales
+                                    RIB = reader.GetString(reader.GetOrdinal("RIB")),
+                                    IdProjet = reader.GetInt32(reader.GetOrdinal("id_projet")),
+                                    RaisonSociale = reader.IsDBNull(reader.GetOrdinal("RaisonSociale")) ? null : reader.GetString(reader.GetOrdinal("RaisonSociale"))
+                                });
+                            }
+                        }
+                    }
+                }
+
+                return Ok(liberations);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = "Internal Server Error", error = ex.Message });
+            }
+        }
+
+        [HttpGet("get_SouscriptionByProjet/{idProjet}")]
+        public IActionResult GetSouscriptionByProjet(int idProjet)
+        {
+            try
+            {
+                string query = @"
+            SELECT TOP 1 DateSouscription, MontantTotal 
+            FROM Souscription 
+            WHERE IdProjet = @IdProjet 
+            ORDER BY DateSouscription DESC";
+
+                using (SqlConnection myCon = new SqlConnection(_configuration.GetConnectionString("mybd")))
+                {
+                    myCon.Open();
+                    using (SqlCommand myCommand = new SqlCommand(query, myCon))
+                    {
+                        myCommand.Parameters.AddWithValue("@IdProjet", idProjet);
+                        using (SqlDataReader reader = myCommand.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                return Ok(new
+                                {
+                                    DateSouscription = reader.GetDateTime(0),
+                                    MontantTotal = reader.GetDecimal(1)
+                                });
+                            }
+                            return NotFound("Aucune souscription trouvée pour ce projet.");
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = "Internal Server Error", error = ex.Message });
+            }
+        }
+        [HttpGet("get_LiberationByProjet/{idProjet}")]
+        public IActionResult GetLiberationByProjet(int idProjet)
+        {
+            try
+            {
+                List<object> liberations = new List<object>();
+                string query = @"
+            SELECT date_liberation, pourcentage_liberation, montant, RIB
+            FROM Liberation 
+            WHERE id_projet = @IdProjet";
+
+                using (SqlConnection myCon = new SqlConnection(_configuration.GetConnectionString("mybd")))
+                {
+                    myCon.Open();
+                    using (SqlCommand myCommand = new SqlCommand(query, myCon))
+                    {
+                        myCommand.Parameters.AddWithValue("@IdProjet", idProjet);
+                        using (SqlDataReader reader = myCommand.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                liberations.Add(new
+                                {
+                                    DateLiberation = reader.GetDateTime(0),
+                                    PourcentageLiberation = reader.GetFloat(1),
+                                    Montant = reader.GetDecimal(2),
+                                    RIB = reader.GetString(3)
+                                });
+                            }
+                        }
+                    }
+                }
+                return Ok(liberations);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = "Internal Server Error", error = ex.Message });
+            }
+        }
+
+        [HttpGet("get-achats-count")]
+        public IActionResult GetAchatsCount()
+        {
+            try
+            {
+                using (SqlConnection myCon = new SqlConnection(_configuration.GetConnectionString("mybd")))
+                {
+                    myCon.Open();
+
+                    string query = "SELECT COUNT(*) FROM Achat";
+
+                    using (SqlCommand myCommand = new SqlCommand(query, myCon))
+                    {
+                        int count = (int)myCommand.ExecuteScalar();
+                        return Ok(new { totalAchats = count });
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = "Erreur interne du serveur", error = ex.Message });
+            }
+        }
+        [HttpGet("get-ventes-count")]
+        public IActionResult GetVentesCount()
+        {
+            try
+            {
+                using (SqlConnection myCon = new SqlConnection(_configuration.GetConnectionString("mybd")))
+                {
+                    myCon.Open();
+
+                    string query = "SELECT COUNT(*) FROM Vente";
+
+                    using (SqlCommand myCommand = new SqlCommand(query, myCon))
+                    {
+                        int count = (int)myCommand.ExecuteScalar();
+                        return Ok(new { totalVentes = count });
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = "Erreur interne du serveur", error = ex.Message });
+            }
+        }
+
+        [HttpGet("get-souscriptions-count")]
+        public IActionResult GetSouscriptionsCount()
+        {
+            try
+            {
+                using (SqlConnection myCon = new SqlConnection(_configuration.GetConnectionString("mybd")))
+                {
+                    myCon.Open();
+
+                    string query = "SELECT COUNT(*) FROM souscription";
+
+                    using (SqlCommand myCommand = new SqlCommand(query, myCon))
+                    {
+                        int count = (int)myCommand.ExecuteScalar();
+                        return Ok(new { totalSouscriptions = count });
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = "Erreur interne du serveur", error = ex.Message });
+            }
+        }
+
+        [HttpGet("get-liberations-count")]
+        public IActionResult GetLiberationsCount()
+        {
+            try
+            {
+                using (SqlConnection myCon = new SqlConnection(_configuration.GetConnectionString("mybd")))
+                {
+                    myCon.Open();
+
+                    string query = "SELECT COUNT(*) FROM Liberation";
+
+                    using (SqlCommand myCommand = new SqlCommand(query, myCon))
+                    {
+                        int count = (int)myCommand.ExecuteScalar();
+                        return Ok(new { totalLiberations = count });
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = "Erreur interne du serveur", error = ex.Message });
+            }
+        }
+
+        [HttpGet("get-montant-par-gouvernorat")]
+        public IActionResult GetMontantParGouvernorat()
+        {
+            try
+            {
+                using (SqlConnection myCon = new SqlConnection(_configuration.GetConnectionString("mybd")))
+                {
+                    myCon.Open();
+
+                    string query = @"
+                SELECT 
+                    g.IdGouvernorat,
+                    g.Libelle AS NomGouvernorat,
+                    ISNULL(SUM(a.Quantite * a.PrixUnitaire), 0) AS TotalAchats,
+                    ISNULL(SUM(s.montanttotal + s.prime_emission_total), 0) AS TotalSouscriptions,
+                    ISNULL(SUM(a.Quantite * a.PrixUnitaire), 0) + ISNULL(SUM(s.montanttotal + s.prime_emission_total), 0) AS TotalGlobal
+                FROM Gouvernorat g
+                LEFT JOIN Projet p ON g.IdGouvernorat = p.IdGouvernorat
+                LEFT JOIN Achat a ON p.IdProjet = a.IdProjet
+                LEFT JOIN souscription s ON p.IdProjet = s.IdProjet
+                GROUP BY g.IdGouvernorat, g.Libelle
+                ORDER BY TotalGlobal DESC";
+
+                    var results = new List<object>();
+
+                    using (SqlCommand myCommand = new SqlCommand(query, myCon))
+                    using (SqlDataReader reader = myCommand.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            results.Add(new
+                            {
+                                IdGouvernorat = reader.GetInt32(reader.GetOrdinal("IdGouvernorat")),
+                                NomGouvernorat = reader.GetString(reader.GetOrdinal("NomGouvernorat")),
+                                TotalAchats = reader.GetDecimal(reader.GetOrdinal("TotalAchats")),
+                                TotalSouscriptions = reader.GetDecimal(reader.GetOrdinal("TotalSouscriptions")),
+                                TotalGlobal = reader.GetDecimal(reader.GetOrdinal("TotalGlobal"))
+                            });
+                        }
+                    }
+
+                    return Ok(results);
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = "Erreur interne du serveur", error = ex.Message });
+            }
+        }
+
+        [HttpGet("get-montant-achats-par-secteur")]
+        public IActionResult GetMontantAchatsParSecteur()
+        {
+            try
+            {
+                using (SqlConnection myCon = new SqlConnection(_configuration.GetConnectionString("mybd")))
+                {
+                    myCon.Open();
+
+                    string query = @"
+                SELECT 
+                    se.IdSecteurEconomique,
+                    se.Libelle AS NomSecteur,
+                    ISNULL(SUM(a.Quantite * a.PrixUnitaire), 0) AS MontantTotalAchats,
+                    COUNT(DISTINCT p.IdProjet) AS NombreProjets
+                FROM SecteurEconomique se
+                LEFT JOIN Projet p ON se.IdSecteurEconomique = p.IdSecteurEconomique
+                LEFT JOIN Achat a ON p.IdProjet = a.IdProjet
+                GROUP BY se.IdSecteurEconomique, se.Libelle
+                ORDER BY MontantTotalAchats DESC";
+
+                    var results = new List<object>();
+
+                    using (SqlCommand myCommand = new SqlCommand(query, myCon))
+                    using (SqlDataReader reader = myCommand.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            results.Add(new
+                            {
+                                IdSecteur = reader.GetInt32(reader.GetOrdinal("IdSecteurEconomique")),
+                                NomSecteur = reader.GetString(reader.GetOrdinal("NomSecteur")),
+                                MontantTotal = reader.GetDecimal(reader.GetOrdinal("MontantTotalAchats")),
+                                NombreProjets = reader.GetInt32(reader.GetOrdinal("NombreProjets"))
+                            });
+                        }
+                    }
+
+                    return Ok(results);
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = "Erreur interne du serveur", error = ex.Message });
+            }
+        }
+
+        [HttpGet("get-taux-souscription-par-mois-2025")]
+        public IActionResult GetTauxSouscriptionParMois2025()
+        {
+            try
+            {
+                using (SqlConnection myCon = new SqlConnection(_configuration.GetConnectionString("mybd")))
+                {
+                    myCon.Open();
+
+                    string query = @"
+                WITH SouscriptionsMensuelles AS (
+                    SELECT 
+                        MONTH(datesouscription) AS Mois,
+                        SUM(montanttotal + prime_emission_total) AS MontantTotal,
+                        COUNT(*) AS NombreSouscriptions
+                    FROM souscription
+                    WHERE YEAR(datesouscription) = 2025
+                    GROUP BY MONTH(datesouscription)
+                ),
+                TotalAnnuel AS (
+                    SELECT 
+                        SUM(montanttotal + prime_emission_total) AS TotalGlobal,
+                        COUNT(*) AS TotalSouscriptions
+                    FROM souscription
+                    WHERE YEAR(datesouscription) = 2025
+                )
+                SELECT 
+                    sm.Mois,
+                    DATENAME(MONTH, DATEFROMPARTS(2025, sm.Mois, 1)) AS NomMois,
+                    sm.MontantTotal,
+                    sm.NombreSouscriptions,
+                    CASE 
+                        WHEN ta.TotalGlobal > 0 
+                        THEN (sm.MontantTotal * 100.0 / ta.TotalGlobal) 
+                        ELSE 0 
+                    END AS PourcentageMontant,
+                    CASE 
+                        WHEN ta.TotalSouscriptions > 0 
+                        THEN (sm.NombreSouscriptions * 100.0 / ta.TotalSouscriptions) 
+                        ELSE 0 
+                    END AS PourcentageNombre
+                FROM SouscriptionsMensuelles sm
+                CROSS JOIN TotalAnnuel ta
+                ORDER BY sm.Mois";
+
+                    var results = new List<SouscriptionMensuelle>();
+
+                    using (SqlCommand myCommand = new SqlCommand(query, myCon))
+                    using (SqlDataReader reader = myCommand.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            results.Add(new SouscriptionMensuelle
+                            {
+                                Mois = reader.GetInt32(0),
+                                NomMois = reader.GetString(1),
+                                MontantTotal = reader.GetDecimal(2),
+                                NombreSouscriptions = reader.GetInt32(3),
+                                PourcentageMontant = Math.Round(reader.GetDecimal(4), 2),
+                                PourcentageNombre = Math.Round(reader.GetDecimal(5), 2)
+                            });
+                        }
+                    }
+
+                    // Créer une liste complète des 12 mois
+                    var moisComplets = Enumerable.Range(1, 12).Select(m => new SouscriptionMensuelle
+                    {
+                        Mois = m,
+                        NomMois = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(m),
+                        MontantTotal = 0m,
+                        NombreSouscriptions = 0,
+                        PourcentageMontant = 0m,
+                        PourcentageNombre = 0m
+                    }).ToList();
+
+                    // Fusionner avec les résultats existants
+                    foreach (var result in results)
+                    {
+                        var moisExist = moisComplets.FirstOrDefault(m => m.Mois == result.Mois);
+                        if (moisExist != null)
+                        {
+                            moisComplets[result.Mois - 1] = result;
+                        }
+                    }
+
+                    return Ok(moisComplets);
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = "Erreur interne du serveur", error = ex.Message });
+            }
+        }
+
+        public class SouscriptionMensuelle
+        {
+            public int Mois { get; set; }
+            public string NomMois { get; set; }
+            public decimal MontantTotal { get; set; }
+            public int NombreSouscriptions { get; set; }
+            public decimal PourcentageMontant { get; set; }
+            public decimal PourcentageNombre { get; set; }
+        }
+
+
+
+
     }
 
 }
-
-
-
-
-
-
-
 

@@ -1,0 +1,249 @@
+<div class=" px-4 py-8 animate-fade-in">
+  <!-- En-tête avec animation -->
+  <div class="mb-8 bg-white rounded-lg shadow-sm border border-gray-100 transition-all duration-300 hover:shadow-md">
+    <div class="flex items-center p-5">
+      <div class="p-2.5 rounded-lg bg-blue-50 mr-4">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd" />
+        </svg>
+      </div>
+      <h1 class="text-2xl font-bold text-gray-800">Paramétrage des accès</h1>
+    </div>
+  </div>
+
+  <!-- Formulaire 1 - Droits d'accès -->
+  <div class="bg-white rounded-lg shadow-md overflow-hidden mb-8  max-w-8xl mx-auto transition-all duration-300 hover:shadow-xl">
+    <div class="p-6 border-b border-gray-200 bg-gradient-to-r from-blue-50 to-gray-50">
+      <h2 class="text-lg font-semibold text-gray-800 flex items-center">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-blue-600" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
+        </svg>
+        Configuration de tous les utilisateurs
+      </h2>
+      <p class="text-sm text-gray-500 mt-1 ml-7">Configurez les droits d'accès des utilisateurs</p>
+    </div>
+    
+    <form (ngSubmit)="submitAccessForm()" class="p-6 space-y-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Champ Statut avec animation -->
+        <div [class.shake]="accessFormErrors.status" class="transition-all duration-200">
+          <label for="status" class="block text-sm font-medium text-gray-700 mb-1 flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-gray-700" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd" />
+            </svg>
+            Statut <span class="text-red-500 ml-1">*</span>
+          </label>
+          <div class="relative group">
+            <select 
+              id="status" 
+              [(ngModel)]="accessForm.status" 
+              name="status"
+              (blur)="validateField('access', 'status')"
+              (focus)="accessFormErrors.status = false"
+              class="w-full pl-10 pr-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all group-hover:border-blue-300"
+              [class.border-gray-300]="!accessFormErrors.status"
+              [class.border-red-500]="accessFormErrors.status">
+              <option value="" disabled selected>Sélectionnez un statut</option>
+              <option *ngFor="let option of statusOptions" [value]="option.value">{{option.label}}</option>
+            </select>
+            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+              </svg>
+            </div>
+          </div>
+          <p *ngIf="accessFormErrors.status" class="mt-1 text-sm text-red-600 ml-7 animate-fade-in">
+            Ce champ est obligatoire
+          </p>
+        </div>
+        
+        <!-- Champ Matricule avec animation -->
+        <div [class.shake]="accessFormErrors.matricule" class="transition-all duration-200">
+          <label for="matricule" class="block text-sm font-medium text-gray-700 mb-1 flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-gray-700" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+            </svg>
+            Matricule <span class="text-red-500 ml-1">*</span>
+          </label>
+          <div class="relative group">
+            <input 
+              type="text" 
+              id="matricule" 
+              [(ngModel)]="accessForm.matricule" 
+              name="matricule"
+              (blur)="validateField('access', 'matricule')"
+              (focus)="accessFormErrors.matricule = false"
+              class="w-full pl-10 pr-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all group-hover:border-blue-300"
+              [class.border-gray-300]="!accessFormErrors.matricule"
+              [class.border-red-500]="accessFormErrors.matricule"
+              required>
+            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M10 2a5 5 0 00-5 5v2a2 2 0 00-2 2v5a2 2 0 002 2h10a2 2 0 002-2v-5a2 2 0 00-2-2H7V7a3 3 0 015.905-.75 1 1 0 001.937-.5A5.002 5.002 0 0010 2z" />
+              </svg>
+            </div>
+          </div>
+          <p *ngIf="accessFormErrors.matricule" class="mt-1 text-sm text-red-600 ml-7 animate-fade-in">
+            Ce champ est obligatoire
+          </p>
+        </div>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Champ Mot de passe avec animation -->
+        <div [class.shake]="accessFormErrors.password" class="transition-all duration-200">
+          <label for="password" class="block text-sm font-medium text-gray-700 mb-1 flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-gray-700" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
+            </svg>
+            Mot de passe <span class="text-red-500 ml-1">*</span>
+          </label>
+          <div class="relative group">
+            <div class="flex">
+              <input 
+                type="password" 
+                id="password" 
+                [(ngModel)]="accessForm.password" 
+                name="password"
+                (blur)="validateField('access', 'password')"
+                (focus)="accessFormErrors.password = false"
+                class="w-full pl-10 pr-3 py-2 border rounded-l-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all group-hover:border-blue-300"
+                [class.border-gray-300]="!accessFormErrors.password"
+                [class.border-red-500]="accessFormErrors.password"
+                required>
+              <button 
+                type="button" 
+                (click)="togglePasswordVisibility('password')"
+                class="px-3 border-t border-r border-b rounded-r-md bg-gray-50 hover:bg-gray-100 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500" viewBox="0 0 20 20" fill="currentColor">
+                  <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+                  <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd" />
+                </svg>
+              </button>
+            </div>
+            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M18 8a6 6 0 01-7.743 5.743L10 14l-1 1-1 1H6v2H2v-4l3.5-3.5 1.5-1.5 1.5-1.5L5 8a6 6 0 0112 0z" clip-rule="evenodd" />
+              </svg>
+            </div>
+          </div>
+          <p *ngIf="accessFormErrors.password" class="mt-1 text-sm text-red-600 ml-7 animate-fade-in">
+            Ce champ est obligatoire
+          </p>
+        </div>
+        
+        <!-- Bouton Enregistrer avec animation -->
+        <div class="flex items-end justify-end mt-24">
+          <button 
+            type="submit"
+            class="relative overflow-hidden w-full md:w-auto flex justify-center items-center py-2 px-6 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-300 hover:shadow-md group">
+            <span class="relative z-10 flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 group-hover:scale-110 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+              </svg>
+              Enregistrer les droits d'accès
+            </span>
+            <span class="absolute inset-0 bg-blue-800 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+  
+  <!-- Formulaire 2 - Représentant -->
+  <div class="bg-white rounded-lg shadow-md overflow-hidden w-full max-w-8xl mx-auto transition-all duration-300 hover:shadow-xl">
+    <div class="p-6 border-b border-gray-200 bg-gradient-to-r from-blue-50 to-gray-50">
+      <h2 class="text-lg font-semibold text-gray-800 flex items-center">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-blue-600" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v1h8v-1zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-1a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v1h-3zM4.75 12.094A5.973 5.973 0 004 15v1H1v-1a3 3 0 013.75-2.906z" />
+        </svg>
+        Configuration de l'utilisateur représentant
+      </h2>
+      <p class="text-sm text-gray-500 mt-1 ml-7">Définissez les informations du représentant</p>
+    </div>
+    
+    <form (ngSubmit)="submitRepresentativeForm()" class="p-6 space-y-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Champ Nom du représentant -->
+        <div [class.shake]="representativeFormErrors.nom" class="transition-all duration-200">
+          <label for="nom" class="block text-sm font-medium text-gray-700 mb-1 flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-gray-700" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+            </svg>
+            Nom du représentant <span class="text-red-500 ml-1">*</span>
+          </label>
+          <div class="relative group">
+            <input 
+              type="text" 
+              id="nom" 
+              [(ngModel)]="representativeForm.nom" 
+              name="nom"
+              (blur)="validateField('representative', 'nom')"
+              (focus)="representativeFormErrors.nom = false"
+              class="w-full pl-10 pr-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all group-hover:border-blue-300"
+              [class.border-gray-300]="!representativeFormErrors.nom"
+              [class.border-red-500]="representativeFormErrors.nom"
+              required>
+            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v1h8v-1zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-1a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v1h-3zM4.75 12.094A5.973 5.973 0 004 15v1H1v-1a3 3 0 013.75-2.906z" />
+              </svg>
+            </div>
+          </div>
+          <p *ngIf="representativeFormErrors.nom" class="mt-1 text-sm text-red-600 ml-7 animate-fade-in">
+            Ce champ est obligatoire
+          </p>
+        </div>
+        
+        <!-- Champ Matricule -->
+        <div [class.shake]="representativeFormErrors.matricule" class="transition-all duration-200">
+          <label for="rep-matricule" class="block text-sm font-medium text-gray-700 mb-1 flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-gray-700" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd" />
+            </svg>
+            Matricule <span class="text-red-500 ml-1">*</span>
+          </label>
+          <div class="relative group">
+            <select 
+              id="rep-matricule" 
+              [(ngModel)]="representativeForm.matricule" 
+              name="rep-matricule"
+              (blur)="validateField('representative', 'matricule')"
+              (focus)="representativeFormErrors.matricule = false"
+              class="w-full pl-10 pr-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all group-hover:border-blue-300"
+              [class.border-gray-300]="!representativeFormErrors.matricule"
+              [class.border-red-500]="representativeFormErrors.matricule">
+              <option value="" disabled selected>Sélectionnez un matricule</option>
+              <option *ngFor="let matricule of representantMatricules" [value]="matricule">
+                {{ matricule }}
+              </option>
+            </select>
+            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M10 2a5 5 0 00-5 5v2a2 2 0 00-2 2v5a2 2 0 002 2h10a2 2 0 002-2v-5a2 2 0 00-2-2H7V7a3 3 0 015.905-.75 1 1 0 001.937-.5A5.002 5.002 0 0010 2z" />
+              </svg>
+            </div>
+          </div>
+          <p *ngIf="representativeFormErrors.matricule" class="mt-1 text-sm text-red-600 ml-7 animate-fade-in">
+            Ce champ est obligatoire
+          </p>
+        </div>
+      </div>
+      
+      <!-- Bouton Enregistrer -->
+      <div class="flex justify-end">
+        <button 
+          type="submit"
+          class="relative overflow-hidden flex justify-center items-center py-2 px-6 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-300 hover:shadow-md group">
+          <span class="relative z-10 flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 group-hover:scale-110 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+            </svg>
+            Enregistrer le représentant
+          </span>
+          <span class="absolute inset-0 bg-blue-800 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

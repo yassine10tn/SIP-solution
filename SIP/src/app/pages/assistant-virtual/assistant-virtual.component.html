@@ -1,0 +1,128 @@
+<div class="fixed bottom-6 right-6 z-50 font-sans">
+  <!-- Bouton flottant -->
+  <button
+    (click)="toggleChat()"
+    class="relative w-14 h-14 rounded-full bg-blue-700 text-white shadow-lg hover:bg-blue-800 transition-all duration-300 flex items-center justify-center"
+  >
+    <span [class.hidden]="isOpen">💬</span>
+    <span [class.hidden]="!isOpen">✕</span>
+    <span
+      class="absolute right-full mr-2 px-2 py-1 bg-gray-800 text-white text-xs rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+    >
+      Assistant Virtuel
+    </span>
+  </button>
+
+  <!-- Fenêtre de chat -->
+  <div
+    class="absolute bottom-20 right-0 w-80 h-[500px] bg-white rounded-lg shadow-xl overflow-hidden flex flex-col transition-all duration-300 transform"
+    [class.hidden]="!isOpen"
+    [class.opacity-0]="!isOpen"
+    [class.opacity-100]="isOpen"
+    [class.scale-95]="!isOpen"
+    [class.scale-100]="isOpen"
+  >
+    <!-- En-tête -->
+    <div class="bg-gradient-to-r from-indigo-600 to-blue-500 text-white p-4">
+      <h2 class="text-lg font-semibold">Assistant Virtuel</h2>
+      <p class="text-sm opacity-90">Comment puis-je vous aider aujourd'hui ?</p>
+    </div>
+
+    <!-- Messages -->
+    <div
+      #messageContainer
+      class="flex-1 p-4 overflow-y-auto bg-gray-50 flex flex-col space-y-3"
+    >
+      <!-- Messages existants -->
+      <ng-container *ngFor="let message of messages">
+        <div
+          class="flex"
+          [class.justify-end]="message.sender === 'user'"
+          [class.justify-start]="message.sender === 'bot'"
+        >
+          <div
+            class="max-w-[80%] rounded-2xl p-3 shadow-sm relative"
+            [class.bg-indigo-600]="message.sender === 'user'"
+            [class.text-white]="message.sender === 'user'"
+            [class.bg-white]="message.sender === 'bot'"
+            [class.text-gray-800]="message.sender === 'bot'"
+            [class.rounded-tr-none]="message.sender === 'user'"
+            [class.rounded-tl-none]="message.sender === 'bot'"
+          >
+            <div class="whitespace-pre-wrap">{{ message.content }}</div>
+            <div class="flex justify-end items-center mt-1 space-x-1">
+              <span class="text-xs opacity-70">{{ formatTime(message.timestamp) }}</span>
+              <ng-container *ngIf="message.sender === 'user'">
+                <span class="text-xs">
+                  <span *ngIf="message.status === 'sending'" class="text-gray-400">●</span>
+                  <span *ngIf="message.status === 'delivered'" class="text-gray-300">●</span>
+                  <span *ngIf="message.status === 'read'" class="text-blue-300">●</span>
+                </span>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+
+      <!-- Indicateur de frappe -->
+      <div *ngIf="isTyping" class="flex justify-start">
+        <div class="bg-white text-gray-800 rounded-2xl rounded-tl-none p-3 shadow-sm max-w-[80%]">
+          <div class="flex space-x-1">
+            <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style="animation-delay: -0.32s"></div>
+            <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style="animation-delay: -0.16s"></div>
+            <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Suggestions -->
+    <div *ngIf="messages.length <= 1" class="px-4 pb-2 bg-gray-50">
+      <h3 class="text-xs text-gray-500 font-medium mb-1">SUGGESTIONS</h3>
+      <div class="flex flex-wrap gap-2">
+        <button
+          *ngFor="let question of suggestedQuestions"
+          (click)="selectSuggestion(question)"
+          class="text-xs bg-white hover:bg-gray-100 border border-gray-200 rounded-full px-3 py-1 transition-colors duration-200"
+        >
+          {{ question }}
+        </button>
+      </div>
+    </div>
+
+    <!-- Zone de saisie -->
+    <div class="p-3 bg-white border-t border-gray-200">
+      <form
+        (submit)="sendMessage(); $event.preventDefault()"
+        class="flex items-center space-x-2"
+      >
+        <input
+          type="text"
+          [(ngModel)]="userInput"
+          name="userInput"
+          placeholder="Tapez votre message..."
+          class="flex-1 border border-gray-300 rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+          [disabled]="isLoading"
+        />
+        <button
+          type="submit"
+          [disabled]="!userInput.trim() || isLoading"
+          class="w-10 h-10 rounded-full bg-indigo-600 text-white flex items-center justify-center hover:bg-indigo-700 transition-colors disabled:bg-indigo-300 disabled:cursor-not-allowed"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-5 w-5"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 1.414L10.586 9H7a1 1 0 100 2h3.586l-1.293 1.293a1 1 0 101.414 1.414l3-3a1 1 0 000-1.414z"
+              clip-rule="evenodd"
+            />
+          </svg>
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

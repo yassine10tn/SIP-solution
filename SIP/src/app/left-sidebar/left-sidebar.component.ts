@@ -1,13 +1,13 @@
-// left-sidebar.component.ts
 import { Component, input, output, inject } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { CommonModule, NgClass } from '@angular/common';
 
 interface MenuItem {
-  routeLink?: string;  // Rendons ce champ optionnel
+  routeLink?: string;
   icon: string;
   label: string;
   subItems?: SubMenuItem[];
+  isOpen?: boolean; 
 }
 
 interface SubMenuItem {
@@ -25,17 +25,27 @@ interface SubMenuItem {
 })
 export class LeftSidebarComponent {
   private router = inject(Router);
-  
+
   isLeftSidebarCollapsed = input.required<boolean>();
   changeIsLeftSidebarCollapsed = output<boolean>();
-  isSocieteMenuOpen = false;
 
   items: MenuItem[] = [
     {
-      routeLink: 'home',
+      label: 'Accueil',
+      routeLink: '/accueil',
+      icon: 'fas fa-home'
+    },
+    {
+      
       icon: 'fas fa-users-cog',
       label: 'Gestion de la Société',
+      isOpen: false, // Initialize isOpen
       subItems: [
+        {
+          routeLink: 'gestion-societe',
+          icon: 'fas fa-users-cog',
+          label: 'Gestion de la société'
+        },
         {
           routeLink: 'saisie-commissaire',
           icon: 'fas fa-user-tie',
@@ -59,29 +69,45 @@ export class LeftSidebarComponent {
       label: 'Participation',
     },
     {
-      routeLink: 'products',
-      icon: 'fas fa-project-diagram',
-      label: 'Workflow',
+      
+      icon: 'fas fa-calendar-alt',
+      label: 'Réunion',
+      isOpen: false, 
+      subItems: [
+        {
+          routeLink: 'Creation-Reunion',
+          icon: 'fas fa-calendar-day',
+          label: 'Creation de réunion'
+        },
+        {
+          routeLink: 'Saisie-Representant',
+          icon: 'fas fa-user-tie',
+          label: 'Saisie Représentant'
+        },
+        {
+          routeLink: 'Suivi-Reunion',
+          icon: 'fas fa-calendar-day',
+          label: 'Suivi de réunion'
+        },
+      ]
     },
     {
-      routeLink: 'settings',
-      icon: 'fas fa-coins',
-      label: 'Fonds Gérés',
-    },
-    {
-      routeLink: 'jsp',
-      icon: 'fas fa-chart-line',
-      label: 'FCPR',
-    },
-    {
-      routeLink: 'idk',
-      icon: 'fas fa-building',
-      label: 'Gestion des Filiales',
-    },
-    {
-      routeLink: 'aa',
       icon: 'fas fa-cogs',
       label: 'Paramétrage',
+      isOpen: false, 
+      subItems: [ 
+        {
+          routeLink: 'parametrage',
+          icon: 'fas fa-cogs',
+          label: 'gestion des droits d\'accès'
+        },
+        {
+          routeLink: 'liste-utilisateur',
+          icon: 'fas fa-calendar-day',
+          label: 'liste des utilisateurs'
+        }
+      ]
+
     },
   ];
 
@@ -93,13 +119,15 @@ export class LeftSidebarComponent {
     this.changeIsLeftSidebarCollapsed.emit(true);
   }
 
-  toggleSocieteMenu(): void {
-    this.isSocieteMenuOpen = !this.isSocieteMenuOpen;
+  toggleMenu(item: MenuItem): void {
+    if (item.subItems) {
+      item.isOpen = !item.isOpen; // Toggle the specific menu's isOpen state
+    }
   }
 
   isAnySubItemActive(item: MenuItem): boolean {
     if (!item.subItems) return false;
-    return item.subItems.some(subItem => 
+    return item.subItems.some(subItem =>
       this.router.isActive(subItem.routeLink, {
         paths: 'subset',
         queryParams: 'subset',
@@ -108,5 +136,4 @@ export class LeftSidebarComponent {
       })
     );
   }
-  
 }

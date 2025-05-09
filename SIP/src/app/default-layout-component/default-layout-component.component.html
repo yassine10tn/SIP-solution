@@ -1,0 +1,13 @@
+<app-navbar></app-navbar>
+<app-left-sidebar
+  [isLeftSidebarCollapsed]="isLeftSidebarCollapsed()"
+  (changeIsLeftSidebarCollapsed)="changeIsLeftSidebarCollapsed($event)"
+/>
+<app-main
+  [isLeftSidebarCollapsed]="isLeftSidebarCollapsed()"
+  [screenWidth]="screenWidth()"
+>
+  <router-outlet></router-outlet>
+</app-main>
+
+<app-assistant-virtual class="fixed bottom-4 right-4 z-[1000]"></app-assistant-virtual>

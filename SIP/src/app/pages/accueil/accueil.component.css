@@ -1,0 +1,48 @@
+/* Animation d'entrée */
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Carte de fonctionnalité */
+.feature-card {
+  background: white;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.feature-card:hover {
+  box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
+}
+.news-slide {
+  transition: transform 0.5s ease-in-out;
+}
+
+/* Animation pour le fade-in */
+.animate-fade-in {
+  animation: fadeIn 1s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Style pour les cartes de fonctionnalités */
+.feature-card:hover {
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+  background-color: #f8fafc;
+}
+
+/* Style pour le bouton actif du carousel */
+.bg-blue-600 {
+  background-color: #2563eb;
+}
+
+.bg-gray-300 {
+  background-color: #d1d5db;
+}
