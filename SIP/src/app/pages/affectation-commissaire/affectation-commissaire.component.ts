@@ -15,13 +15,13 @@ export class AffectationCommissaireComponent {
   formData = {
     societe: '',
     societeId: null as number | null, // Ajouté pour stocker l'ID de la société
-  cabinet: '',
-  commissaire: '', // Gardé pour l'affichage
-  commissaireId: null, // Ajouté pour stocker l'ID
-  mandat: '',
-  dateAffectation: '',
-  observation: '',
-  numeroMandat: ''
+    cabinet: '',
+    commissaire: '',  
+    commissaireId: null, // Ajouté pour stocker l'ID
+    mandat: '',
+    dateAffectation: '',
+    observation: '',
+    numeroMandat: ''
   };
   
   projets: Projet[] = []; // Liste complète des projets

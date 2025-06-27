@@ -48,6 +48,8 @@ export class CreationReunionComponent implements OnInit {
   meetingTypes: TypeReunion[] = [];
   selectedFile: File | null = null;
   submitted = false;
+  
+  
 
   constructor(
     private fb: FormBuilder,
@@ -64,6 +66,8 @@ export class CreationReunionComponent implements OnInit {
       lieuReunion: ['', Validators.required]
     });
   }
+
+  
 
   ngOnInit(): void {
     this.loadCompanies();

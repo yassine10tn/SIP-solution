@@ -34,6 +34,11 @@ export class LoginComponent {
       Matricule: this.matricule,
       Mdp: this.password
     }).subscribe({
+      next: (response) => {
+        // Show success message
+        this.showSuccess('Connexion réussie!');
+        this.router.navigate(['/accueil']);
+      },
       error: (error) => {
         console.error('Login error:', error);
         this.showError('Matricule ou mot de passe incorrect');
@@ -56,6 +61,18 @@ export class LoginComponent {
       icon: 'error',
       confirmButtonColor: '#4f46e5',
       confirmButtonText: 'OK'
+    });
+  }
+
+  private showSuccess(message: string): void {
+    Swal.fire({
+      title: 'Succès',
+      text: message,
+      icon: 'success',
+      confirmButtonColor: '#4f46e5',
+      confirmButtonText: 'OK',
+      timer: 3000,
+      timerProgressBar: true
     });
   }
 }

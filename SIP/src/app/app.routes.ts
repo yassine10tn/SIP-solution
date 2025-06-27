@@ -12,7 +12,7 @@ import { ContactListComponent } from './pages/contact-list/contact-list.componen
 import { DefaultLayoutComponentComponent } from './default-layout-component/default-layout-component.component';
 import { AccueilComponent } from './pages/accueil/accueil.component';
 import { AssistantVirtualComponent } from './pages/assistant-virtual/assistant-virtual.component';
-import { AuthGuard } from './auth.guard'; // Importer l'AuthGuard
+import { AuthGuard } from './auth.guard';
 import { SaisieRepresentantComponent } from './pages/saisie-representant/saisie-representant.component';
 import { SuiviReunionComponent } from './pages/suivi-reunion/suivi-reunion.component';
 import { CreationReunionComponent } from './pages/creation-reunion/creation-reunion.component';
@@ -29,7 +29,7 @@ export const routes: Routes = [
   {
     path: '',
     component: DefaultLayoutComponentComponent,
-    canActivate: [AuthGuard], // ProtÃ©ger toutes les routes enfants
+    canActivate: [AuthGuard],
     children: [
       { path: 'accueil', component: AccueilComponent },
       { path: 'gestion-societe', component: HomeComponent },

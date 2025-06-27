@@ -1,14 +1,15 @@
 <div class="min-h-screen py-8 px-4 sm:px-6 lg:px-8">
   <div class="max-w-8xl mx-auto">
-    <div class="bg-white shadow-xl rounded-2xl overflow-hidden border border-gray-200 hover:shadow-2xl transition-shadow duration-300">
+    <div
+      class="bg-white shadow-xl rounded-2xl overflow-hidden border border-gray-200 hover:shadow-2xl transition-shadow duration-300">
       <!-- Header with white background -->
       <div class="bg-white px-8 py-6 border-b border-gray-200">
         <div class="flex justify-between items-center">
           <div class="flex items-center">
             <!-- Title with circular blue icon -->
             <div class="bg-blue-100 p-3 rounded-full mr-4">
-              <svg xmlns="http://www.w3.org/2000/svg LOWERCASE_URL" class="h-8 w-8 text-blue-600" fill="none" viewBox="0 0 24 24"
-                stroke="currentColor">
+              <svg xmlns="http://www.w3.org/2000/svg LOWERCASE_URL" class="h-8 w-8 text-blue-600" fill="none"
+                viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                   d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
               </svg>
@@ -27,11 +28,14 @@
       <form [formGroup]="meetingForm" (ngSubmit)="onSubmit()" class="px-8 py-8 space-y-6">
         <!-- Société -->
         <div>
-          <label for="societe" class="block text-sm font-medium text-gray-700 mb-1 flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 szymborska 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+          <label for="societe" class=" text-sm font-medium text-gray-700 mb-1 flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1 text-blue-600" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
             </svg>
             Société
+            <span class="text-red-600 ml-1">*</span>
           </label>
           <select id="societe" formControlName="societe"
             class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm p-3 border bg-white"
@@ -39,9 +43,12 @@
             <option value="">Sélectionnez une société</option>
             <option *ngFor="let company of companies" [value]="company.raisonSociale">{{company.raisonSociale}}</option>
           </select>
-          <div *ngIf="(f['societe'].touched || submitted) && f['societe'].invalid" class="text-red-600 text-sm mt-1 flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          <div *ngIf="(f['societe'].touched || submitted) && f['societe'].invalid"
+            class="text-red-600 text-sm mt-1 flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
             Ce champ est obligatoire
           </div>
@@ -51,18 +58,24 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <!-- Date -->
           <div>
-            <label for="dateReunion" class="block text-sm font-medium text-gray-700 mb-1 flex items-center">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            <label for="dateReunion" class=" text-sm font-medium text-gray-700 mb-1 flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1 text-blue-600" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
               </svg>
               Date de la réunion
+              <span class="text-red-600 ml-1">*</span>
             </label>
             <input type="date" id="dateReunion" formControlName="dateReunion"
               class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm p-3 border bg-white"
               [class.border-red-500]="(f['dateReunion'].touched || submitted) && f['dateReunion'].invalid">
-            <div *ngIf="(f['dateReunion'].touched || submitted) && f['dateReunion'].invalid" class="text-red-600 text-sm mt-1 flex items-center">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            <div *ngIf="(f['dateReunion'].touched || submitted) && f['dateReunion'].invalid"
+              class="text-red-600 text-sm mt-1 flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
               Ce champ est obligatoire
             </div>
@@ -70,18 +83,24 @@
 
           <!-- Heure -->
           <div>
-            <label for="heureReunion" class="block text-sm font-medium text-gray-700 mb-1 flex items-center">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            <label for="heureReunion" class=" text-sm font-medium text-gray-700 mb-1 flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1 text-blue-600" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
               Heure de la réunion
+              <span class="text-red-600 ml-1">*</span>
             </label>
             <input type="time" id="heureReunion" formControlName="heureReunion"
               class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm p-3 border bg-white"
               [class.border-red-500]="(f['heureReunion'].touched || submitted) && f['heureReunion'].invalid">
-            <div *ngIf="(f['heureReunion'].touched || submitted) && f['heureReunion'].invalid" class="text-red-600 text-sm mt-1 flex items-center">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            <div *ngIf="(f['heureReunion'].touched || submitted) && f['heureReunion'].invalid"
+              class="text-red-600 text-sm mt-1 flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
               Ce champ est obligatoire
             </div>
@@ -90,21 +109,28 @@
 
         <!-- Type de réunion -->
         <div>
-          <label for="typeReunion" class="block text-sm font-medium text-gray-700 mb-1 flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+          <label for="typeReunion" class=" text-sm font-medium text-gray-700 mb-1 flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1 text-blue-600" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
             </svg>
             Type de réunion
+            <span class="text-red-600 ml-1">*</span>
           </label>
           <select id="typeReunion" formControlName="typeReunion"
             class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm p-3 border bg-white"
             [class.border-red-500]="(f['typeReunion'].touched || submitted) && f['typeReunion'].invalid">
             <option value="">Sélectionnez un type</option>
-            <option *ngFor="let type of meetingTypes" [value]="type.libelleTypereunion">{{type.libelleTypereunion}}</option>
+            <option *ngFor="let type of meetingTypes" [value]="type.libelleTypereunion">{{type.libelleTypereunion}}
+            </option>
           </select>
-          <div *ngIf="(f['typeReunion'].touched || submitted) && f['typeReunion'].invalid" class="text-red-600 text-sm mt-1 flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          <div *ngIf="(f['typeReunion'].touched || submitted) && f['typeReunion'].invalid"
+            class="text-red-600 text-sm mt-1 flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
             Ce champ est obligatoire
           </div>
@@ -112,18 +138,24 @@
 
         <!-- Ordre du jour -->
         <div>
-          <label for="ordreDuJour" class="block text-sm font-medium text-gray-700 mb-1 flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+          <label for="ordreDuJour" class=" text-sm font-medium text-gray-700 mb-1 flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1 text-blue-600" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
             </svg>
             Ordre du jour
+            <span class="text-red-600 ml-1">*</span>
           </label>
           <textarea id="ordreDuJour" formControlName="ordreDuJour" rows="4"
             class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm p-3 border bg-white"
             [class.border-red-500]="(f['ordreDuJour'].touched || submitted) && f['ordreDuJour'].invalid"></textarea>
-          <div *ngIf="(f['ordreDuJour'].touched || submitted) && f['ordreDuJour'].invalid" class="text-red-600 text-sm mt-1 flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          <div *ngIf="(f['ordreDuJour'].touched || submitted) && f['ordreDuJour'].invalid"
+            class="text-red-600 text-sm mt-1 flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
             Ce champ est obligatoire
           </div>
@@ -131,18 +163,34 @@
 
         <!-- Convocation -->
         <div>
-          <label for="convocation" class="block text-sm font-medium text-gray-700 mb-1 flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <label for="convocation" class="text-sm font-medium text-gray-700 mb-1 flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1 text-blue-600" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h10m0 0v10m0-10l-6 6" />
             </svg>
             Convocation
+            <span class="text-red-600 ml-1">*</span>
           </label>
-          <input type="file" id="convocation" (change)="onFileSelected($event)"
-            class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm p-3 border bg-white"
-            [class.border-red-500]="(f['convocation'].touched || submitted) && f['convocation'].invalid">
-          <div *ngIf="(f['convocation'].touched || submitted) && f['convocation'].invalid" class="text-red-600 text-sm mt-1 flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          <div class="relative">
+            <input type="file" id="convocation" (change)="onFileSelected($event)"
+              class="absolute inset-0 w-full h-full opacity-0 cursor-pointer">
+            <div
+              class="mt-1 w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm p-3 border bg-white flex justify-between items-center"
+              [class.border-red-500]="(f['convocation'].touched || submitted) && f['convocation'].invalid">
+              <span>{{ selectedFile ? selectedFile.name : 'Choisir un fichier' }}</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+              </svg>
+            </div>
+          </div>
+          <div *ngIf="(f['convocation'].touched || submitted) && f['convocation'].invalid"
+            class="text-red-600 text-sm mt-1 flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
             Veuillez sélectionner un fichier
           </div>
@@ -150,19 +198,26 @@
 
         <!-- Lieu de la réunion -->
         <div>
-          <label for="lieuReunion" class="block text-sm font-medium text-gray-700 mb-1 flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+          <label for="lieuReunion" class=" text-sm font-medium text-gray-700 mb-1 flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1 text-blue-600" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
             </svg>
             Lieu de la réunion
+            <span class="text-red-600 ml-1">*</span>
           </label>
           <input type="text" id="lieuReunion" formControlName="lieuReunion"
             class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm p-3 border bg-white"
             [class.border-red-500]="(f['lieuReunion'].touched || submitted) && f['lieuReunion'].invalid">
-          <div *ngIf="(f['lieuReunion'].touched || submitted) && f['lieuReunion'].invalid" class="text-red-600 text-sm mt-1 flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          <div *ngIf="(f['lieuReunion'].touched || submitted) && f['lieuReunion'].invalid"
+            class="text-red-600 text-sm mt-1 flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
             Ce champ est obligatoire
           </div>
@@ -172,7 +227,8 @@
         <div class="flex justify-end">
           <button type="submit"
             class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-lg shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
             </svg>
             Créer la réunion
@@ -185,11 +241,17 @@
 
 <!-- Tailwind Animation -->
 <style>
-.animate-fade-in {
-  animation: fadeIn 0.3s ease-in;
-}
-@keyframes fadeIn {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
-}
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-in;
+  }
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
 </style>

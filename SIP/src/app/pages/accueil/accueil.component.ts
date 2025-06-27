@@ -10,7 +10,6 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
   styleUrls: ['./accueil.component.css']
 })
 export class AccueilComponent {
-  @ViewChild('newsContainer') newsContainer!: ElementRef;
 
   features = [
     {

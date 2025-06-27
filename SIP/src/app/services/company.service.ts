@@ -321,7 +321,7 @@ public getCommissaires(): Observable<Commissaire[]> {
   return this.http.get<Commissaire[]>(`${this.apiUrl}/Societe/get_CAC`);
 }
 public addAffectationCAC(data: AffectationCAC): Observable<any> {
-  return this.http.post(`${this.apiUrl}/add_AffectationCAC`, data);
+  return this.http.post(`${this.apiUrl}/Societe/add_AffectationCAC`, data);
 }
 // Récupérer toutes les fonctions
 public getFonctions(): Observable<Fonction[]> {
